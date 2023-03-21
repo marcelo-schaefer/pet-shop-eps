@@ -1,18 +1,16 @@
-package br.com.pet_shop.entities;
+package br.com.pet_shop.entidades;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class Pessoa {
 	
 	private Integer id;
 	
 	private String nome;
-	
-	private String sobrenome;
-	
+		
 	private String cpf;
 	
-	private LocalDate dataNascimento;
+	private Date dataNascimento;
 	
 	public Pessoa() {
 	}
@@ -21,10 +19,9 @@ public class Pessoa {
 		this.id = id;
 	}
 	
-	public Pessoa(Integer id, String nome, String sobrenome, String cpf, LocalDate dataNascimento) {
+	public Pessoa(Integer id, String nome, String cpf, Date dataNascimento) {
 		this.id = id;
 		this.nome = nome;
-		this.sobrenome = sobrenome;
 		this.cpf = cpf;
 		this.dataNascimento = dataNascimento;
 	}
@@ -44,14 +41,6 @@ public class Pessoa {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
-	public String getSobrenome() {
-		return sobrenome;
-	}
-
-	public void setSobrenome(String sobrenome) {
-		this.sobrenome = sobrenome;
-	}
 	
 	public String getCpf() {
 		return cpf;
@@ -61,11 +50,11 @@ public class Pessoa {
 		this.cpf = cpf;
 	}
 
-	public LocalDate getDataNascimento() {
+	public Date getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(LocalDate dataNascimento) {
+	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 }

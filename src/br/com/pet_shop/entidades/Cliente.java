@@ -1,7 +1,7 @@
-package br.com.pet_shop.entities;
+package br.com.pet_shop.entidades;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Cliente extends Pessoa {
@@ -18,9 +18,9 @@ public class Cliente extends Pessoa {
 		super(id);
 	}
 	
-	public Cliente(Integer id, String nome, String sobrenome, String cpf, LocalDate dataNascimento,
+	public Cliente(Integer id, String nome, String cpf, Date dataNascimento,
 			List<Animal> animais, List<Consulta> historicoConsultas) {
-		super(id, nome, sobrenome, cpf, dataNascimento);
+		super(id, nome, cpf, dataNascimento);
 		this.animais = animais;
 		this.historicoConsultas = historicoConsultas;
 	}

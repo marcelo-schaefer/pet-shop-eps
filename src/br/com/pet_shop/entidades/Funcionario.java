@@ -1,6 +1,6 @@
-package br.com.pet_shop.entities;
+package br.com.pet_shop.entidades;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 import br.com.pet_shop.enums.CargoEnum;
 
@@ -16,9 +16,9 @@ public class Funcionario extends Pessoa {
 		super(id);
 	}
 
-	public Funcionario(Integer id, String nome, String sobrenome, String cpf,
-			LocalDate dataNascimento, CargoEnum cargo) {
-		super(id, nome, sobrenome, cpf, dataNascimento);
+	public Funcionario(Integer id, String nome, String cpf,
+			Date dataNascimento, CargoEnum cargo) {
+		super(id, nome, cpf, dataNascimento);
 		this.cargo = cargo;
 	}
 

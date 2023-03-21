@@ -1,4 +1,4 @@
-package br.com.pet_shop.entities;
+package br.com.pet_shop.entidades;
 
 import java.time.LocalDate;
 
