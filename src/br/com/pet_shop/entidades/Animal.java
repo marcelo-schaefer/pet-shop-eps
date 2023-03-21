@@ -1,8 +1,8 @@
 package br.com.pet_shop.entidades;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
-import br.com.pet_shop.enums.EspecieEnum;
 import br.com.pet_shop.enums.SexoEnum;
 
 public class Animal {
@@ -11,9 +11,7 @@ public class Animal {
 	
 	private String nome;
 	
-	private LocalDate dataNascimento;
-	
-	private EspecieEnum especie;
+	private Date dataNascimento;
 	
 	private SexoEnum sexo;
 
@@ -24,11 +22,10 @@ public class Animal {
 		this.id = id;
 	}
 	
-	public Animal(Integer id, String nome, LocalDate dataNascimento, EspecieEnum especie, SexoEnum sexo) {
+	public Animal(Integer id, String nome, Date dataNascimento, SexoEnum sexo) {
 		this.id = id;
 		this.nome = nome;
 		this.dataNascimento = dataNascimento;
-		this.especie = especie;
 		this.sexo = sexo;
 	}
 
@@ -48,20 +45,12 @@ public class Animal {
 		this.nome = nome;
 	}
 
-	public LocalDate getDataNascimento() {
+	public Date getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(LocalDate dataNascimento) {
+	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
-	}
-
-	public EspecieEnum getEspecie() {
-		return especie;
-	}
-
-	public void setEspecie(EspecieEnum especie) {
-		this.especie = especie;
 	}
 
 	public SexoEnum getSexo() {
