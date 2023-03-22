@@ -1,37 +1,40 @@
 package br.com.pet_shop.repositorio;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import br.com.pet_shop.entidades.Pessoa;
+import br.com.pet_shop.repositorio.interfaces.PessoaRepositorioInterface;
+
+import java.util.List;
 import java.util.Optional;
 
-import br.com.pet_shop.banco.ConexaoBanco;
-import br.com.pet_shop.entities.Pessoa;
-import br.com.pet_shop.utilitarios.constantes.ConsultasConstante;
-import br.com.pet_shop.utilitarios.conversores.ConversorEntidade;
+public class PessoaRepositorio implements PessoaRepositorioInterface {
 
-public class PessoaRepositorio {
+    @Override
+    public Boolean criar(Pessoa entidade) {
+        return null;
+    }
 
-	
-	public Optional<Pessoa> buscarPorId(Integer id) {
-        try {
-            Connection connection = ConexaoBanco.pegarConexao();
+    @Override
+    public Boolean atualizar(Pessoa entidade) {
+        return null;
+    }
 
-            PreparedStatement preparedStatement = connection.prepareStatement(
-                ConsultasConstante.Pessoa.BUSCAR_POR_ID
-            );
-            preparedStatement.setInt(1, id);
+    @Override
+    public Optional<Pessoa> buscarPorId(Integer id) {
+        return Optional.empty();
+    }
 
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                return Optional.of(
-                    ConversorEntidade.resultSetParaPessoa(resultSet)
-                );
-            }
-            return Optional.empty();
-        } catch (SQLException exception) {
-            throw new RuntimeException(exception);
-        }
-    }    
+    @Override
+    public List<Pessoa> buscar() {
+        return null;
+    }
+
+    @Override
+    public Boolean deletar() {
+        return null;
+    }
+
+    @Override
+    public Boolean deletarPorId(Integer id) {
+        return null;
+    }
 }

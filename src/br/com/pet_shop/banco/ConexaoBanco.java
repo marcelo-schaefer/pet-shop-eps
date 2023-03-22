@@ -1,6 +1,6 @@
 package br.com.pet_shop.banco;
 
-import br.com.pet_shop.excecoes.banco.ConexaoBancoExcecao;
+import br.com.pet_shop.excecoes.ConexaoBancoExcecao;
 
 import javax.swing.*;
 import java.sql.Connection;
@@ -9,34 +9,36 @@ import java.sql.SQLException;
 
 public class ConexaoBanco {
 
-    private static final Connection CONEXAO = null;
+    private static Connection conexao;
 
     private ConexaoBanco() {
     }
 
     public static Connection pegarConexao() throws ConexaoBancoExcecao {
         try {
-            if (CONEXAO == null || CONEXAO.isClosed()) {
+            if (conexao == null || conexao.isClosed()) {
                 String nomeServidor = "localhost";
-                String nomeBanco = "biblioteca";
+                String nomeBanco = "pet-shop";
                 String url = "jdbc:mysql://"
                     .concat(nomeServidor)
                     .concat("/")
                     .concat(nomeBanco);
+
                 String usuario = "root";
                 String senha = "";
 
-                return DriverManager.getConnection(url, usuario, senha);
+                conexao = DriverManager.getConnection(url, usuario, senha);
             }
-            return CONEXAO;
+
+            return conexao;
         } catch (SQLException exception) {
-            JOptionPane.showMessageDialog(//
-                null,//
-                "Erro ao conectar com o banco. Verifique as configurações.",//
-                "Erro",//
-                JOptionPane.ERROR_MESSAGE//
-            );//
-            throw new ConexaoBancoExcecao(exception);//
+            JOptionPane.showMessageDialog(
+                null,
+                "Erro ao conectar com o banco. Verifique as configurações.",
+                "Erro ao Conectar",
+                JOptionPane.ERROR_MESSAGE
+            );
+            throw new ConexaoBancoExcecao(exception);
         }
     }
 }

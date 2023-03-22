@@ -5,48 +5,41 @@ public class ConsultasConstante {
     private ConsultasConstante() {
     }
 
-    public class Tipo {
-
-        public static final int LIVRO = 1;
-
-        public static final int REVISTA = 2;
-
-        public static final int PERIODICO = 3;
-    }
-    
-    public class Animal {
-
+    public final class Animal {
         public static final String BUSCAR_POR_ID = "SELECT * FROM biblioteca.acervo "
             + "WHERE acervo.id = ?";
-        
+
         public static final String CRIAR = "INSERT INTO biblioteca.cliente"
-                + "(nome_completo, data_nascimento, cpf, telefone, ativo, foto)"
-                + " VALUES "
-                + "(?, ?, ?, ?, ?, ?);";
-        
+            + "(nome_completo, data_nascimento, cpf, telefone, ativo, foto)"
+            + " VALUES "
+            + "(?, ?, ?, ?, ?, ?);";
+
         public static final String ATUALIZAR = "UPDATE biblioteca.cliente cliente "
-                + "SET "
-                + "cliente.nome_completo = ?,"
-                + "cliente.data_nascimento = ?,"
-                + "cliente.cpf = ?,"
-                + "cliente.telefone = ?,"
-                + "cliente.ativo = ?,"
-                + "cliente.foto = ? "
-                + "WHERE cliente.id = ?;";
+            + "SET "
+            + "cliente.nome_completo = ?,"
+            + "cliente.data_nascimento = ?,"
+            + "cliente.cpf = ?,"
+            + "cliente.telefone = ?,"
+            + "cliente.ativo = ?,"
+            + "cliente.foto = ? "
+            + "WHERE cliente.id = ?;";
 
-            public static final String INATIVAR = "UPDATE biblioteca.cliente cliente "
-                + "SET "
-                + "cliente.ativo = false "
-                + "WHERE cliente.id = ?;";
+        public static final String INATIVAR = "UPDATE biblioteca.cliente cliente "
+            + "SET "
+            + "cliente.ativo = false "
+            + "WHERE cliente.id = ?;";
 
-            public static final String BUSCAR = "SELECT * FROM biblioteca.cliente;";
-            
-            public static final String DELETAR = "DELETE FROM biblioteca.cliente;";
-            
-            public static final String DELETAR_POR_ID = "DELETE FROM biblioteca.cliente cliente "
-                    + "WHERE cliente.id = ?;";
+        public static final String BUSCAR = "SELECT * FROM biblioteca.cliente;";
+
+        public static final String DELETAR = "DELETE FROM biblioteca.cliente;";
+
+        public static final String DELETAR_POR_ID = "DELETE FROM biblioteca.cliente cliente "
+            + "WHERE cliente.id = ?;";
+
+        private Animal() {
+        }
     }
-    
+
     public class Cliente {
 
         public static final String CRIAR = "INSERT INTO biblioteca.cliente"
@@ -105,21 +98,21 @@ public class ConsultasConstante {
             + "WHERE compra.id = ?;";
 
         public static final String BUSCAR = "SELECT * FROM biblioteca.compra;";
-        
+
         public static final String BUSCAR_DATA_INICIO_FIM = "SELECT * FROM biblioteca.compra compra "
-                + "WHERE compra.data BETWEEN ? AND ?;";
-        
+            + "WHERE compra.data BETWEEN ? AND ?;";
+
         public static final String BUSCAR_DATA_MAIOR_IGUAL_QUE = "SELECT * FROM biblioteca.compra compra "
-                + "WHERE compra.data >= ?;";
-        
+            + "WHERE compra.data >= ?;";
+
         public static final String BUSCAR_DATA_MENOR_IGUAL_QUE = "SELECT * FROM biblioteca.compra compra "
-                + "WHERE compra.data <= ?;";
-        
+            + "WHERE compra.data <= ?;";
+
         public static final String BUSCAR_POR_ID = "SELECT * FROM biblioteca.compra compra "
             + "WHERE compra.id = ?;";
 
         public static final String BUSCAR_ULTIMO = "SELECT * FROM biblioteca.compra compra GROUP BY compra.id DESC LIMIT 1;";
-        
+
         public static final String BUSCAR_POR_CLIENTE_ID = "SELECT * FROM biblioteca.compra compra "
             + "WHERE compra.cliente_id = ?;";
 
@@ -129,8 +122,7 @@ public class ConsultasConstante {
             + "WHERE compra.id = ?;";
     }
 
-    public class Pessoa {
-
+    public static final class Pessoa {
         public static final String CRIAR = "INSERT INTO biblioteca.item_compra "
             + "(compra_id, acervo_id)"
             + " VALUES "
@@ -143,10 +135,10 @@ public class ConsultasConstante {
             + "WHERE item_compra.id = ?;";
 
         public static final String BUSCAR = "SELECT * FROM biblioteca.item_compra;";
-        
+
         public static final String BUSCAR_POR_COMPRA_ID = "SELECT * FROM biblioteca.item_compra "
             + "WHERE item_compra.compra_id = ?;";
-        
+
         public static final String BUSCAR_POR_ID = "SELECT * FROM biblioteca.item_compra item_compra "
             + "WHERE item_compra.id = ?;";
 
@@ -156,7 +148,8 @@ public class ConsultasConstante {
 
         public static final String DELETAR_POR_ID = "DELETE FROM biblioteca.item_compra item_compra "
             + "WHERE item_compra.id = ?;";
-    }
 
-   
+        private Pessoa() {
+        }
+    }
 }

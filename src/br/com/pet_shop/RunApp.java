@@ -1,21 +1,13 @@
 package br.com.pet_shop;
 
-import br.com.pet_shop.enums.SexoEnum;
+import br.com.pet_shop.tela.LerTela;
 
 public class RunApp {
-	
-	public static void main(String[] args) {
-		var enumNome = "";
-		
-		for (var i =0; i < SexoEnum.values().length; i++) {
-			enumNome += SexoEnum.values()[i].toString().concat("\n");
-		}
-		
-		var errorMessage = String.format(
-				"Opções válidas: %s",
-				enumNome
-		);
-		System.out.print(errorMessage);
-	}
-	
+
+    public static void main(String[] args) {
+        var valor = LerTela.lerDouble("Teste", "teste");
+
+        System.err.println(valor);
+        //todo Implementar
+    }
 }

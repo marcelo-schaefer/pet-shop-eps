@@ -1,10 +1,8 @@
-package br.com.pet_shop.excecoes.banco;
+package br.com.pet_shop.excecoes;
 
-public class ManipulacaoBancoExcecao extends Exception {
+public class ManipulacaoBancoExcecao extends RuntimeException {
 
-	private static final long serialVersionUID = 2482194230677133050L;
-
-	public ManipulacaoBancoExcecao(String message) {
+    public ManipulacaoBancoExcecao(String message) {
         super(message);
     }
 

@@ -1,37 +1,40 @@
 package br.com.pet_shop.repositorio;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import br.com.pet_shop.entidades.Consulta;
+import br.com.pet_shop.repositorio.interfaces.ConsultaRepositorioInterface;
+
+import java.util.List;
 import java.util.Optional;
 
-import br.com.pet_shop.banco.ConexaoBanco;
-import br.com.pet_shop.entities.Consulta;
-import br.com.pet_shop.utilitarios.constantes.ConsultasConstante;
-import br.com.pet_shop.utilitarios.conversores.ConversorEntidade;
+public class ConsultaRepositorio implements ConsultaRepositorioInterface {
 
-public class ConsultaRepositorio {
+	@Override
+	public Boolean criar(Consulta entidade) {
+		return null;
+	}
 
-	
-	 public Optional<Consulta> buscarPorId(Integer id) {
-	        try {
-	            Connection connection = ConexaoBanco.pegarConexao();
+	@Override
+	public Boolean atualizar(Consulta entidade) {
+		return null;
+	}
 
-	            PreparedStatement preparedStatement = connection.prepareStatement(
-	                ConsultasConstante.Consulta.BUSCAR_POR_ID
-	            );
-	            preparedStatement.setInt(1, id);
+	@Override
+	public Optional<Consulta> buscarPorId(Integer id) {
+		return Optional.empty();
+	}
 
-	            ResultSet resultSet = preparedStatement.executeQuery();
-	            if (resultSet.next()) {
-	                return Optional.of(
-	                    ConversorEntidade.resultSetParaConsulta(resultSet)
-	                );
-	            }
-	            return Optional.empty();
-	        } catch (SQLException exception) {
-	            throw new RuntimeException(exception);
-	        }
-	    }    
+	@Override
+	public List<Consulta> buscar() {
+		return null;
+	}
+
+	@Override
+	public Boolean deletar() {
+		return null;
+	}
+
+	@Override
+	public Boolean deletarPorId(Integer id) {
+		return null;
+	}
 }
