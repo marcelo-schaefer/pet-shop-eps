@@ -1,7 +1,6 @@
 package br.com.pet_shop.entidades;
 
 import java.sql.Date;
-import java.time.LocalDate;
 
 import br.com.pet_shop.enums.SexoEnum;
 
@@ -14,6 +13,8 @@ public class Animal {
 	private Date dataNascimento;
 	
 	private SexoEnum sexo;
+	
+	private Boolean ativo;
 
 	public Animal() {
 	}
@@ -22,11 +23,12 @@ public class Animal {
 		this.id = id;
 	}
 	
-	public Animal(Integer id, String nome, Date dataNascimento, SexoEnum sexo) {
+	public Animal(Integer id, String nome, Date dataNascimento, SexoEnum sexo, Boolean ativo) {
 		this.id = id;
 		this.nome = nome;
 		this.dataNascimento = dataNascimento;
 		this.sexo = sexo;
+		this.ativo = ativo;
 	}
 
 	public Integer getId() {
@@ -59,5 +61,13 @@ public class Animal {
 
 	public void setSexo(SexoEnum sexo) {
 		this.sexo = sexo;
+	}
+
+	public Boolean getAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
 	}
 }
