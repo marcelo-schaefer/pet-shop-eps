@@ -9,124 +9,64 @@ public final class LerEnumTela {
     }
 
     public static CargoEnum lerCargoEnum(String titulo) {
-        boolean invalido = false;
+        var menssagem = "Selecione uma das opções:"
+            .concat("\n")
+            .concat("1 - Médico")
+            .concat("\n")
+            .concat("2 - Atendente");
 
-        var menssagem = "Selecione uma das opções: \n"
-                + "1 - Médico"
-                + "2 - Atendente";
+        var opcao = lerOpcao(
+            CargoEnum.values().length,
+            titulo,
+            menssagem
+        );
 
-        do {
-            try {
-                var opcao = lerOpcao(
-                        1,
-                        CargoEnum.values().length,
-                        titulo,
-                        menssagem
-                );
-
-                return CargoEnum.pegarPorOpcao(opcao);
-            } catch (Exception exception) {
-                JOptionPaneTela.optionMensagemAlerta(
-                        "Inválido",
-                        "Valor informado é inválido, informe um valor numérico."
-                );
-                invalido = true;
-            }
-        } while (invalido);
-
-        return null;
+        return CargoEnum.pegarPorOpcao(opcao);
     }
 
     public static SexoEnum lerSexoEnum(String titulo) {
-        boolean invalido = false;
-
         var menssagem = "Selecione uma das opções:"
-                .concat("\n")
-                .concat("1 - Feminino")
-                .concat("\n")
-                .concat("2 - Masculino")
-                .concat("\n")
-                .concat("3 - Hemafrodita");
+            .concat("\n")
+            .concat("1 - Feminino")
+            .concat("\n")
+            .concat("2 - Masculino")
+            .concat("\n")
+            .concat("3 - Hemafrodita");
 
-        do {
-            try {
-                var opcao = lerOpcao(
-                        1,
-                        SexoEnum.values().length,
-                        titulo,
-                        menssagem
-                );
+        var opcao = lerOpcao(
+            SexoEnum.values().length,
+            titulo,
+            menssagem
+        );
 
-                return SexoEnum.pegarPorOpcao(opcao);
-            } catch (Exception exception) {
-                JOptionPaneTela.optionMensagemAlerta(
-                        "Inválido",
-                        "Valor informado é inválido, informe um valor numérico."
-                );
-                invalido = true;
-            }
-        } while (invalido);
-
-        return null;
+        return SexoEnum.pegarPorOpcao(opcao);
     }
 
     public static EspecieEnum lerEspecieEnum(String titulo) {
-        boolean invalido = false;
-
         var menssagem = "Selecione uma das opções:"
-                .concat("\n")
-                .concat("1 - Feminino")
-                .concat("\n")
-                .concat("2 - Masculino")
-                .concat("\n")
-                .concat("3 - Hemafrodita");
+            .concat("\n")
+            .concat("1 - Feminino")
+            .concat("\n")
+            .concat("2 - Masculino")
+            .concat("\n")
+            .concat("3 - Hemafrodita");
 
-        do {
-            try {
-                var opcao = lerOpcao(
-                        1,
-                        EspecieEnum.values().length,
-                        titulo,
-                        menssagem
-                );
+        var opcao = lerOpcao(
+            EspecieEnum.values().length,
+            titulo,
+            menssagem
+        );
 
-                return EspecieEnum.pegarPorOpcao(opcao);
-            } catch (Exception exception) {
-                JOptionPaneTela.optionMensagemAlerta(
-                        "Inválido",
-                        "Valor informado é inválido, informe um valor numérico."
-                );
-                invalido = true;
-            }
-        } while (invalido);
-
-        return null;
+        return EspecieEnum.pegarPorOpcao(opcao);
     }
 
-    private static Integer lerOpcao(Integer de, Integer ate, String titulo, String menssagem) {
-        boolean invalido = false;
-
+    private static Integer lerOpcao(Integer ate, String titulo, String menssagem) {
         do {
-            try {
-                var opcao = LerTela.lerInteger(titulo, menssagem);
+            var opcao = LerTela.lerInteger(titulo, menssagem);
 
-                if (opcao >= de && opcao <= ate) {
-                    return opcao;
-                }
-
-                throw new RuntimeException("");
-            } catch (Exception exception) {
-                JOptionPaneTela.optionMensagemAlerta(
-                        "Inválido",
-                        "Opção inválida, informe uma opção entre "
-                        .concat(de.toString())
-                        .concat(" e ")
-                        .concat(ate.toString())
-                );
-                invalido = true;
+            if (opcao >= 1 && opcao <= ate) {
+                return opcao;
             }
-        } while (invalido);
-
-        return null;
+        } while (true);
     }
 }

@@ -1,5 +1,8 @@
 package br.com.pet_shop.tela;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public final class LerTela {
 
     private LerTela() {
@@ -15,8 +18,6 @@ public final class LerTela {
     }
 
     public static Double lerDouble(String titulo, String mensagem) {
-        boolean invalido = false;
-
         do {
             try {
                 return Double.valueOf(
@@ -30,17 +31,12 @@ public final class LerTela {
                     "Inválido",
                     "Valor informado é inválido, informe um valor numérico."
                 );
-                invalido = true;
             }
-        } while (invalido);
-
-        return null;
+        } while (true);
     }
 
 
     public static Integer lerInteger(String titulo, String mensagem) {
-        boolean invalido = false;
-
         do {
             try {
                 return Integer.valueOf(
@@ -52,16 +48,31 @@ public final class LerTela {
             } catch (Exception exception) {
                 JOptionPaneTela.optionMensagemAlerta(
                     "Inválido",
-                    "Valor informado é inválido, informe um valor numérico sem casas decimais."
+                    "Valor informado é inválido, informe um valor numérico inteiro."
                 );
-                invalido = true;
             }
-        } while (invalido);
-
-        return null;
+        } while (true);
     }
 
     public static Boolean lerBoolean(String titulo, String mensagem) {
         return JOptionPaneTela.optionConfirmPergunta(titulo, mensagem) == 0;
+    }
+
+    public static Date lerDate(String titulo, String mensagem) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        mensagem = "Informe a data no seguinte formato dd/MM/aaaa"
+            .concat("\n")
+            .concat(mensagem)
+        ;
+
+        do {
+            try {
+                var dateString = lerString(titulo, mensagem);
+
+                return simpleDateFormat.parse(dateString);
+            } catch (Exception exception) {
+            }
+        }
+        while (true);
     }
 }

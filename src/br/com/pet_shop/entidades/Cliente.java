@@ -5,39 +5,59 @@ import java.util.Date;
 import java.util.List;
 
 public class Cliente extends Pessoa {
-	
-	private List<Animal> animais = new ArrayList<>();
-	
-	private List<Consulta> historicoConsultas = new ArrayList<>();
 
-	public Cliente() {
-		super();
-	}
+    private List<Animal> animais = new ArrayList<>();
 
-	public Cliente(Integer id) {
-		super(id);
-	}
-	
-	public Cliente(Integer id, String nome, String cpf, Date dataNascimento,
-			List<Animal> animais, List<Consulta> historicoConsultas) {
-		super(id, nome, cpf, dataNascimento);
-		this.animais = animais;
-		this.historicoConsultas = historicoConsultas;
-	}
+    private List<Consulta> historicoConsultas = new ArrayList<>();
 
-	public List<Animal> getAnimais() {
-		return animais;
-	}
+    public Cliente() {
+        super();
+    }
 
-	public void setAnimais(List<Animal> animais) {
-		this.animais = animais;
-	}
+    public Cliente(Integer id) {
+        super(id);
+    }
 
-	public List<Consulta> getHistoricoConsultas() {
-		return historicoConsultas;
-	}
+    public Cliente(Integer id, String nome, String cpf, Date dataNascimento) {
+        super(id, nome, cpf, dataNascimento);
+    }
 
-	public void setHistoricoConsultas(List<Consulta> historicoConsultas) {
-		this.historicoConsultas = historicoConsultas;
-	}
+    public Cliente(String nome, String cpf, Date dataNascimento) {
+        super(nome, cpf, dataNascimento);
+    }
+
+    public Cliente(Integer id, String nome, String cpf, Date dataNascimento,
+                   List<Animal> animais, List<Consulta> historicoConsultas) {
+        super(id, nome, cpf, dataNascimento);
+        this.animais = animais;
+        this.historicoConsultas = historicoConsultas;
+    }
+
+    public List<Animal> getAnimais() {
+        return animais;
+    }
+
+    public void setAnimais(List<Animal> animais) {
+        this.animais = animais;
+    }
+
+    public List<Consulta> getHistoricoConsultas() {
+        return historicoConsultas;
+    }
+
+    public void setHistoricoConsultas(List<Consulta> historicoConsultas) {
+        this.historicoConsultas = historicoConsultas;
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+            "id=" + getId() +
+            ", nome='" + getNome() + '\'' +
+            ", cpf='" + getCpf() + '\'' +
+            ", dataNascimento=" + getDataNascimento() +
+            "animais=" + animais +
+            ", historicoConsultas=" + historicoConsultas +
+            '}';
+    }
 }
