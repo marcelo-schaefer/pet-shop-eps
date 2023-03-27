@@ -9,9 +9,9 @@ public class ConsultasConstante {
         public static final String BUSCAR_POR_ID = "SELECT * FROM biblioteca.acervo "
             + "WHERE acervo.id = ?";
 
-        public static final String CRIAR = "INSERT INTO biblioteca.cliente"
-            + "(nome_completo, data_nascimento, cpf, telefone, ativo, foto)"
-            + " VALUES "
+        public static final String CRIAR = "INSERT INTO biblioteca.cliente "
+            + "(nome_completo, data_nascimento, cpf, telefone, ativo, foto) "
+            + "VALUES "
             + "(?, ?, ?, ?, ?, ?);";
 
         public static final String ATUALIZAR = "UPDATE biblioteca.cliente cliente "

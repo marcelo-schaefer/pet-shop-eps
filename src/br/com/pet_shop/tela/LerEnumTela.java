@@ -5,6 +5,7 @@ import br.com.pet_shop.enums.EspecieEnum;
 import br.com.pet_shop.enums.SexoEnum;
 
 public final class LerEnumTela {
+
     private LerEnumTela() {
     }
 

@@ -59,7 +59,7 @@ public final class LerTela {
     }
 
     public static Date lerDate(String titulo, String mensagem) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        var simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         mensagem = "Informe a data no seguinte formato dd/MM/aaaa"
             .concat("\n")
             .concat(mensagem)
