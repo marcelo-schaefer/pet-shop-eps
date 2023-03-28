@@ -1,8 +1,55 @@
-create table if not exists animal
+CREATE TABLE IF NOT EXISTS animal
 (
-    id              int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    nome            varchar(255)    NOT NULL,
-    data_nascimento DATE            NOT NULL,
-    sexo            varchar(12)     NOT NULL,
-    ativo           tinyint         NOT NULL
+    id              INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    nome            VARCHAR(255) NOT NULL,
+    data_nascimento DATE NOT NULL,
+    sexo            VARCHAR(12) NOT NULL,
+    ativo           TINYINT NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS cliente
+(
+    id              INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    nome            VARCHAR(255) NOT NULL,
+    cpf             VARCHAR(14) NOT NULL,
+    data_nascimento DATE NOT NULL,
+);
+
+create table if not exists animal {
+
+}
+
+CREATE TABLE IF NOT EXISTS funcionario
+(
+    id              INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    nome            VARCHAR(255) NOT NULL,
+    cpf             VARCHAR(14) NOT NULL,
+    data_nascimento DATE NOT NULL,
+    cargo           VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS consulta
+(
+    id         INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    nome       VARCHAR(255) NOT NULL,
+    observacao VARCHAR(500) NOT NULL,
+    horario    DATETIME NOT NULL,
+    cliente_id INT NOT NULL,
+    ADD CONSTRAINT "fk_consulta_cliente"
+        FOREIGN KEY ( "cliente_id" )
+            REFERENCES "cliente" ( "id" )
+);
+
+CREATE TABLE IF NOT EXISTS consulta_animal {
+    id          INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    consulta_id INT NOT NULL,
+    animal_id   INT NOT NULL
+    ADD CONSTRAINT "fk_consulta_animal_consulta"
+        FOREIGN KEY ( "consulta_id" )
+            REFERENCES "consulta" ( "id" ),
+    ADD CONSTRAINT "fk_consulta_animal_animal"
+            FOREIGN KEY ( "animal_id" )
+                REFERENCES "animal" ( "id" )
+}
+
+/*Criar vinculo do cliente com animal e as consultas*/
