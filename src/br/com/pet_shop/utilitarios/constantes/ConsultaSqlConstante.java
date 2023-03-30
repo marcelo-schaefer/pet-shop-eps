@@ -22,7 +22,7 @@ public final class ConsultaSqlConstante {
 
     public static final String BUSCAR = "select * from pet_shop.consulta;";
 
-    public static final String BUSCAR_POR_ID = "select * from pet_shop.acervo where acervo.id = ?";
+    public static final String BUSCAR_POR_ID = "select * from pet_shop.consulta where consulta.id = ?";
 
     public static final String DELETAR = "delete from pet_shop.consulta;";
 

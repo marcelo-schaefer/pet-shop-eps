@@ -9,12 +9,16 @@ public class Animal {
 	private Integer id;
 	
 	private String nome;
-	
+
+	private String detalhe;
+
 	private Date dataNascimento;
 	
 	private SexoEnum sexo;
 	
 	private Boolean ativo;
+
+	private Especie especie;
 
 	public Animal() {
 	}
@@ -22,13 +26,15 @@ public class Animal {
 	public Animal(Integer id) {
 		this.id = id;
 	}
-	
-	public Animal(Integer id, String nome, Date dataNascimento, SexoEnum sexo, Boolean ativo) {
+
+	public Animal(Integer id, String nome, String detalhe, Date dataNascimento, SexoEnum sexo, Boolean ativo, Especie especie) {
 		this.id = id;
 		this.nome = nome;
+		this.detalhe = detalhe;
 		this.dataNascimento = dataNascimento;
 		this.sexo = sexo;
 		this.ativo = ativo;
+		this.especie = especie;
 	}
 
 	public Integer getId() {
@@ -45,6 +51,14 @@ public class Animal {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public String getDetalhe() {
+		return detalhe;
+	}
+
+	public void setDetalhe(String detalhe) {
+		this.detalhe = detalhe;
 	}
 
 	public Date getDataNascimento() {
@@ -69,5 +83,13 @@ public class Animal {
 
 	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
+	}
+
+	public Especie getEspecie() {
+		return especie;
+	}
+
+	public void setEspecie(Especie especie) {
+		this.especie = especie;
 	}
 }
