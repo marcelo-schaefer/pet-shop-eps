@@ -23,7 +23,7 @@ public final class FuncionarioSqlConstante {
 
     public static final String BUSCAR = "select * from biblioteca.funcionario;";
 
-    public static final String BUSCAR_POR_ID = "select * from biblioteca.acervo where acervo.id = ?";
+    public static final String BUSCAR_POR_ID = "select * from biblioteca.funcionario where funcionario.id = ?";
 
     public static final String DELETAR = "delete from biblioteca.funcionario;";
 

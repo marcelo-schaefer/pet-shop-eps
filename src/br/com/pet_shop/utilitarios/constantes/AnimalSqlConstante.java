@@ -26,7 +26,7 @@ public final class AnimalSqlConstante {
 
     public static final String BUSCAR = "select * from pet_shop.animal;";
 
-    public static final String BUSCAR_POR_ID = "select * from pet_shop.acervo where acervo.id = ?;";
+    public static final String BUSCAR_POR_ID = "select * from pet_shop.animal where animal.id = ?;";
 
     private AnimalSqlConstante() {
     }
