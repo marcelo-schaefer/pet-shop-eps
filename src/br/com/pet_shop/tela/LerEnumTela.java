@@ -61,9 +61,9 @@ public final class LerEnumTela {
         return EspecieEnum.pegarPorOpcao(opcao);
     }
 
-    private static Integer lerOpcao(Integer ate, String titulo, String menssagem) {
+    private static Integer lerOpcao(Integer ate, String titulo, String mensagem) {
         do {
-            var opcao = LerTela.lerInteger(titulo, menssagem);
+            var opcao = LerTela.lerInteger(titulo, mensagem);
 
             if (opcao >= 1 && opcao <= ate) {
                 return opcao;

@@ -1,6 +1,7 @@
-package br.com.pet_shop.tela;
+package br.com.pet_shop.tela.entidades;
 
 import br.com.pet_shop.entidades.Cliente;
+import br.com.pet_shop.tela.LerTela;
 
 public final class ClienteTela {
 

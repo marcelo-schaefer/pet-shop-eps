@@ -24,6 +24,11 @@ public class ClienteRepositorio implements ClienteRepositorioInterface {
     }
 
     @Override
+    public Optional<Cliente> buscarUltimo() {
+        return Optional.empty();
+    }
+
+    @Override
     public List<Cliente> buscar() {
         return null;
     }

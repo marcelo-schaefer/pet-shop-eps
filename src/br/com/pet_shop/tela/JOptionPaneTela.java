@@ -33,4 +33,13 @@ public final class JOptionPaneTela {
             JOptionPane.WARNING_MESSAGE
         );
     }
+
+    public static void optionMensagemInfo(String titulo, String menssagem) {
+        JOptionPane.showMessageDialog(
+            null,
+            menssagem,
+            titulo,
+            JOptionPane.OK_OPTION
+        );
+    }
 }
