@@ -11,11 +11,13 @@ public interface RepositorioInterface<T> {
 
     Optional<T> buscarPorId(Integer id);
 
-    Optional<T> buscarUltimo();
+    T buscarUltimo();
 
     List<T> buscar();
 
     Boolean deletar();
 
     Boolean deletarPorId(Integer id);
+
+    Boolean existePorID(Integer id);
 }

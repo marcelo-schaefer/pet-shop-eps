@@ -1,96 +1,103 @@
 package br.com.pet_shop.entidades;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class Consulta {
 
-	private Integer id;
+    private Integer id;
 
-	private String nome;
+    private String nome;
 
-	private String observacao;
+    private String observacao;
 
-	private Date horario;
+    private Date horario;
 
-	private Cliente cliente;
+    private Cliente cliente;
 
-	private List<Animal> animais = new ArrayList<>();
+    private Animal animal;
 
-	private Double valor;
+    private Double valor;
 
-	public Consulta() {
-	}
+    public Consulta() {
+    }
 
-	public Consulta(Integer id) {
-		this.id = id;
-	}
+    public Consulta(Integer id) {
+        this.id = id;
+    }
 
-	public Consulta(Integer id, String nome, String observacao, Date horario, Cliente cliente, List<Animal> animais,
-			Double valor) {
-		this.id = id;
-		this.nome = nome;
-		this.observacao = observacao;
-		this.horario = horario;
-		this.cliente = cliente;
-		this.animais = animais;
-		this.valor = valor;
-	}
+    public Consulta(String nome, String observacao, Date horario, Cliente cliente, Animal animal, Double valor) {
+        this.nome = nome;
+        this.observacao = observacao;
+        this.horario = horario;
+        this.cliente = cliente;
+        this.animal = animal;
+        this.valor = valor;
+    }
 
-	public Integer getId() {
-		return id;
-	}
+    public Consulta(Integer id, String nome, String observacao, Date horario, Cliente cliente, Animal animal,
+                    Double valor) {
+        this.id = id;
+        this.nome = nome;
+        this.observacao = observacao;
+        this.horario = horario;
+        this.cliente = cliente;
+        this.animal = animal;
+        this.valor = valor;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public String getNome() {
+        return nome;
+    }
 
-	public String getObservacao() {
-		return observacao;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public void setObservacao(String observacao) {
-		this.observacao = observacao;
-	}
+    public String getObservacao() {
+        return observacao;
+    }
 
-	public Date getHorario() {
-		return horario;
-	}
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
+    }
 
-	public void setHorario(Date horario) {
-		this.horario = horario;
-	}
+    public Date getHorario() {
+        return horario;
+    }
 
-	public Cliente getCliente() {
-		return cliente;
-	}
+    public void setHorario(Date horario) {
+        this.horario = horario;
+    }
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
+    public Cliente getCliente() {
+        return cliente;
+    }
 
-	public List<Animal> getAnimais() {
-		return animais;
-	}
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 
-	public void setAnimais(List<Animal> animais) {
-		this.animais = animais;
-	}
+    public Animal getAnimais() {
+        return animal;
+    }
 
-	public Double getValor() {
-		return valor;
-	}
+    public void setAnimais(Animal animal) {
+        this.animal = animal;
+    }
 
-	public void setValor(Double valor) {
-		this.valor = valor;
-	}
+    public Double getValor() {
+        return valor;
+    }
+
+    public void setValor(Double valor) {
+        this.valor = valor;
+    }
 }

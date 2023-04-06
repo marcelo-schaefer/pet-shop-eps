@@ -17,15 +17,15 @@ public class ConexaoBanco {
     public static Connection pegarConexao() throws ConexaoBancoExcecao {
         try {
             if (conexao == null || conexao.isClosed()) {
-                String nomeServidor = "localhost";
-                String nomeBanco = "pet-shop";
-                String url = "jdbc:mysql://"
+                var nomeServidor = "localhost";
+                var nomeBanco = "pet-shop";
+                var url = "jdbc:mysql://"
                     .concat(nomeServidor)
                     .concat("/")
                     .concat(nomeBanco);
 
-                String usuario = "root";
-                String senha = "";
+                var usuario = "root";
+                var senha = "";
 
                 conexao = DriverManager.getConnection(url, usuario, senha);
             }

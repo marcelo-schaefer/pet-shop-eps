@@ -9,6 +9,14 @@ public class Especie {
     public Especie(){
     }
 
+    public Especie(Integer id) {
+        this.id = id;
+    }
+
+    public Especie(String nome) {
+        this.nome = nome;
+    }
+
     public Especie(Integer id, String nome) {
         this.id = id;
         this.nome = nome;

@@ -1,20 +1,20 @@
 @startuml
-interface br.com.pet_shop.repositorio.interfaces.ConsultaRepositorioInterface {
+interface br.com.br.com.pet_shop.repositorio.interfaces.ConsultaRepositorioInterface {
 }
-interface br.com.pet_shop.repositorio.interfaces.ClienteRepositorioInterface {
+interface br.com.br.com.pet_shop.repositorio.interfaces.ClienteRepositorioInterface {
 }
-class br.com.pet_shop.tela.JOptionPaneTela {
+class br.com.br.com.pet_shop.tela.dados.JOptionPaneTela {
 - <<Create>> JOptionPaneTela()
 + {static} Object optionInputPergunta(String,String)
 + {static} Integer optionConfirmPergunta(String,String)
 + {static} void optionMensagemAlerta(String,String)
 }
-enum br.com.pet_shop.enums.CargoEnum {
+enum br.com.br.com.pet_shop.enums.CargoEnum {
 +  ATENDENTE
 +  MEDICO
 + {static} CargoEnum pegarPorOpcao(Integer)
 }
-class br.com.pet_shop.entidades.Consulta {
+class br.com.br.com.pet_shop.entidades.Consulta {
 - Integer id
 - String nome
 - String observacao
@@ -40,7 +40,7 @@ class br.com.pet_shop.entidades.Consulta {
 + Double getValor()
 + void setValor(Double)
 }
-class br.com.pet_shop.entidades.Funcionario {
+class br.com.br.com.pet_shop.entidades.Funcionario {
 - CargoEnum cargo
 + <<Create>> Funcionario()
 + <<Create>> Funcionario(Integer)
@@ -48,17 +48,17 @@ class br.com.pet_shop.entidades.Funcionario {
 + CargoEnum getCargo()
 + void setCargo(CargoEnum)
 }
-class br.com.pet_shop.excecoes.ConexaoBancoExcecao {
+class br.com.br.com.pet_shop.excecoes.ConexaoBancoExcecao {
 + <<Create>> ConexaoBancoExcecao(Throwable)
 + <<Create>> ConexaoBancoExcecao(String,Throwable)
 }
-enum br.com.pet_shop.enums.SexoEnum {
+enum br.com.br.com.pet_shop.enums.SexoEnum {
 +  FEMININO
 +  MASCULINO
 +  HEMAFRODITA
 + {static} SexoEnum pegarPorOpcao(Integer)
 }
-class br.com.pet_shop.repositorio.ClienteRepositorio {
+class br.com.br.com.pet_shop.repositorio.ClienteRepositorio {
 + Boolean criar(Cliente)
 + Boolean atualizar(Cliente)
 + Optional<Cliente> buscarPorId(Integer)
@@ -66,9 +66,9 @@ class br.com.pet_shop.repositorio.ClienteRepositorio {
 + Boolean deletar()
 + Boolean deletarPorId(Integer)
 }
-interface br.com.pet_shop.repositorio.interfaces.AnimalRepositorioInterface {
+interface br.com.br.com.pet_shop.repositorio.interfaces.AnimalRepositorioInterface {
 }
-class br.com.pet_shop.entidades.Pessoa {
+class br.com.br.com.pet_shop.entidades.Pessoa {
 - Integer id
 - String nome
 - String cpf
@@ -86,7 +86,7 @@ class br.com.pet_shop.entidades.Pessoa {
 + Date getDataNascimento()
 + void setDataNascimento(Date)
 }
-class br.com.pet_shop.repositorio.ConsultaRepositorio {
+class br.com.br.com.pet_shop.repositorio.ConsultaRepositorio {
 + Boolean criar(Consulta)
 + Boolean atualizar(Consulta)
 + Optional<Consulta> buscarPorId(Integer)
@@ -94,13 +94,13 @@ class br.com.pet_shop.repositorio.ConsultaRepositorio {
 + Boolean deletar()
 + Boolean deletarPorId(Integer)
 }
-class br.com.pet_shop.excecoes.ConverterTipoExcecao {
+class br.com.br.com.pet_shop.excecoes.ConverterTipoExcecao {
 + <<Create>> ConverterTipoExcecao(String,Throwable)
 }
-class br.com.pet_shop.excecoes.ConverterResultSetExcecao {
+class br.com.br.com.pet_shop.excecoes.ConverterResultSetExcecao {
 + <<Create>> ConverterResultSetExcecao(String,Throwable)
 }
-class br.com.pet_shop.repositorio.AnimalRepositorio {
+class br.com.br.com.pet_shop.repositorio.AnimalRepositorio {
 + Boolean criar(Animal)
 + Boolean atualizar(Animal)
 + Optional<Animal> buscarPorId(Integer)
@@ -108,19 +108,19 @@ class br.com.pet_shop.repositorio.AnimalRepositorio {
 + Boolean deletar()
 + Boolean deletarPorId(Integer)
 }
-enum br.com.pet_shop.enums.EspecieEnum {
+enum br.com.br.com.pet_shop.enums.EspecieEnum {
 +  CACHORRO
 +  GATO
 +  COBRA
 +  PAPAGAIO
 + {static} EspecieEnum pegarPorOpcao(Integer)
 }
-class br.com.pet_shop.excecoes.ManipulacaoBancoExcecao {
+class br.com.br.com.pet_shop.excecoes.ManipulacaoBancoExcecao {
 + <<Create>> ManipulacaoBancoExcecao(String)
 + <<Create>> ManipulacaoBancoExcecao(Throwable)
 + <<Create>> ManipulacaoBancoExcecao(String,Throwable)
 }
-class br.com.pet_shop.entidades.Animal {
+class br.com.br.com.pet_shop.entidades.Animal {
 - Integer id
 - String nome
 - Date dataNascimento
@@ -140,7 +140,7 @@ class br.com.pet_shop.entidades.Animal {
 + Boolean getAtivo()
 + void setAtivo(Boolean)
 }
-class br.com.pet_shop.repositorio.PessoaRepositorio {
+class br.com.br.com.pet_shop.repositorio.PessoaRepositorio {
 + Boolean criar(Pessoa)
 + Boolean atualizar(Pessoa)
 + Optional<Pessoa> buscarPorId(Integer)
@@ -148,17 +148,17 @@ class br.com.pet_shop.repositorio.PessoaRepositorio {
 + Boolean deletar()
 + Boolean deletarPorId(Integer)
 }
-class br.com.pet_shop.tela.LerEnumTela {
+class br.com.br.com.pet_shop.tela.dados.LerEnumTela {
 - <<Create>> LerEnumTela()
 + {static} CargoEnum lerCargoEnum(String)
 + {static} SexoEnum lerSexoEnum(String)
 + {static} EspecieEnum lerEspecieEnum(String)
 - {static} Integer lerOpcao(Integer,String,String)
 }
-class br.com.pet_shop.RunApp {
+class br.com.br.com.pet_shop.RunApp {
 + {static} void main(String[])
 }
-class br.com.pet_shop.tela.LerTela {
+class br.com.br.com.pet_shop.tela.dados.LerTela {
 - <<Create>> LerTela()
 + {static} String lerString(String,String)
 + {static} Double lerDouble(String,String)
@@ -166,12 +166,12 @@ class br.com.pet_shop.tela.LerTela {
 + {static} Boolean lerBoolean(String,String)
 + {static} Date lerDate(String,String)
 }
-class br.com.pet_shop.banco.ConexaoBanco {
+class br.com.br.com.pet_shop.banco.ConexaoBanco {
 - {static} Connection conexao
 - <<Create>> ConexaoBanco()
 + {static} Connection pegarConexao()
 }
-class br.com.pet_shop.tela.ClienteTela {
+class br.com.br.com.pet_shop.tela.ClienteTela {
 - {static} String CADASTRAR_CLIENTE_TITULO
 - {static} String ATUALIZAR_CLIENTE_TITULO
 - {static} String DELETAR_CLIENTE_TITULO
@@ -180,7 +180,7 @@ class br.com.pet_shop.tela.ClienteTela {
 + {static} Cliente atualizar()
 + {static} Cliente deletar()
 }
-class br.com.pet_shop.entidades.Cliente {
+class br.com.br.com.pet_shop.entidades.Cliente {
 - List<Animal> animais
 - List<Consulta> historicoConsultas
 + <<Create>> Cliente()
@@ -194,7 +194,7 @@ class br.com.pet_shop.entidades.Cliente {
 + void setHistoricoConsultas(List<Consulta>)
 + String toString()
 }
-interface br.com.pet_shop.repositorio.interfaces.RepositorioInterface {
+interface br.com.br.com.pet_shop.repositorio.interfaces.RepositorioInterface {
 ~ Boolean criar(T)
 ~ Boolean atualizar(T)
 ~ Optional<T> buscarPorId(Integer)
@@ -202,22 +202,22 @@ interface br.com.pet_shop.repositorio.interfaces.RepositorioInterface {
 ~ Boolean deletar()
 ~ Boolean deletarPorId(Integer)
 }
-interface br.com.pet_shop.repositorio.interfaces.PessoaRepositorioInterface {
+interface br.com.br.com.pet_shop.repositorio.interfaces.PessoaRepositorioInterface {
 }
 
 
-br.com.pet_shop.repositorio.interfaces.RepositorioInterface <|-- br.com.pet_shop.repositorio.interfaces.ConsultaRepositorioInterface
-br.com.pet_shop.repositorio.interfaces.RepositorioInterface <|-- br.com.pet_shop.repositorio.interfaces.ClienteRepositorioInterface
-br.com.pet_shop.entidades.Pessoa <|-- br.com.pet_shop.entidades.Funcionario
-br.com.pet_shop.excecoes.RuntimeException <|-- br.com.pet_shop.excecoes.ConexaoBancoExcecao
-br.com.pet_shop.repositorio.interfaces.ClienteRepositorioInterface <|.. br.com.pet_shop.repositorio.ClienteRepositorio
-br.com.pet_shop.repositorio.interfaces.RepositorioInterface <|-- br.com.pet_shop.repositorio.interfaces.AnimalRepositorioInterface
-br.com.pet_shop.repositorio.interfaces.ConsultaRepositorioInterface <|.. br.com.pet_shop.repositorio.ConsultaRepositorio
-br.com.pet_shop.excecoes.RuntimeException <|-- br.com.pet_shop.excecoes.ConverterTipoExcecao
-br.com.pet_shop.excecoes.RuntimeException <|-- br.com.pet_shop.excecoes.ConverterResultSetExcecao
-br.com.pet_shop.repositorio.interfaces.AnimalRepositorioInterface <|.. br.com.pet_shop.repositorio.AnimalRepositorio
-br.com.pet_shop.excecoes.RuntimeException <|-- br.com.pet_shop.excecoes.ManipulacaoBancoExcecao
-br.com.pet_shop.repositorio.interfaces.PessoaRepositorioInterface <|.. br.com.pet_shop.repositorio.PessoaRepositorio
-br.com.pet_shop.entidades.Pessoa <|-- br.com.pet_shop.entidades.Cliente
-br.com.pet_shop.repositorio.interfaces.RepositorioInterface <|-- br.com.pet_shop.repositorio.interfaces.PessoaRepositorioInterface
+br.com.br.com.pet_shop.repositorio.interfaces.RepositorioInterface <|-- br.com.br.com.pet_shop.repositorio.interfaces.ConsultaRepositorioInterface
+br.com.br.com.pet_shop.repositorio.interfaces.RepositorioInterface <|-- br.com.br.com.pet_shop.repositorio.interfaces.ClienteRepositorioInterface
+br.com.br.com.pet_shop.entidades.Pessoa <|-- br.com.br.com.pet_shop.entidades.Funcionario
+br.com.br.com.pet_shop.excecoes.RuntimeException <|-- br.com.br.com.pet_shop.excecoes.ConexaoBancoExcecao
+br.com.br.com.pet_shop.repositorio.interfaces.ClienteRepositorioInterface <|.. br.com.br.com.pet_shop.repositorio.ClienteRepositorio
+br.com.br.com.pet_shop.repositorio.interfaces.RepositorioInterface <|-- br.com.br.com.pet_shop.repositorio.interfaces.AnimalRepositorioInterface
+br.com.br.com.pet_shop.repositorio.interfaces.ConsultaRepositorioInterface <|.. br.com.br.com.pet_shop.repositorio.ConsultaRepositorio
+br.com.br.com.pet_shop.excecoes.RuntimeException <|-- br.com.br.com.pet_shop.excecoes.ConverterTipoExcecao
+br.com.br.com.pet_shop.excecoes.RuntimeException <|-- br.com.br.com.pet_shop.excecoes.ConverterResultSetExcecao
+br.com.br.com.pet_shop.repositorio.interfaces.AnimalRepositorioInterface <|.. br.com.br.com.pet_shop.repositorio.AnimalRepositorio
+br.com.br.com.pet_shop.excecoes.RuntimeException <|-- br.com.br.com.pet_shop.excecoes.ManipulacaoBancoExcecao
+br.com.br.com.pet_shop.repositorio.interfaces.PessoaRepositorioInterface <|.. br.com.br.com.pet_shop.repositorio.PessoaRepositorio
+br.com.br.com.pet_shop.entidades.Pessoa <|-- br.com.br.com.pet_shop.entidades.Cliente
+br.com.br.com.pet_shop.repositorio.interfaces.RepositorioInterface <|-- br.com.br.com.pet_shop.repositorio.interfaces.PessoaRepositorioInterface
 @enduml

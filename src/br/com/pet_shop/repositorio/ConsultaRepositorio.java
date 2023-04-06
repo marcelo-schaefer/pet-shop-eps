@@ -24,6 +24,11 @@ public class ConsultaRepositorio implements ConsultaRepositorioInterface {
 	}
 
 	@Override
+	public Consulta buscarUltimo() {
+		return null;
+	}
+
+	@Override
 	public List<Consulta> buscar() {
 		return null;
 	}
@@ -35,6 +40,11 @@ public class ConsultaRepositorio implements ConsultaRepositorioInterface {
 
 	@Override
 	public Boolean deletarPorId(Integer id) {
+		return null;
+	}
+
+	@Override
+	public Boolean existePorID(Integer id) {
 		return null;
 	}
 }

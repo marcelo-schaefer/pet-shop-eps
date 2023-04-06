@@ -24,6 +24,11 @@ public class EspecieRepositorio implements EspecieRepositorioInterface {
     }
 
     @Override
+    public Especie buscarUltimo() {
+        return null;
+    }
+
+    @Override
     public List<Especie> buscar() {
         return null;
     }
@@ -35,6 +40,11 @@ public class EspecieRepositorio implements EspecieRepositorioInterface {
 
     @Override
     public Boolean deletarPorId(Integer id) {
+        return null;
+    }
+
+    @Override
+    public Boolean existePorID(Integer id) {
         return null;
     }
 }

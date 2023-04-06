@@ -24,6 +24,11 @@ public class AnimalRepositorio implements AnimalRepositorioInterface {
     }
 
     @Override
+    public Animal buscarUltimo() {
+        return null;
+    }
+
+    @Override
     public List<Animal> buscar() {
         return null;
     }
@@ -35,6 +40,11 @@ public class AnimalRepositorio implements AnimalRepositorioInterface {
 
     @Override
     public Boolean deletarPorId(Integer id) {
+        return null;
+    }
+
+    @Override
+    public Boolean existePorID(Integer id) {
         return null;
     }
 }

@@ -1,8 +1,9 @@
 package br.com.pet_shop.entidades;
 
-import java.sql.Date;
 
 import br.com.pet_shop.enums.SexoEnum;
+
+import java.util.Date;
 
 public class Animal {
 	
@@ -25,6 +26,15 @@ public class Animal {
 	
 	public Animal(Integer id) {
 		this.id = id;
+	}
+
+	public Animal(String nome, String detalhe, Date dataNascimento, SexoEnum sexo, Boolean ativo, Especie especie) {
+		this.nome = nome;
+		this.detalhe = detalhe;
+		this.dataNascimento = dataNascimento;
+		this.sexo = sexo;
+		this.ativo = ativo;
+		this.especie = especie;
 	}
 
 	public Animal(Integer id, String nome, String detalhe, Date dataNascimento, SexoEnum sexo, Boolean ativo, Especie especie) {
