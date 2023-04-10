@@ -2,30 +2,31 @@ package br.com.pet_shop.servicos;
 
 import br.com.pet_shop.entidades.Especie;
 import br.com.pet_shop.excecoes.EntidadeNaoEncontrada;
-import br.com.pet_shop.repositorio.interfaces.EspecieRepositorioInterface;
+import br.com.pet_shop.repositorio.EspecieRepositorio;
+import br.com.pet_shop.servicos.interfaces.EspecieServicoInterface;
 import br.com.pet_shop.tela.entidades.EspecieTela;
 import br.com.pet_shop.utilitarios.constantes.mensagens.EspecieMensagem;
 
-public class EspecieServico {
+public class EspecieServico implements EspecieServicoInterface {
 
-    private final EspecieRepositorioInterface especieRepositorioInterface;
+    private final EspecieRepositorio especieRepositorio;
 
-    public EspecieServico(EspecieRepositorioInterface especieRepositorioInterface) {
-        this.especieRepositorioInterface = especieRepositorioInterface;
+    public EspecieServico(EspecieRepositorio especieRepositorio) {
+        this.especieRepositorio = especieRepositorio;
     }
 
     public Especie criar() {
         var especie = EspecieTela.criar();
-        especieRepositorioInterface.criar(especie);
+        especieRepositorio.criar(especie);
 
-        return especieRepositorioInterface.buscarUltimo();
+        return especieRepositorio.buscarUltimo();
     }
 
     public Especie atualizar() {
         var especie = EspecieTela.atualizar();
         var especieId = especie.getId();
 
-        var existeEspecie = especieRepositorioInterface.existePorID(especieId);
+        var existeEspecie = especieRepositorio.existePorID(especieId);
 
         if (existeEspecie.equals(Boolean.FALSE)) {
             throw new EntidadeNaoEncontrada(
@@ -35,16 +36,16 @@ public class EspecieServico {
                 )
             );
         }
-        especieRepositorioInterface.atualizar(especie);
+        especieRepositorio.atualizar(especie);
 
-        return especieRepositorioInterface.buscarPorId(especieId).get();
+        return especieRepositorio.buscarPorId(especieId).get();
     }
 
     public Especie buscarPorId() {
         var especie = EspecieTela.buscar();
         var especieId = especie.getId();
 
-        return especieRepositorioInterface.buscarPorId(especieId).orElseThrow(
+        return especieRepositorio.buscarPorId(especieId).orElseThrow(
             () -> new EntidadeNaoEncontrada(
                 String.format(
                     EspecieMensagem.NAO_ENCONTRADO,
@@ -57,6 +58,6 @@ public class EspecieServico {
     public Boolean deletarPorId() {
         var especie = EspecieTela.deletar();
 
-        return especieRepositorioInterface.deletarPorId(especie.getId());
+        return especieRepositorio.deletarPorId(especie.getId());
     }
 }

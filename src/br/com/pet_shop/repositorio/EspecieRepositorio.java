@@ -1,12 +1,11 @@
 package br.com.pet_shop.repositorio;
 
 import br.com.pet_shop.entidades.Especie;
-import br.com.pet_shop.repositorio.interfaces.EspecieRepositorioInterface;
 
 import java.util.List;
 import java.util.Optional;
 
-public class EspecieRepositorio implements EspecieRepositorioInterface {
+public class EspecieRepositorio extends RepositorioAbstract<Especie> {
 
     @Override
     public Boolean criar(Especie entidade) {
@@ -29,12 +28,12 @@ public class EspecieRepositorio implements EspecieRepositorioInterface {
     }
 
     @Override
-    public List<Especie> buscar() {
+    public List<Especie> buscarTodos() {
         return null;
     }
 
     @Override
-    public Boolean deletar() {
+    public Boolean deletarTodos() {
         return null;
     }
 

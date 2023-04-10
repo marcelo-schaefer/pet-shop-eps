@@ -3,13 +3,12 @@ package br.com.pet_shop.repositorio;
 import br.com.pet_shop.banco.ConexaoBanco;
 import br.com.pet_shop.entidades.Cliente;
 import br.com.pet_shop.excecoes.PersistirEntidadeExcecao;
-import br.com.pet_shop.repositorio.interfaces.ClienteRepositorioInterface;
 import br.com.pet_shop.utilitarios.constantes.sql.ClienteSqlConstante;
 
 import java.util.List;
 import java.util.Optional;
 
-public class ClienteRepositorio implements ClienteRepositorioInterface {
+public class ClienteRepositorio extends RepositorioAbstract<Cliente> {
 
     @Override
     public Boolean criar(Cliente entidade) {
@@ -44,12 +43,12 @@ public class ClienteRepositorio implements ClienteRepositorioInterface {
     }
 
     @Override
-    public List<Cliente> buscar() {
+    public List<Cliente> buscarTodos() {
         return null;
     }
 
     @Override
-    public Boolean deletar() {
+    public Boolean deletarTodos() {
         return null;
     }
 

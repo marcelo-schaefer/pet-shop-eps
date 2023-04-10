@@ -2,30 +2,32 @@ package br.com.pet_shop.servicos;
 
 import br.com.pet_shop.entidades.Cliente;
 import br.com.pet_shop.excecoes.EntidadeNaoEncontrada;
-import br.com.pet_shop.repositorio.interfaces.ClienteRepositorioInterface;
+import br.com.pet_shop.repositorio.ClienteRepositorio;
+import br.com.pet_shop.servicos.interfaces.AnimalServicoInterface;
+import br.com.pet_shop.servicos.interfaces.ClienteServicoInterface;
 import br.com.pet_shop.tela.entidades.ClienteTela;
 import br.com.pet_shop.utilitarios.constantes.mensagens.ClienteMensagem;
 
-public class ClienteServico {
+public class ClienteServico implements ClienteServicoInterface {
 
-    private final ClienteRepositorioInterface clienteRepositorioInterface;
+    private final ClienteRepositorio clienteRepositorio;
 
-    public ClienteServico(ClienteRepositorioInterface clienteRepositorioInterface) {
-        this.clienteRepositorioInterface = clienteRepositorioInterface;
+    public ClienteServico(ClienteRepositorio clienteRepositorio) {
+        this.clienteRepositorio = clienteRepositorio;
     }
 
     public Cliente criar() {
         var cliente = ClienteTela.criar();
-        clienteRepositorioInterface.criar(cliente);
+        clienteRepositorio.criar(cliente);
 
-        return clienteRepositorioInterface.buscarUltimo();
+        return clienteRepositorio.buscarUltimo();
     }
 
     public Cliente atualizar() {
         var cliente = ClienteTela.atualizar();
         var clienteId = cliente.getId();
 
-        var existeCliente = clienteRepositorioInterface.existePorID(clienteId);
+        var existeCliente = clienteRepositorio.existePorID(clienteId);
 
         if (existeCliente.equals(Boolean.FALSE)) {
             throw new EntidadeNaoEncontrada(
@@ -35,16 +37,16 @@ public class ClienteServico {
                 )
             );
         }
-        clienteRepositorioInterface.atualizar(cliente);
+        clienteRepositorio.atualizar(cliente);
 
-        return clienteRepositorioInterface.buscarPorId(clienteId).get();
+        return clienteRepositorio.buscarPorId(clienteId).get();
     }
 
     public Cliente buscarPorId() {
         var cliente = ClienteTela.buscar();
         var clienteId = cliente.getId();
 
-        return clienteRepositorioInterface.buscarPorId(clienteId).orElseThrow(
+        return clienteRepositorio.buscarPorId(clienteId).orElseThrow(
             () -> new EntidadeNaoEncontrada(
                 String.format(
                     ClienteMensagem.NAO_ENCONTRADO,
@@ -57,6 +59,6 @@ public class ClienteServico {
     public Boolean deletarPorId() {
         var cliente = ClienteTela.deletar();
 
-        return clienteRepositorioInterface.deletarPorId(cliente.getId());
+        return clienteRepositorio.deletarPorId(cliente.getId());
     }
 }

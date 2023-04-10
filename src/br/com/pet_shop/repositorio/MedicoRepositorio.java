@@ -1,44 +1,44 @@
 package br.com.pet_shop.repositorio;
 
-import br.com.pet_shop.entidades.Animal;
+import br.com.pet_shop.entidades.Medico;
 
 import java.util.List;
 import java.util.Optional;
 
-public class AnimalRepositorio extends RepositorioAbstract<Animal> {
+public class MedicoRepositorio extends RepositorioAbstract<Medico> {
 
     @Override
-    public Boolean criar(Animal entidade) {
+    public Boolean criar(Medico entidade) {
         return null;
     }
 
     @Override
-    public Boolean atualizar(Animal entidade) {
+    public Boolean atualizar(Medico entidade) {
         return null;
     }
 
     @Override
-    public Optional<Animal> buscarPorId(Integer id) {
+    public Optional<Medico> buscarPorId(Integer id) {
         return Optional.empty();
     }
 
     @Override
-    public Animal buscarUltimo() {
+    public Medico buscarUltimo() {
         return null;
     }
 
     @Override
-    public List<Animal> buscarTodos() {
-        return null;
-    }
-
-    @Override
-    public Boolean deletarTodos() {
+    public List<Medico> buscarTodos() {
         return null;
     }
 
     @Override
     public Boolean deletarPorId(Integer id) {
+        return null;
+    }
+
+    @Override
+    public Boolean deletarTodos() {
         return null;
     }
 

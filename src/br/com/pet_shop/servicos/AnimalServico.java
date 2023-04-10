@@ -2,30 +2,32 @@ package br.com.pet_shop.servicos;
 
 import br.com.pet_shop.entidades.Animal;
 import br.com.pet_shop.excecoes.EntidadeNaoEncontrada;
-import br.com.pet_shop.repositorio.interfaces.AnimalRepositorioInterface;
+import br.com.pet_shop.repositorio.AnimalRepositorio;
+import br.com.pet_shop.servicos.interfaces.AnimalServicoInterface;
+import br.com.pet_shop.servicos.interfaces.ServicoInterface;
 import br.com.pet_shop.tela.entidades.AnimalTela;
 import br.com.pet_shop.utilitarios.constantes.mensagens.AnimalMensagem;
 
-public class AnimalServico {
+public class AnimalServico implements AnimalServicoInterface {
 
-    private final AnimalRepositorioInterface animalRepositorioInterface;
+    private final AnimalRepositorio animalRepositorio;
 
-    public AnimalServico(AnimalRepositorioInterface animalRepositorioInterface) {
-        this.animalRepositorioInterface = animalRepositorioInterface;
+    public AnimalServico(AnimalRepositorio animalRepositorio) {
+        this.animalRepositorio = animalRepositorio;
     }
 
     public Animal criar() {
         var animal = AnimalTela.criar();
-        animalRepositorioInterface.criar(animal);
+        animalRepositorio.criar(animal);
 
-        return animalRepositorioInterface.buscarUltimo();
+        return animalRepositorio.buscarUltimo();
     }
 
     public Animal atualizar() {
         var animal = AnimalTela.atualizar();
         var animalId = animal.getId();
 
-        var existeAnimal = animalRepositorioInterface.existePorID(animalId);
+        var existeAnimal = animalRepositorio.existePorID(animalId);
 
         if (existeAnimal.equals(Boolean.FALSE)) {
             throw new EntidadeNaoEncontrada(
@@ -35,16 +37,16 @@ public class AnimalServico {
                 )
             );
         }
-        animalRepositorioInterface.atualizar(animal);
+        animalRepositorio.atualizar(animal);
 
-        return animalRepositorioInterface.buscarPorId(animalId).get();
+        return animalRepositorio.buscarPorId(animalId).get();
     }
 
     public Animal buscarPorId() {
         var animal = AnimalTela.buscar();
         var animalId = animal.getId();
 
-        return animalRepositorioInterface.buscarPorId(animalId).orElseThrow(
+        return animalRepositorio.buscarPorId(animalId).orElseThrow(
             () -> new EntidadeNaoEncontrada(
                 String.format(
                     AnimalMensagem.NAO_ENCONTRADO,
@@ -57,6 +59,6 @@ public class AnimalServico {
     public Boolean deletarPorId() {
         var animal = AnimalTela.deletar();
 
-        return animalRepositorioInterface.deletarPorId(animal.getId());
+        return animalRepositorio.deletarPorId(animal.getId());
     }
 }

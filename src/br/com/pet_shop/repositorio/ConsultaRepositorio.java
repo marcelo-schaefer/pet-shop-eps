@@ -1,12 +1,11 @@
 package br.com.pet_shop.repositorio;
 
 import br.com.pet_shop.entidades.Consulta;
-import br.com.pet_shop.repositorio.interfaces.ConsultaRepositorioInterface;
 
 import java.util.List;
 import java.util.Optional;
 
-public class ConsultaRepositorio implements ConsultaRepositorioInterface {
+public class ConsultaRepositorio extends RepositorioAbstract<Consulta> {
 
 	@Override
 	public Boolean criar(Consulta entidade) {
@@ -29,12 +28,12 @@ public class ConsultaRepositorio implements ConsultaRepositorioInterface {
 	}
 
 	@Override
-	public List<Consulta> buscar() {
+	public List<Consulta> buscarTodos() {
 		return null;
 	}
 
 	@Override
-	public Boolean deletar() {
+	public Boolean deletarTodos() {
 		return null;
 	}
 

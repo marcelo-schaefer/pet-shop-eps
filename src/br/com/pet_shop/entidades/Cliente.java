@@ -4,15 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Cliente {
-
-    private Integer id;
-
-    private String nome;
-
-    private String cpf;
-
-    private Date dataNascimento;
+public class Cliente extends Pessoa {
 
     private List<Animal> animais = new ArrayList<>();
 
@@ -22,61 +14,21 @@ public class Cliente {
     }
 
     public Cliente(Integer id) {
-        this.id = id;
+        super(id);
     }
 
     public Cliente(String nome, String cpf, Date dataNascimento) {
-        this.nome = nome;
-        this.cpf = cpf;
-        this.dataNascimento = dataNascimento;
+        super(nome, cpf, dataNascimento);
     }
 
     public Cliente(Integer id, String nome, String cpf, Date dataNascimento) {
-        this.id = id;
-        this.nome = nome;
-        this.cpf = cpf;
-        this.dataNascimento = dataNascimento;
+        super(id, nome, cpf, dataNascimento);
     }
 
     public Cliente(Integer id, String nome, String cpf, Date dataNascimento, List<Animal> animais, List<Consulta> historicoConsultas) {
-        this.id = id;
-        this.nome = nome;
-        this.cpf = cpf;
-        this.dataNascimento = dataNascimento;
+        super(id, nome, cpf, dataNascimento);
         this.animais = animais;
         this.historicoConsultas = historicoConsultas;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public Date getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(Date dataNascimento) {
-        this.dataNascimento = dataNascimento;
     }
 
     public List<Animal> getAnimais() {
