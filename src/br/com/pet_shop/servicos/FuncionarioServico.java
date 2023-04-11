@@ -1,31 +1,30 @@
 package br.com.pet_shop.servicos;
 
-import br.com.pet_shop.entidades.Medico;
+import br.com.pet_shop.entidades.Funcionario;
 import br.com.pet_shop.excecoes.EntidadeNaoEncontrada;
-import br.com.pet_shop.repositorio.AnimalRepositorio;
-import br.com.pet_shop.repositorio.MedicoRepositorio;
-import br.com.pet_shop.servicos.interfaces.MedicoServicoInterface;
+import br.com.pet_shop.repositorio.FuncionarioRepositorio;
+import br.com.pet_shop.servicos.interfaces.FuncionarioServicoInterface;
 import br.com.pet_shop.tela.entidades.AnimalTela;
-import br.com.pet_shop.tela.entidades.MedicoTela;
+import br.com.pet_shop.tela.entidades.FuncionarioTela;
 import br.com.pet_shop.utilitarios.constantes.mensagens.AnimalMensagem;
 
-public class MedicoServico implements MedicoServicoInterface {
+public class FuncionarioServico implements FuncionarioServicoInterface {
 
-    private final MedicoRepositorio medicoRepositorio;
+    private final FuncionarioRepositorio medicoRepositorio;
 
-    public MedicoServico(MedicoRepositorio medicoRepositorio) {
+    public FuncionarioServico(FuncionarioRepositorio medicoRepositorio) {
         this.medicoRepositorio = medicoRepositorio;
     }
 
-    public Medico criar() {
-        var medico = MedicoTela.criar();
+    public Funcionario criar() {
+        var medico = FuncionarioTela.criar();
         medicoRepositorio.criar(medico);
 
         return medicoRepositorio.buscarUltimo();
     }
 
-    public Medico atualizar() {
-        var medico = MedicoTela.atualizar();
+    public Funcionario atualizar() {
+        var medico = FuncionarioTela.atualizar();
         var medicoId = medico.getId();
 
         var existeAnimal = medicoRepositorio.existePorID(medicoId);
@@ -43,7 +42,7 @@ public class MedicoServico implements MedicoServicoInterface {
         return medicoRepositorio.buscarPorId(medicoId).get();
     }
 
-    public Medico buscarPorId() {
+    public Funcionario buscarPorId() {
         var animal = AnimalTela.buscar();
         var animalId = animal.getId();
 

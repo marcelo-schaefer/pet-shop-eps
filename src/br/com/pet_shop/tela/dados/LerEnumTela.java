@@ -1,6 +1,5 @@
 package br.com.pet_shop.tela.dados;
 
-import br.com.pet_shop.enums.CargoEnum;
 import br.com.pet_shop.enums.EspecieEnum;
 import br.com.pet_shop.enums.SexoEnum;
 
