@@ -17,6 +17,7 @@ class br.com.pet_shop.utilitarios.constantes.sql.AnimalSqlConstante {
 + {static} String BUSCAR_POR_ID
 - <<Create>> AnimalSqlConstante()
 }
+
 class br.com.pet_shop.entidades.Pessoa {
 - Integer id
 - String nome
@@ -458,4 +459,16 @@ br.com.pet_shop.servicos.interfaces.ServicoInterface <|-- br.com.pet_shop.servic
 br.com.pet_shop.entidades.Pessoa <|-- br.com.pet_shop.entidades.Cliente
 br.com.pet_shop.entidades.Pessoa <|-- br.com.pet_shop.entidades.Funcionario
 br.com.pet_shop.servicos.interfaces.ServicoInterface <|-- br.com.pet_shop.servicos.interfaces.EspecieServicoInterface
+br.com.pet_shop.entidades.Consulta *-- br.com.pet_shop.entidades.Cliente
+br.com.pet_shop.entidades.Pessoa *-- br.com.pet_shop.entidades.Cliente
+br.com.pet_shop.entidades.Consulta *-- br.com.pet_shop.entidades.Animal
+br.com.pet_shop.entidades.Animal *-- br.com.pet_shop.entidades.Consulta 
+br.com.pet_shop.entidades.Animal *-- br.com.pet_shop.enums.SexoEnum
+br.com.pet_shop.entidades.Animal *-- br.com.pet_shop.entidades.Especie
+br.com.pet_shop.servicos.AnimalServico *-- br.com.pet_shop.repositorio.AnimalRepositorio
+br.com.pet_shop.servicos.FuncionarioServico *-- br.com.pet_shop.repositorio.FuncionarioRepositorio
+br.com.pet_shop.servicos.EspecieServico *-- br.com.pet_shop.repositorio.EspecieRepositorio
+br.com.pet_shop.servicos.ClienteServico *-- br.com.pet_shop.repositorio.ClienteRepositorio
+br.com.pet_shop.servicos.ConsultaServico *-- br.com.pet_shop.repositorio.ConsultaRepositorio
+
 @enduml
