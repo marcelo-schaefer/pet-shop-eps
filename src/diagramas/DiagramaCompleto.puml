@@ -371,11 +371,12 @@ class br.com.pet_shop.entidades.Consulta {
 - Date horario
 - Cliente cliente
 - Animal animal
+- Funcionario funcionario
 - Double valor
 + <<Create>> Consulta()
 + <<Create>> Consulta(Integer)
-+ <<Create>> Consulta(String,String,Date,Cliente,Animal,Double)
-+ <<Create>> Consulta(Integer,String,String,Date,Cliente,Animal,Double)
++ <<Create>> Consulta(String,String,Date,Cliente,Animal,Funcionario,Double)
++ <<Create>> Consulta(Integer,String,String,Date,Cliente,Animal,Funcionario,Double)
 + Integer getId()
 + void setId(Integer)
 + String getNome()
@@ -388,6 +389,8 @@ class br.com.pet_shop.entidades.Consulta {
 + void setCliente(Cliente)
 + Animal getAnimais()
 + void setAnimais(Animal)
++ Animal getFuncionario()
++ void setFuncionario(Funcionario)
 + Double getValor()
 + void setValor(Double)
 }
@@ -470,5 +473,5 @@ br.com.pet_shop.servicos.FuncionarioServico *-- br.com.pet_shop.repositorio.Func
 br.com.pet_shop.servicos.EspecieServico *-- br.com.pet_shop.repositorio.EspecieRepositorio
 br.com.pet_shop.servicos.ClienteServico *-- br.com.pet_shop.repositorio.ClienteRepositorio
 br.com.pet_shop.servicos.ConsultaServico *-- br.com.pet_shop.repositorio.ConsultaRepositorio
-
+br.com.pet_shop.entidades.Consulta o-- br.com.pet_shop.entidades.Funcionario
 @enduml
