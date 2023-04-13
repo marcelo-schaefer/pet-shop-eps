@@ -6,5 +6,6 @@ public class RunApp {
 
     public static void main(String[] args) {
         MenuTela.menuPrincipal();
+        System.out.println("olá");
     }
 }
