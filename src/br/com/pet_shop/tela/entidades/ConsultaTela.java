@@ -37,13 +37,13 @@ public final class ConsultaTela {
     }
 
     public static Consulta atualizar() {
-        var id = LerTela.lerInteger(CADASTRAR_CONSULTA_TITULO, "Id:");
-        var nome = LerTela.lerString(CADASTRAR_CONSULTA_TITULO, "Nome:");
-        var observacao = LerTela.lerString(CADASTRAR_CONSULTA_TITULO, "Observação:");
-        var horario = LerTela.lerDate(CADASTRAR_CONSULTA_TITULO, "Horário:");
-        var clienteId = LerTela.lerInteger(CADASTRAR_CONSULTA_TITULO, "Identificador do Cliente:");
-        var animalId = LerTela.lerInteger(CADASTRAR_CONSULTA_TITULO, "Identificador do Animal:");
-        var valor = LerTela.lerDouble(CADASTRAR_CONSULTA_TITULO, "Valor:");
+        var id = LerTela.lerInteger(ATUALIZAR_CONSULTA_TITULO, "Id:");
+        var nome = LerTela.lerString(ATUALIZAR_CONSULTA_TITULO, "Nome:");
+        var observacao = LerTela.lerString(ATUALIZAR_CONSULTA_TITULO, "Observação:");
+        var horario = LerTela.lerDate(ATUALIZAR_CONSULTA_TITULO, "Horário:");
+        var clienteId = LerTela.lerInteger(ATUALIZAR_CONSULTA_TITULO, "Identificador do Cliente:");
+        var animalId = LerTela.lerInteger(ATUALIZAR_CONSULTA_TITULO, "Identificador do Animal:");
+        var valor = LerTela.lerDouble(ATUALIZAR_CONSULTA_TITULO, "Valor:");
 
         return new Consulta(
             id,

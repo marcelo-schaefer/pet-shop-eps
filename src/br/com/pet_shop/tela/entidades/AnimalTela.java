@@ -41,6 +41,7 @@ public final class AnimalTela {
         var detalhe = LerTela.lerString(ATUALIZAR_ANIMAL_TITULO, "Detalhe:");
         var dataNascimento = LerTela.lerDate(ATUALIZAR_ANIMAL_TITULO, "Data de Nascimento:");
         var sexoEnum = LerEnumTela.lerSexoEnum(ATUALIZAR_ANIMAL_TITULO);
+        var ativo = LerTela.lerBoolean(ATUALIZAR_ANIMAL_TITULO, "Ativo?");
         var especieId = LerTela.lerInteger(ATUALIZAR_ANIMAL_TITULO, "Identificador da especie:");
 
         return new Animal(
@@ -49,7 +50,7 @@ public final class AnimalTela {
             detalhe,
             dataNascimento,
             sexoEnum,
-            Boolean.TRUE,
+            ativo,
             new Especie(especieId)
         );
     }

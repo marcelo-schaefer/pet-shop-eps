@@ -18,7 +18,7 @@ public class ConexaoBanco {
         try {
             if (conexao == null || conexao.isClosed()) {
                 var nomeServidor = "localhost";
-                var nomeBanco = "pet-shop";
+                var nomeBanco = "pet_shop";
                 var url = "jdbc:mysql://"
                     .concat(nomeServidor)
                     .concat("/")

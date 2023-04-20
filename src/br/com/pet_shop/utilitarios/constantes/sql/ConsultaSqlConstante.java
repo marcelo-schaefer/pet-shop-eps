@@ -2,31 +2,34 @@ package br.com.pet_shop.utilitarios.constantes.sql;
 
 public final class ConsultaSqlConstante {
 
-    public static final String CRIAR = "insert into br.com.pet_shop.consulta "
-        + "(nome, observacao, horario, cliente_id) "
+    public static final String CRIAR = "insert into pet_shop.consulta "
+        + "(nome, observacao, horario, valor, animal_id) "
         + "values "
-        + "(?, ?, ?, ?);";
+        + "(?, ?, ?, ?, ?);";
 
-    public static final String ATUALIZAR = "update br.com.pet_shop.consulta consulta "
+    public static final String ATUALIZAR = "update pet_shop.consulta "
         + "set "
-        + "consulta.nome = ?, "
-        + "consulta.observacao = ?, "
-        + "consulta.horario = ?, "
-        + "consulta.cliente_id = ? "
-        + "where consulta.id = ?;";
+        + "nome = ?, "
+        + "observacao = ?, "
+        + "horario = ?, "
+        + "animal_id = ? "
+        + "where "
+        + "id = ?;";
 
-    public static final String INATIVAR = "update br.com.pet_shop.consulta consulta "
-        + "set "
-        + "consulta.ativo = false "
-        + "where consulta.id = ?;";
+    public static final String BUSCAR_TODOS = "select * from pet_shop.consulta;";
 
-    public static final String BUSCAR = "select * from br.com.pet_shop.consulta;";
+    public static final String BUSCAR_POR_ID = "select "
+        + "* "
+        + "from "
+        + "pet_shop.consulta consulta "
+        + "where "
+        + "consulta.id = ?";
 
-    public static final String BUSCAR_POR_ID = "select * from br.com.pet_shop.consulta where consulta.id = ?";
+    public static final String DELETAR_TODOS = "delete from pet_shop.consulta;";
 
-    public static final String DELETAR = "delete from br.com.pet_shop.consulta;";
-
-    public static final String DELETAR_POR_ID = "delete from br.com.pet_shop.consulta consulta where consulta.id = ?;";
+    public static final String DELETAR_POR_ID = "delete from pet_shop.consulta "
+        + "where "
+        + "id = ?;";
 
     private ConsultaSqlConstante() {
     }

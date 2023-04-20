@@ -1,13 +1,7 @@
 package br.com.pet_shop.tela.menu;
 
-import br.com.pet_shop.repositorio.AnimalRepositorio;
-import br.com.pet_shop.repositorio.ClienteRepositorio;
-import br.com.pet_shop.repositorio.ConsultaRepositorio;
-import br.com.pet_shop.repositorio.EspecieRepositorio;
-import br.com.pet_shop.servicos.AnimalServico;
-import br.com.pet_shop.servicos.ClienteServico;
-import br.com.pet_shop.servicos.ConsultaServico;
-import br.com.pet_shop.servicos.EspecieServico;
+import br.com.pet_shop.repositorio.*;
+import br.com.pet_shop.servicos.*;
 import br.com.pet_shop.tela.dados.LerTela;
 
 public final class MenuTela {
@@ -16,8 +10,14 @@ public final class MenuTela {
     }
 
     public static void menuPrincipal() {
-        var menuPrincipal = "1 - Cliente\n2 - Espécie\n3 - Animal\n4 - Consulta\n5 - Sair\nOpção: ";
         int opcao;
+        var menuPrincipal = "1 - Cliente" +
+            "\n2 - Funcionário" +
+            "\n3 - Espécie" +
+            "\n4 - Animal" +
+            "\n5 - Consulta" +
+            "\n6 - Sair" +
+            "\nOpção: ";
 
         do {
             opcao = LerTela.lerInteger(
@@ -30,13 +30,17 @@ public final class MenuTela {
                     menuCliente();
                     break;
                 case 2:
-                    menuEspecie();
+                    menuFuncionario();
                     break;
                 case 3:
+                    menuEspecie();
+                    break;
+                case 4:
                     menuAnimal();
                     break;
-                default:
+                case 5:
                     menuConsulta();
+                    break;
             }
         } while (opcao != 6);
     }
@@ -52,6 +56,20 @@ public final class MenuTela {
             clienteServico::atualizar,
             clienteServico::buscarPorId,
             clienteServico::deletarPorId
+        );
+    }
+
+    private static void menuFuncionario() {
+        var funcionarioServico = new FuncionarioServico(
+            new FuncionarioRepositorio()
+        );
+
+        menuCrud(
+            "Funcionário",
+            funcionarioServico::criar,
+            funcionarioServico::atualizar,
+            funcionarioServico::buscarPorId,
+            funcionarioServico::deletarPorId
         );
     }
 

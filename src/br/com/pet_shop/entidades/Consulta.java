@@ -12,11 +12,9 @@ public class Consulta {
 
     private Date horario;
 
-    private Cliente cliente;
+    private Double valor;
 
     private Animal animal;
-
-    private Double valor;
 
     public Consulta() {
     }
@@ -29,7 +27,6 @@ public class Consulta {
         this.nome = nome;
         this.observacao = observacao;
         this.horario = horario;
-        this.cliente = cliente;
         this.animal = animal;
         this.valor = valor;
     }
@@ -40,7 +37,6 @@ public class Consulta {
         this.nome = nome;
         this.observacao = observacao;
         this.horario = horario;
-        this.cliente = cliente;
         this.animal = animal;
         this.valor = valor;
     }
@@ -75,14 +71,6 @@ public class Consulta {
 
     public void setHorario(Date horario) {
         this.horario = horario;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
     }
 
     public Animal getAnimais() {

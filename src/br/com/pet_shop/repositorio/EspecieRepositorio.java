@@ -1,6 +1,7 @@
 package br.com.pet_shop.repositorio;
 
 import br.com.pet_shop.entidades.Especie;
+import br.com.pet_shop.utilitarios.constantes.sql.EspecieSqlConstante;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,12 +9,13 @@ import java.util.Optional;
 public class EspecieRepositorio extends RepositorioAbstract<Especie> {
 
     @Override
-    public Boolean criar(Especie entidade) {
+    public Especie criar(Especie entidade) {
+
         return null;
     }
 
     @Override
-    public Boolean atualizar(Especie entidade) {
+    public Especie atualizar(Especie entidade) {
         return null;
     }
 
