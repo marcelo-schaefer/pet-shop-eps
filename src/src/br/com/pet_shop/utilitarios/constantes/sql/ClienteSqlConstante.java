@@ -1,0 +1,33 @@
+package br.com.pet_shop.utilitarios.constantes.sql;
+
+public final class ClienteSqlConstante {
+    
+    public static final String CRIAR = "insert into pet_shop.cliente "
+        + "(nome, cpf, data_nascimento) "
+        + "values "
+        + "(?, ?, ?);";
+
+    public static final String ATUALIZAR = "update pet_shop.cliente "
+        + "set "
+        + "nome = ?, "
+        + "cpf = ?, "
+        + "data_nascimento = ? "
+        + "where id = ?;";
+
+    public static final String BUSCAR_TODOS = "select * from pet_shop.cliente;";
+
+    public static final String BUSCAR_POR_ID = "select " +
+        "* " +
+        "from pet_shop.cliente cliente" +
+        "where " +
+        "cliente.id = ?";
+    
+    public static final String DELETAR_TODOS = "delete from pet_shop.cliente;";
+
+    public static final String DELETAR_POR_ID = "delete from pet_shop.cliente " +
+        "where " +
+        "id = ?;";
+
+    private ClienteSqlConstante() {
+    }
+}
