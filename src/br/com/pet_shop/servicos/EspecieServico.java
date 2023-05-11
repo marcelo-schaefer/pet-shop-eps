@@ -19,7 +19,7 @@ public class EspecieServico implements EspecieServicoInterface {
         var especie = EspecieTela.criar();
         especieRepositorio.criar(especie);
 
-        return especieRepositorio.buscarUltimo();
+        return especieRepositorio.criar(especie);
     }
 
     public Especie atualizar() {

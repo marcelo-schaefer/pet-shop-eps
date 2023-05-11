@@ -3,9 +3,9 @@ package br.com.pet_shop.utilitarios.constantes.sql;
 public final class EspecieSqlConstante {
 
     public static final String CRIAR = "insert into pet_shop.especie "
-        + "(id, nome) "
+        + "(nome) "
         + "values "
-        + "(?, ?);";
+        + "(?);";
 
     public static final String ATUALIZAR = "update pet_shop.especie "
         + "set "
@@ -19,6 +19,14 @@ public final class EspecieSqlConstante {
         "from " +
         "pet_shop.especie especie " +
         "where especie.id = ?;";
+
+    public static final String BUSCAR_ULTIMO = "select " +
+        "* " +
+        "from " +
+        "pet_shop.especie especie " +
+        "order by " +
+        "especie.id desc " +
+        "limit 1;";
 
     public static final String DELETAR_TUDO = "delete from pet_shop.especie;";
 

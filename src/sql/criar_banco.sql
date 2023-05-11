@@ -41,7 +41,8 @@ CREATE TABLE IF NOT EXISTS pet_shop.consulta
     observacao VARCHAR(500)    NOT NULL,
     horario    DATETIME        NOT NULL,
     valor      DOUBLE          NOT NULL,
-    animal_id  INT             NOT NULl
+    animal_id  INT             NOT NULl,
+    cliente_id INT             NOT NULl
 );
 
 ALTER TABLE pet_shop.animal

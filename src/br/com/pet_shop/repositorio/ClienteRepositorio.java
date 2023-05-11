@@ -11,13 +11,13 @@ import java.util.Optional;
 public class ClienteRepositorio extends RepositorioAbstract<Cliente> {
 
     @Override
-    public Boolean criar(Cliente entidade) {
+    public Cliente criar(Cliente entidade) {
         try (var conexao = ConexaoBanco.pegarConexao()) {
             try (var preparedStatement = conexao.prepareStatement(ClienteSqlConstante.CRIAR)) {
                 preparedStatement.setString(1, entidade.getNome());
 
                 preparedStatement.execute();
-                return Boolean.TRUE;
+                return null;
             }
         } catch (Exception exception) {
             throw new PersistirEntidadeExcecao(
@@ -28,7 +28,7 @@ public class ClienteRepositorio extends RepositorioAbstract<Cliente> {
     }
 
     @Override
-    public Boolean atualizar(Cliente entidade) {
+    public Cliente atualizar(Cliente entidade) {
         return null;
     }
 
@@ -38,7 +38,7 @@ public class ClienteRepositorio extends RepositorioAbstract<Cliente> {
     }
 
     @Override
-    public Cliente buscarUltimo() {
+    public Optional<Cliente> buscarUltimo() {
         return null;
     }
 

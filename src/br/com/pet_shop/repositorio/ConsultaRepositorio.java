@@ -8,12 +8,12 @@ import java.util.Optional;
 public class ConsultaRepositorio extends RepositorioAbstract<Consulta> {
 
 	@Override
-	public Boolean criar(Consulta entidade) {
+	public Consulta criar(Consulta entidade) {
 		return null;
 	}
 
 	@Override
-	public Boolean atualizar(Consulta entidade) {
+	public Consulta atualizar(Consulta entidade) {
 		return null;
 	}
 
@@ -23,7 +23,7 @@ public class ConsultaRepositorio extends RepositorioAbstract<Consulta> {
 	}
 
 	@Override
-	public Consulta buscarUltimo() {
+	public Optional<Consulta> buscarUltimo() {
 		return null;
 	}
 

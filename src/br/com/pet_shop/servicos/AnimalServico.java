@@ -20,7 +20,7 @@ public class AnimalServico implements AnimalServicoInterface {
         var animal = AnimalTela.criar();
         animalRepositorio.criar(animal);
 
-        return animalRepositorio.buscarUltimo();
+        return animalRepositorio.criar(animal);
     }
 
     public Animal atualizar() {

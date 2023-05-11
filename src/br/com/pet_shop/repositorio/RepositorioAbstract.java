@@ -3,25 +3,32 @@ package br.com.pet_shop.repositorio;
 import br.com.pet_shop.banco.ConexaoBanco;
 import br.com.pet_shop.excecoes.ManipulacaoBancoExcecao;
 import br.com.pet_shop.utilitarios.conversores.ConversorTipos;
+import br.com.pet_shop.utilitarios.conversores.interfaces.ConversorEntidadeInterface;
 import br.com.pet_shop.utilitarios.dto.ParametroQuery;
 
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-public abstract class RepositorioAbstract<T> {
+public abstract class RepositorioAbstract<E> {
 
-    abstract T criar(T entidade);
+    private final ConversorEntidadeInterface<E> conversorEntidadeInterface;
 
-    abstract T atualizar(T entidade);
+    public RepositorioAbstract(ConversorEntidadeInterface<E> conversorEntidadeInterface) {
+        this.conversorEntidadeInterface = conversorEntidadeInterface;
+    }
 
-    abstract Optional<T> buscarPorId(Integer id);
+    abstract E criar(E entidade);
 
-    abstract T buscarUltimo();
+    abstract E atualizar(E entidade);
 
-    abstract List<T> buscarTodos();
+    abstract Optional<E> buscarPorId(Integer id);
+
+    abstract Optional<E> buscarUltimo();
+
+    abstract List<E> buscarTodos();
 
     abstract Boolean deletarPorId(Integer id);
 
@@ -29,15 +36,47 @@ public abstract class RepositorioAbstract<T> {
 
     abstract Boolean existePorID(Integer id);
 
-    protected ResultSet executarQuery(String query, List<ParametroQuery> parametroQueries) {
+    protected E persistir(String query) {
+        return persistir(query, List.of());
+    }
+
+    protected Optional<E> consultar(String query) {
+        return consultar(query, List.of());
+    }
+
+    protected Optional<E> consultar(String query, List<ParametroQuery> parametros) {
+        var entidades = consultarList(query, parametros);
+
+        if (!entidades.isEmpty()) {
+            return Optional.of(
+                entidades.get(0)
+            );
+        }
+
+        return Optional.empty();
+    }
+
+    protected List<E> consultarList(String query) {
+        return consultarList(query, List.of());
+    }
+
+    private List<E> consultarList(String query, List<ParametroQuery> parametros) {
         try (var connection = ConexaoBanco.pegarConexao()) {
             try (var preparedStatement = connection.prepareStatement(query)) {
 
-                for (var parametroQuery : parametroQueries) {
-                    contruirStatement(preparedStatement, parametroQuery);
+                for (var parametroQuery : parametros) {
+                    construirStatement(preparedStatement, parametroQuery);
                 }
 
-                return preparedStatement.executeQuery();
+                var resultSet = preparedStatement.executeQuery();
+                var entidades = new ArrayList<E>();
+
+                while (resultSet.next()) {
+                    var entidade = conversorEntidadeInterface.resultSetParaEntiade(resultSet);
+                    entidades.add(entidade);
+                }
+
+                return entidades;
             }
         } catch (Exception exception) {
             throw new ManipulacaoBancoExcecao(
@@ -46,8 +85,26 @@ public abstract class RepositorioAbstract<T> {
         }
     }
 
-    private void contruirStatement(PreparedStatement preparedStatement,
-                                   ParametroQuery parametroQuery) throws Exception {
+    protected E persistir(String query, List<ParametroQuery> parametros) {
+        try (var connection = ConexaoBanco.pegarConexao()) {
+            try (var preparedStatement = connection.prepareStatement(query)) {
+
+                for (var parametroQuery : parametros) {
+                    construirStatement(preparedStatement, parametroQuery);
+                }
+
+                preparedStatement.execute();
+                return buscarUltimo().get();
+            }
+        } catch (Exception exception) {
+            throw new ManipulacaoBancoExcecao(
+                "Erro ao executar consulta no banco de dados."
+            );
+        }
+    }
+
+    private void construirStatement(PreparedStatement preparedStatement,
+                                    ParametroQuery parametroQuery) throws Exception {
         var posicao = parametroQuery.getPosicao();
 
         switch (parametroQuery.getTipo()) {

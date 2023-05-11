@@ -17,10 +17,10 @@ public class FuncionarioServico implements FuncionarioServicoInterface {
     }
 
     public Funcionario criar() {
-        var medico = FuncionarioTela.criar();
-        medicoRepositorio.criar(medico);
+        var funcionario = FuncionarioTela.criar();
+        medicoRepositorio.criar(funcionario);
 
-        return medicoRepositorio.buscarUltimo();
+        return medicoRepositorio.criar(funcionario);
     }
 
     public Funcionario atualizar() {

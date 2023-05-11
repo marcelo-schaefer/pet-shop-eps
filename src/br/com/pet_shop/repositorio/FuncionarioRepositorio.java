@@ -8,12 +8,12 @@ import java.util.Optional;
 public class FuncionarioRepositorio extends RepositorioAbstract<Funcionario> {
 
     @Override
-    public Boolean criar(Funcionario entidade) {
+    public Funcionario criar(Funcionario entidade) {
         return null;
     }
 
     @Override
-    public Boolean atualizar(Funcionario entidade) {
+    public Funcionario atualizar(Funcionario entidade) {
         return null;
     }
 
@@ -23,7 +23,7 @@ public class FuncionarioRepositorio extends RepositorioAbstract<Funcionario> {
     }
 
     @Override
-    public Funcionario buscarUltimo() {
+    public Optional<Funcionario> buscarUltimo() {
         return null;
     }
 

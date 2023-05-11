@@ -8,12 +8,12 @@ import java.util.Optional;
 public class AnimalRepositorio extends RepositorioAbstract<Animal> {
 
     @Override
-    public Boolean criar(Animal entidade) {
+    public Animal criar(Animal entidade) {
         return null;
     }
 
     @Override
-    public Boolean atualizar(Animal entidade) {
+    public Animal atualizar(Animal entidade) {
         return null;
     }
 
@@ -23,7 +23,7 @@ public class AnimalRepositorio extends RepositorioAbstract<Animal> {
     }
 
     @Override
-    public Animal buscarUltimo() {
+    public Optional<Animal> buscarUltimo() {
         return null;
     }
 

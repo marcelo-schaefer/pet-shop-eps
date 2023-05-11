@@ -20,7 +20,7 @@ public class ConsultaServico implements ConsultaServicoInterface {
         var consulta = ConsultaTela.criar();
         consultaRepositorio.criar(consulta);
 
-        return consultaRepositorio.buscarUltimo();
+        return consultaRepositorio.criar(consulta);
     }
 
     public Consulta atualizar() {

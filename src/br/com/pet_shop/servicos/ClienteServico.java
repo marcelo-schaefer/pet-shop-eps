@@ -20,7 +20,7 @@ public class ClienteServico implements ClienteServicoInterface {
         var cliente = ClienteTela.criar();
         clienteRepositorio.criar(cliente);
 
-        return clienteRepositorio.buscarUltimo();
+        return clienteRepositorio.criar(cliente);
     }
 
     public Cliente atualizar() {
