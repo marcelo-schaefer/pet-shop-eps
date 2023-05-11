@@ -2,9 +2,7 @@ package br.com.pet_shop.repositorio;
 
 import br.com.pet_shop.entidades.Especie;
 import br.com.pet_shop.enums.TipoParametroEnum;
-import br.com.pet_shop.excecoes.ConsultarEntidadeExcecao;
 import br.com.pet_shop.utilitarios.constantes.sql.EspecieSqlConstante;
-import br.com.pet_shop.utilitarios.conversores.ConversorEntidade;
 import br.com.pet_shop.utilitarios.conversores.ConversorEspecie;
 import br.com.pet_shop.utilitarios.dto.ParametroQuery;
 
@@ -63,39 +61,29 @@ public class EspecieRepositorio extends RepositorioAbstract<Especie> {
 
     @Override
     public Optional<Especie> buscarUltimo() {
-        try (var resultSet = consultar(EspecieSqlConstante.BUSCAR_ULTIMO)) {
-            if (resultSet.next()) {
-                var especie = ConversorEntidade.resultSetParaEspecie(resultSet);
-
-                return Optional.of(especie);
-            }
-
-            return Optional.empty();
-        } catch (Exception exception) {
-            throw new ConsultarEntidadeExcecao(
-                "Erro ao buscar última Espécie",
-                exception
-            );
-        }
+        return consultar(EspecieSqlConstante.BUSCAR_ULTIMO);
     }
 
     @Override
     public List<Especie> buscarTodos() {
-        return null;
+        return consultarList(EspecieSqlConstante.BUSCAR_TUDO);
     }
 
     @Override
-    public Boolean deletarTodos() {
-        return null;
+    public void deletarTodos() {
+        deletar(EspecieSqlConstante.DELETAR_TUDO);
     }
 
     @Override
-    public Boolean deletarPorId(Integer id) {
-        return null;
-    }
+    public void deletarPorId(Integer id) {
+        var parametros = List.of(
+            new ParametroQuery(
+                TipoParametroEnum.INTEGER,
+                id,
+                1
+            )
+        );
 
-    @Override
-    public Boolean existePorID(Integer id) {
-        return null;
+        deletar(EspecieSqlConstante.DELETAR_POR_ID, parametros);
     }
 }

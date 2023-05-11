@@ -16,7 +16,7 @@ public final class ConsultaSqlConstante {
         + "where "
         + "id = ?;";
 
-    public static final String BUSCAR_TODOS = "select * from pet_shop.consulta;";
+    public static final String BUSCAR_TUDO = "select * from pet_shop.consulta;";
 
     public static final String BUSCAR_POR_ID = "select "
         + "* "
@@ -25,7 +25,7 @@ public final class ConsultaSqlConstante {
         + "where "
         + "consulta.id = ?";
 
-    public static final String DELETAR_TODOS = "delete from pet_shop.consulta;";
+    public static final String DELETAR_TUDO = "delete from pet_shop.consulta;";
 
     public static final String DELETAR_POR_ID = "delete from pet_shop.consulta "
         + "where "

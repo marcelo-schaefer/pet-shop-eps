@@ -24,7 +24,7 @@ public final class AnimalSqlConstante {
         + "where "
         + "id = ?;";
 
-    public static final String BUSCAR_TODOS = "select * from pet_shop.animal;";
+    public static final String BUSCAR_TUDO = "select * from pet_shop.animal;";
 
     public static final String BUSCAR_POR_ID = "select " +
         "* " +
@@ -33,7 +33,15 @@ public final class AnimalSqlConstante {
         "where " +
         "animal.id = ?;";
 
-    public static final String DELETAR_TODOS = "delete from pet_shop.animal;";
+    public static final String BUSCAR_ULTIMO = "select " +
+        "* " +
+        "from " +
+        "pet_shop.animal animal " +
+        "order by " +
+        "animal.id desc " +
+        "limit 1;";
+    
+    public static final String DELETAR_TUDO = "delete from pet_shop.animal;";
 
     public static final String DELETAR_POR_ID = "delete from pet_shop.animal " +
         "where " +

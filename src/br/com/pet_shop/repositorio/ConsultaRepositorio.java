@@ -1,49 +1,129 @@
 package br.com.pet_shop.repositorio;
 
 import br.com.pet_shop.entidades.Consulta;
+import br.com.pet_shop.enums.TipoParametroEnum;
+import br.com.pet_shop.utilitarios.constantes.sql.ConsultaSqlConstante;
+import br.com.pet_shop.utilitarios.conversores.interfaces.ConversorEntidadeInterface;
+import br.com.pet_shop.utilitarios.dto.ParametroQuery;
 
 import java.util.List;
 import java.util.Optional;
 
 public class ConsultaRepositorio extends RepositorioAbstract<Consulta> {
 
+	public ConsultaRepositorio(ConversorEntidadeInterface<Consulta> conversorEntidadeInterface) {
+		super(conversorEntidadeInterface);
+	}
+
 	@Override
 	public Consulta criar(Consulta entidade) {
-		return null;
+		var parametros = List.of(
+			new ParametroQuery(
+				TipoParametroEnum.STRING,
+				entidade.getNome(),
+				1
+			),
+			new ParametroQuery(
+				TipoParametroEnum.STRING,
+				entidade.getObservacao(),
+				2
+			),
+			new ParametroQuery(
+				TipoParametroEnum.DATE,
+				entidade.getHorario(),
+				3
+			),
+			new ParametroQuery(
+				TipoParametroEnum.DOUBLE,
+				entidade.getValor(),
+				4
+			),
+			new ParametroQuery(
+				TipoParametroEnum.STRING,
+				entidade.getAnimal().getId(),
+				5
+			)
+		);
+
+		return persistir(ConsultaSqlConstante.CRIAR, parametros);
 	}
 
 	@Override
 	public Consulta atualizar(Consulta entidade) {
-		return null;
+		var parametros = List.of(
+			new ParametroQuery(
+				TipoParametroEnum.INTEGER,
+				entidade.getId(),
+				1
+			),
+			new ParametroQuery(
+				TipoParametroEnum.STRING,
+				entidade.getNome(),
+				2
+			),
+			new ParametroQuery(
+				TipoParametroEnum.STRING,
+				entidade.getObservacao(),
+				3
+			),
+			new ParametroQuery(
+				TipoParametroEnum.DATE,
+				entidade.getHorario(),
+				4
+			),
+			new ParametroQuery(
+				TipoParametroEnum.DOUBLE,
+				entidade.getValor(),
+				5
+			),
+			new ParametroQuery(
+				TipoParametroEnum.STRING,
+				entidade.getAnimal().getId(),
+				6
+			)
+		);
+
+		return persistir(ConsultaSqlConstante.ATUALIZAR, parametros);
 	}
 
 	@Override
 	public Optional<Consulta> buscarPorId(Integer id) {
-		return Optional.empty();
+		var parametros = List.of(
+			new ParametroQuery(
+				TipoParametroEnum.INTEGER,
+				id,
+				1
+			)
+		);
+
+		return consultar(ConsultaSqlConstante.BUSCAR_POR_ID, parametros);
 	}
 
 	@Override
 	public Optional<Consulta> buscarUltimo() {
-		return null;
+		return consultar(ConsultaSqlConstante.BUSCAR_ULTIMO);
 	}
 
 	@Override
 	public List<Consulta> buscarTodos() {
-		return null;
+		return consultarList(ConsultaSqlConstante.BUSCAR_TUDO);
 	}
 
 	@Override
-	public Boolean deletarTodos() {
-		return null;
+	public void deletarTodos() {
+		deletar(ConsultaSqlConstante.DELETAR_TUDO);
 	}
 
 	@Override
-	public Boolean deletarPorId(Integer id) {
-		return null;
-	}
+	public void deletarPorId(Integer id) {
+		var parametros = List.of(
+			new ParametroQuery(
+				TipoParametroEnum.INTEGER,
+				id,
+				1
+			)
+		);
 
-	@Override
-	public Boolean existePorID(Integer id) {
-		return null;
+		deletar(ConsultaSqlConstante.DELETAR_POR_ID, parametros);
 	}
 }

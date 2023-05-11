@@ -1,11 +1,16 @@
 package br.com.pet_shop.repositorio;
 
 import br.com.pet_shop.entidades.Funcionario;
+import br.com.pet_shop.utilitarios.conversores.interfaces.ConversorEntidadeInterface;
 
 import java.util.List;
 import java.util.Optional;
 
 public class FuncionarioRepositorio extends RepositorioAbstract<Funcionario> {
+
+    public FuncionarioRepositorio(ConversorEntidadeInterface<Funcionario> conversorEntidadeInterface) {
+        super(conversorEntidadeInterface);
+    }
 
     @Override
     public Funcionario criar(Funcionario entidade) {
@@ -33,17 +38,14 @@ public class FuncionarioRepositorio extends RepositorioAbstract<Funcionario> {
     }
 
     @Override
-    public Boolean deletarPorId(Integer id) {
+    public void deletarPorId(Integer id) {
         return null;
     }
 
     @Override
-    public Boolean deletarTodos() {
+    public void deletarTodos() {
         return null;
     }
 
-    @Override
-    public Boolean existePorID(Integer id) {
-        return null;
-    }
+    
 }

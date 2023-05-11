@@ -10,5 +10,7 @@ public enum TipoParametroEnum {
 
     BOOLEAN,
 
-    DATE;
+    DATE,
+
+    ENUM;
 }

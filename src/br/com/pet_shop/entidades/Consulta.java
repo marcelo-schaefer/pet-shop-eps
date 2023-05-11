@@ -73,11 +73,11 @@ public class Consulta {
         this.horario = horario;
     }
 
-    public Animal getAnimais() {
+    public Animal getAnimal() {
         return animal;
     }
 
-    public void setAnimais(Animal animal) {
+    public void setAnimal(Animal animal) {
         this.animal = animal;
     }
 

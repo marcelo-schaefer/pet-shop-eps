@@ -15,7 +15,7 @@ public final class FuncionarioSqlConstante {
         + "cargo = ? "
         + "where id = ?;";
 
-    public static final String BUSCAR_TODOS = "select * from pet_shop.funcionario;";
+    public static final String BUSCAR_TUDO = "select * from pet_shop.funcionario;";
 
     public static final String BUSCAR_POR_ID = "select " +
         "* " +
@@ -23,7 +23,7 @@ public final class FuncionarioSqlConstante {
         "where " +
         "funcionario.id = ?";
 
-    public static final String DELETAR_TODOS = "delete from pet_shop.funcionario;";
+    public static final String DELETAR_TUDO = "delete from pet_shop.funcionario;";
 
     public static final String DELETAR_POR_ID = "delete from pet_shop.funcionario " +
         "where " +

@@ -1,64 +1,110 @@
 package br.com.pet_shop.repositorio;
 
-import br.com.pet_shop.banco.ConexaoBanco;
 import br.com.pet_shop.entidades.Cliente;
-import br.com.pet_shop.excecoes.PersistirEntidadeExcecao;
+import br.com.pet_shop.enums.TipoParametroEnum;
 import br.com.pet_shop.utilitarios.constantes.sql.ClienteSqlConstante;
+import br.com.pet_shop.utilitarios.constantes.sql.EspecieSqlConstante;
+import br.com.pet_shop.utilitarios.conversores.interfaces.ConversorEntidadeInterface;
+import br.com.pet_shop.utilitarios.dto.ParametroQuery;
 
 import java.util.List;
 import java.util.Optional;
 
 public class ClienteRepositorio extends RepositorioAbstract<Cliente> {
 
+    public ClienteRepositorio(ConversorEntidadeInterface<Cliente> conversorEntidadeInterface) {
+        super(conversorEntidadeInterface);
+    }
+
     @Override
     public Cliente criar(Cliente entidade) {
-        try (var conexao = ConexaoBanco.pegarConexao()) {
-            try (var preparedStatement = conexao.prepareStatement(ClienteSqlConstante.CRIAR)) {
-                preparedStatement.setString(1, entidade.getNome());
+        var parametros = List.of(
+            new ParametroQuery(
+                TipoParametroEnum.STRING,
+                entidade.getNome(),
+                1
+            ),
+            new ParametroQuery(
+                TipoParametroEnum.STRING,
+                entidade.getCpf(),
+                2
+            ),
+            new ParametroQuery(
+                TipoParametroEnum.DATE,
+                entidade.getDataNascimento(),
+                3
+            )
+        );
 
-                preparedStatement.execute();
-                return null;
-            }
-        } catch (Exception exception) {
-            throw new PersistirEntidadeExcecao(
-                "Erro ao criar cliente",
-                exception
-            );
-        }
+        return persistir(ClienteSqlConstante.CRIAR, parametros);
     }
 
     @Override
     public Cliente atualizar(Cliente entidade) {
-        return null;
+        var parametros = List.of(
+            new ParametroQuery(
+                TipoParametroEnum.INTEGER,
+                entidade.getId(),
+                1
+            ),
+            new ParametroQuery(
+                TipoParametroEnum.STRING,
+                entidade.getNome(),
+                2
+            ),
+            new ParametroQuery(
+                TipoParametroEnum.STRING,
+                entidade.getCpf(),
+                3
+            ),
+            new ParametroQuery(
+                TipoParametroEnum.DATE,
+                entidade.getDataNascimento(),
+                4
+            )
+        );
+
+        return persistir(ClienteSqlConstante.ATUALIZAR, parametros);
     }
 
     @Override
     public Optional<Cliente> buscarPorId(Integer id) {
-        return Optional.empty();
+        var parametros = List.of(
+            new ParametroQuery(
+                TipoParametroEnum.INTEGER,
+                id,
+                1
+            )
+        );
+
+        return consultar(ClienteSqlConstante.BUSCAR_POR_ID, parametros);
     }
 
     @Override
     public Optional<Cliente> buscarUltimo() {
-        return null;
+        return consultar(ClienteSqlConstante.BUSCAR_ULTIMO);
     }
 
     @Override
     public List<Cliente> buscarTodos() {
-        return null;
+        return consultarList(ClienteSqlConstante.BUSCAR_TUDO);
     }
 
     @Override
-    public Boolean deletarTodos() {
-        return null;
+    public void deletarTodos() {
+        deletar(ClienteSqlConstante.DELETAR_TUDO);
     }
 
     @Override
-    public Boolean deletarPorId(Integer id) {
-        return null;
-    }
+    public void deletarPorId(Integer id) {
+        var parametros = List.of(
+            new ParametroQuery(
+                TipoParametroEnum.INTEGER,
+                id,
+                1
+            )
+        );
 
-    @Override
-    public Boolean existePorID(Integer id) {
-        return null;
+        deletar(ClienteSqlConstante.DELETAR_POR_ID, parametros);
     }
 }
