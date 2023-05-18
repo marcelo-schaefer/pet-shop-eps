@@ -3,7 +3,6 @@ package br.com.pet_shop.servicos;
 import br.com.pet_shop.entidades.Consulta;
 import br.com.pet_shop.excecoes.EntidadeNaoEncontrada;
 import br.com.pet_shop.repositorio.ConsultaRepositorio;
-import br.com.pet_shop.servicos.interfaces.AnimalServicoInterface;
 import br.com.pet_shop.servicos.interfaces.ConsultaServicoInterface;
 import br.com.pet_shop.tela.entidades.ConsultaTela;
 import br.com.pet_shop.utilitarios.constantes.mensagens.ConsultaMensagem;
@@ -59,6 +58,8 @@ public class ConsultaServico implements ConsultaServicoInterface {
     public Boolean deletarPorId() {
         var consulta = ConsultaTela.deletar();
 
-        return consultaRepositorio.deletarPorId(consulta.getId());
+        consultaRepositorio.deletarPorId(consulta.getId());
+
+        return Boolean.TRUE;
     }
 }

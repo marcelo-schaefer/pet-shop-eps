@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicReference;
 
 public abstract class RepositorioAbstract<E> {
 
@@ -51,7 +52,7 @@ public abstract class RepositorioAbstract<E> {
 
         if (!entidades.isEmpty()) {
             return Optional.of(
-                    entidades.get(0)
+                entidades.get(0)
             );
         }
 
@@ -82,7 +83,7 @@ public abstract class RepositorioAbstract<E> {
             }
         } catch (Exception exception) {
             throw new ManipulacaoBancoExcecao(
-                    "Erro ao executar consulta no banco de dados."
+                "Erro ao executar consulta no banco de dados."
             );
         }
     }
@@ -100,7 +101,7 @@ public abstract class RepositorioAbstract<E> {
             }
         } catch (Exception exception) {
             throw new ManipulacaoBancoExcecao(
-                    "Erro ao executar persistência no banco de dados."
+                "Erro ao executar persistência no banco de dados."
             );
         }
     }
@@ -121,8 +122,8 @@ public abstract class RepositorioAbstract<E> {
             }
         } catch (Exception exception) {
             throw new ManipulacaoBancoExcecao(
-                    "Erro ao executar deleção no banco de dados.",
-                    exception
+                "Erro ao executar deleção no banco de dados.",
+                exception
             );
         }
     }
@@ -134,33 +135,33 @@ public abstract class RepositorioAbstract<E> {
         switch (parametroQuery.getTipo()) {
             case STRING:
                 preparedStatement.setString(
-                        posicao,
-                        (String) parametroQuery.getValor()
+                    posicao,
+                    (String) parametroQuery.getValor()
                 );
                 break;
             case INTEGER:
                 preparedStatement.setInt(
-                        posicao,
-                        (Integer) parametroQuery.getValor()
+                    posicao,
+                    (Integer) parametroQuery.getValor()
                 );
                 break;
             case DOUBLE:
                 preparedStatement.setDouble(
-                        posicao,
-                        (Double) parametroQuery.getValor()
+                    posicao,
+                    (Double) parametroQuery.getValor()
                 );
                 break;
             case BOOLEAN:
                 preparedStatement.setBoolean(
-                        posicao,
-                        (Boolean) parametroQuery.getValor()
+                    posicao,
+                    (Boolean) parametroQuery.getValor()
                 );
                 break;
             case DATE:
                 var date = (Date) parametroQuery.getValor();
                 preparedStatement.setDate(
-                        posicao,
-                        ConversorTipos.dateParaDateSql(date)
+                    posicao,
+                    ConversorTipos.dateParaDateSql(date)
                 );
                 break;
             default:

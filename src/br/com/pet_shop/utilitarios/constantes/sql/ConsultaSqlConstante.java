@@ -25,6 +25,14 @@ public final class ConsultaSqlConstante {
         + "where "
         + "consulta.id = ?";
 
+    public static final String BUSCAR_ULTIMO = "select " +
+        "* " +
+        "from " +
+        "pet_shop.consulta consulta " +
+        "order by " +
+        "consulta.id desc " +
+        "limit 1;";
+
     public static final String DELETAR_TUDO = "delete from pet_shop.consulta;";
 
     public static final String DELETAR_POR_ID = "delete from pet_shop.consulta "

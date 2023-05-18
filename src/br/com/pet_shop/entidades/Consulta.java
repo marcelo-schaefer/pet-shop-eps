@@ -23,22 +23,21 @@ public class Consulta {
         this.id = id;
     }
 
-    public Consulta(String nome, String observacao, Date horario, Cliente cliente, Animal animal, Double valor) {
+    public Consulta(String nome, String observacao, Date horario, Double valor, Animal animal) {
         this.nome = nome;
         this.observacao = observacao;
         this.horario = horario;
-        this.animal = animal;
         this.valor = valor;
+        this.animal = animal;
     }
 
-    public Consulta(Integer id, String nome, String observacao, Date horario, Cliente cliente, Animal animal,
-                    Double valor) {
+    public Consulta(Integer id, String nome, String observacao, Date horario, Double valor, Animal animal) {
         this.id = id;
         this.nome = nome;
         this.observacao = observacao;
         this.horario = horario;
-        this.animal = animal;
         this.valor = valor;
+        this.animal = animal;
     }
 
     public Integer getId() {

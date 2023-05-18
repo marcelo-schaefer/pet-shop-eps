@@ -4,7 +4,6 @@ import br.com.pet_shop.entidades.Animal;
 import br.com.pet_shop.excecoes.EntidadeNaoEncontrada;
 import br.com.pet_shop.repositorio.AnimalRepositorio;
 import br.com.pet_shop.servicos.interfaces.AnimalServicoInterface;
-import br.com.pet_shop.servicos.interfaces.ServicoInterface;
 import br.com.pet_shop.tela.entidades.AnimalTela;
 import br.com.pet_shop.utilitarios.constantes.mensagens.AnimalMensagem;
 
@@ -59,6 +58,8 @@ public class AnimalServico implements AnimalServicoInterface {
     public Boolean deletarPorId() {
         var animal = AnimalTela.deletar();
 
-        return animalRepositorio.deletarPorId(animal.getId());
+        animalRepositorio.deletarPorId(animal.getId());
+
+        return Boolean.TRUE;
     }
 }

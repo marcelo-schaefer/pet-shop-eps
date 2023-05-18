@@ -23,6 +23,14 @@ public final class FuncionarioSqlConstante {
         "where " +
         "funcionario.id = ?";
 
+    public static final String BUSCAR_ULTIMO = "select " +
+        "* " +
+        "from " +
+        "pet_shop.funcionario funcionario " +
+        "order by " +
+        "funcionario.id desc " +
+        "limit 1;";
+
     public static final String DELETAR_TUDO = "delete from pet_shop.funcionario;";
 
     public static final String DELETAR_POR_ID = "delete from pet_shop.funcionario " +

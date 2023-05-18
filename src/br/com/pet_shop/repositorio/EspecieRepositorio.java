@@ -3,7 +3,7 @@ package br.com.pet_shop.repositorio;
 import br.com.pet_shop.entidades.Especie;
 import br.com.pet_shop.enums.TipoParametroEnum;
 import br.com.pet_shop.utilitarios.constantes.sql.EspecieSqlConstante;
-import br.com.pet_shop.utilitarios.conversores.ConversorEspecie;
+import br.com.pet_shop.utilitarios.conversores.EspecieConversor;
 import br.com.pet_shop.utilitarios.dto.ParametroQuery;
 
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.Optional;
 public class EspecieRepositorio extends RepositorioAbstract<Especie> {
 
     public EspecieRepositorio() {
-        super(new ConversorEspecie());
+        super(new EspecieConversor());
     }
 
     @Override

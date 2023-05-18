@@ -59,6 +59,8 @@ public class ClienteServico implements ClienteServicoInterface {
     public Boolean deletarPorId() {
         var cliente = ClienteTela.deletar();
 
-        return clienteRepositorio.deletarPorId(cliente.getId());
+        clienteRepositorio.deletarPorId(cliente.getId());
+
+        return Boolean.TRUE;
     }
 }

@@ -3,8 +3,7 @@ package br.com.pet_shop.repositorio;
 import br.com.pet_shop.entidades.Cliente;
 import br.com.pet_shop.enums.TipoParametroEnum;
 import br.com.pet_shop.utilitarios.constantes.sql.ClienteSqlConstante;
-import br.com.pet_shop.utilitarios.constantes.sql.EspecieSqlConstante;
-import br.com.pet_shop.utilitarios.conversores.interfaces.ConversorEntidadeInterface;
+import br.com.pet_shop.utilitarios.conversores.ClienteConversor;
 import br.com.pet_shop.utilitarios.dto.ParametroQuery;
 
 import java.util.List;
@@ -12,8 +11,8 @@ import java.util.Optional;
 
 public class ClienteRepositorio extends RepositorioAbstract<Cliente> {
 
-    public ClienteRepositorio(ConversorEntidadeInterface<Cliente> conversorEntidadeInterface) {
-        super(conversorEntidadeInterface);
+    public ClienteRepositorio() {
+        super(new ClienteConversor());
     }
 
     @Override
@@ -91,11 +90,6 @@ public class ClienteRepositorio extends RepositorioAbstract<Cliente> {
     }
 
     @Override
-    public void deletarTodos() {
-        deletar(ClienteSqlConstante.DELETAR_TUDO);
-    }
-
-    @Override
     public void deletarPorId(Integer id) {
         var parametros = List.of(
             new ParametroQuery(
@@ -106,5 +100,10 @@ public class ClienteRepositorio extends RepositorioAbstract<Cliente> {
         );
 
         deletar(ClienteSqlConstante.DELETAR_POR_ID, parametros);
+    }
+
+    @Override
+    public void deletarTodos() {
+        deletar(ClienteSqlConstante.DELETAR_TUDO);
     }
 }

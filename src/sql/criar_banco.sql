@@ -1,4 +1,4 @@
-CREATE DATABASE pet_shop;
+create database if not EXISTS pet_shop;
 
 CREATE TABLE IF NOT EXISTS pet_shop.especie
 (

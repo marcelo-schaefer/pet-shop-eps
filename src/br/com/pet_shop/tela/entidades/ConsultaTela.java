@@ -1,7 +1,6 @@
 package br.com.pet_shop.tela.entidades;
 
 import br.com.pet_shop.entidades.Animal;
-import br.com.pet_shop.entidades.Cliente;
 import br.com.pet_shop.entidades.Consulta;
 import br.com.pet_shop.tela.dados.LerTela;
 
@@ -22,7 +21,6 @@ public final class ConsultaTela {
         var nome = LerTela.lerString(CADASTRAR_CONSULTA_TITULO, "Nome:");
         var observacao = LerTela.lerString(CADASTRAR_CONSULTA_TITULO, "Observação:");
         var horario = LerTela.lerDate(CADASTRAR_CONSULTA_TITULO, "Horário:");
-        var clienteId = LerTela.lerInteger(CADASTRAR_CONSULTA_TITULO, "Identificador do Cliente:");
         var animalId = LerTela.lerInteger(CADASTRAR_CONSULTA_TITULO, "Identificador do Animal:");
         var valor = LerTela.lerDouble(CADASTRAR_CONSULTA_TITULO, "Valor:");
 
@@ -30,9 +28,8 @@ public final class ConsultaTela {
             nome,
             observacao,
             horario,
-            new Cliente(clienteId),
-            new Animal(animalId),
-            valor
+            valor,
+            new Animal(animalId)
         );
     }
 
@@ -41,7 +38,6 @@ public final class ConsultaTela {
         var nome = LerTela.lerString(ATUALIZAR_CONSULTA_TITULO, "Nome:");
         var observacao = LerTela.lerString(ATUALIZAR_CONSULTA_TITULO, "Observação:");
         var horario = LerTela.lerDate(ATUALIZAR_CONSULTA_TITULO, "Horário:");
-        var clienteId = LerTela.lerInteger(ATUALIZAR_CONSULTA_TITULO, "Identificador do Cliente:");
         var animalId = LerTela.lerInteger(ATUALIZAR_CONSULTA_TITULO, "Identificador do Animal:");
         var valor = LerTela.lerDouble(ATUALIZAR_CONSULTA_TITULO, "Valor:");
 
@@ -50,9 +46,8 @@ public final class ConsultaTela {
             nome,
             observacao,
             horario,
-            new Cliente(clienteId),
-            new Animal(animalId),
-            valor
+            valor,
+            new Animal(animalId)
         );
     }
 

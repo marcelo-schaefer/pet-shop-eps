@@ -58,6 +58,8 @@ public class EspecieServico implements EspecieServicoInterface {
     public Boolean deletarPorId() {
         var especie = EspecieTela.deletar();
 
-        return especieRepositorio.deletarPorId(especie.getId());
+        especieRepositorio.deletarPorId(especie.getId());
+
+        return Boolean.TRUE;
     }
 }

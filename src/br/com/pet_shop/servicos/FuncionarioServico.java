@@ -59,6 +59,8 @@ public class FuncionarioServico implements FuncionarioServicoInterface {
     public Boolean deletarPorId() {
         var animal = AnimalTela.deletar();
 
-        return medicoRepositorio.deletarPorId(animal.getId());
+        medicoRepositorio.deletarPorId(animal.getId());
+
+        return Boolean.TRUE;
     }
 }
