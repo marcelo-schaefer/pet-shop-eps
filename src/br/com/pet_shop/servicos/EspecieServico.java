@@ -17,7 +17,6 @@ public class EspecieServico implements EspecieServicoInterface {
 
     public Especie criar() {
         var especie = EspecieTela.criar();
-        especieRepositorio.criar(especie);
 
         return especieRepositorio.criar(especie);
     }

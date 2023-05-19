@@ -19,54 +19,47 @@ public class ConexaoBanco {
     private ConexaoBanco() {
     }
 
-    public static Connection pegarConexao() throws ConexaoBancoExcecao {
-        try {
-            if (conexao == null || conexao.isClosed()) {
-                var nomeServidor = "localhost";
-                var nomeBanco = "pet_shop";
-                var url = "jdbc:mysql://"
-                    .concat(nomeServidor)
-                    .concat("/")
-                    .concat(nomeBanco);
+    public static Connection pegarConexaoBase() throws ConexaoBancoExcecao {
+        return pegarConexao("pet_shop");
+    }
 
-                var usuario = "root";
-                var senha = "";
-
-                conexao = DriverManager.getConnection(url, usuario, senha);
-            }
-
-            return conexao;
-        } catch (SQLException exception) {
-            JOptionPane.showMessageDialog(
-                null,
-                "Erro ao conectar com o banco. Verifique as configurações.",
-                "Erro ao Conectar",
-                JOptionPane.ERROR_MESSAGE
-            );
-            throw new ConexaoBancoExcecao(exception);
-        }
+    public static Connection pegarConexaoServidor() throws ConexaoBancoExcecao {
+        return pegarConexao(null);
     }
 
     public static void criarBanco() {
-        var query = pegarScriptDeCriacao();
+        var queryCompleta = pegarScriptDeCriacao();
 
-        try (var connection = ConexaoBanco.pegarConexaoBase()) {
-            try (var preparedStatement = connection.prepareStatement(query)) {
+        System.out.println(queryCompleta);
 
-                preparedStatement.execute();
+        try (var connection = pegarConexaoServidor()) {
+            var queries = queryCompleta.split("#");
+
+            for (var i = 0; i < queries.length; i++) {
+                var query = queries[i];
+                System.out.println(queryCompleta);
+
+                try (var preparedStatement = connection.prepareStatement(query)) {
+                    preparedStatement.executeUpdate();
+                }
             }
         } catch (Exception exception) {
             throw new ManipulacaoBancoExcecao(
-                "Erro ao executar persistência no banco de dados."
+                "Erro ao criar base de dados.",
+                exception
             );
         }
     }
 
-    private static Connection pegarConexaoBase() throws ConexaoBancoExcecao {
+    private static Connection pegarConexao(String host) {
         try {
             if (conexao == null || conexao.isClosed()) {
                 var nomeServidor = "localhost";
                 var url = "jdbc:mysql://".concat(nomeServidor);
+
+                if (host != null && host.isEmpty()) {
+                    url = url.concat("/").concat(host);
+                }
 
                 var usuario = "root";
                 var senha = "";

@@ -1,57 +1,43 @@
-create database if not EXISTS pet_shop;
-
-CREATE TABLE IF NOT EXISTS pet_shop.especie
-(
-    id   INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    nome VARCHAR(255)    NOT NULL
+create database if not exists pet_shop;
+#
+create table if not exists pet_shop.especie(
+    id int primary key not null auto_increment,
+    nome varchar(255) not null
 );
-
-CREATE TABLE IF NOT EXISTS pet_shop.animal
-(
-    id              INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    nome            VARCHAR(255)    NOT NULL,
-    detalhe         VARCHAR(500),
-    data_nascimento DATE            NOT NULL,
-    sexo            VARCHAR(12)     NOT NULL,
-    ativo           TINYINT         NOT NULL,
-    especie_id      INT             NOT NULL
+#
+create table if not exists pet_shop.animal (
+    id int primary key not null auto_increment,
+    nome varchar(255) not null,
+    detalhe varchar(500),
+    data_nascimento date not null,
+    sexo varchar(12) not null,
+    ativo tinyint not null, especie_id int not null,
+    foreign key (especie_id)
+        references especie(id)
 );
-
-CREATE TABLE IF NOT EXISTS pet_shop.cliente
-(
-    id              INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    nome            VARCHAR(255)    NOT NULL,
-    cpf             VARCHAR(14)     NOT NULL,
-    data_nascimento DATE            NOT NULL
+#
+create table if not exists pet_shop.cliente (
+    id int primary key not null auto_increment,
+    nome varchar(255) not null,
+    cpf varchar(14) not null,
+    data_nascimento date not null
 );
-
-CREATE TABLE IF NOT EXISTS pet_shop.funcionario
-(
-    id              INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    nome            VARCHAR(255)    NOT NULL,
-    cpf             VARCHAR(14)     NOT NULL,
-    data_nascimento DATE            NOT NULL,
-    cargo           VARCHAR(100)    NOT NULL
+#
+create table if not exists pet_shop.funcionario (
+    id int primary key not null auto_increment,
+    nome varchar(255) not null,
+    cpf varchar(14) not null,
+    data_nascimento date not null,
+    cargo varchar(100) not null
 );
-
-CREATE TABLE IF NOT EXISTS pet_shop.consulta
-(
-    id         INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    nome       VARCHAR(255)    NOT NULL,
-    observacao VARCHAR(500)    NOT NULL,
-    horario    DATETIME        NOT NULL,
-    valor      DOUBLE          NOT NULL,
-    animal_id  INT             NOT NULl
+#
+create table if not exists pet_shop.consulta (
+    id int primary key not null auto_increment,
+    nome varchar(255) not null,
+    observacao varchar(500) not null,
+    horario dateTIME not null,
+    valor double not null,
+    animal_id int not null,
+    foreign key (animal_id)
+        references animal(id)
 );
-
-ALTER TABLE pet_shop.animal
-    ADD CONSTRAINT fk_animal_especie
-        FOREIGN KEY (especie_id)
-            REFERENCES pet_shop.especie (id)
-;
-
-ALTER TABLE pet_shop.consulta
-    ADD CONSTRAINT fk_consulta_cliente
-        FOREIGN KEY (cliente_id)
-            REFERENCES pet_shop.cliente (id)
-;

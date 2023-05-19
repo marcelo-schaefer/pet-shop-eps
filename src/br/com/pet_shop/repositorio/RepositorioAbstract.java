@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicReference;
 
 public abstract class RepositorioAbstract<E> {
 
@@ -64,7 +63,7 @@ public abstract class RepositorioAbstract<E> {
     }
 
     private List<E> consultarList(String query, List<ParametroQuery> parametros) {
-        try (var connection = ConexaoBanco.pegarConexao()) {
+        try (var connection = ConexaoBanco.pegarConexaoBase()) {
             try (var preparedStatement = connection.prepareStatement(query)) {
 
                 for (var parametroQuery : parametros) {
@@ -89,7 +88,7 @@ public abstract class RepositorioAbstract<E> {
     }
 
     protected E persistir(String query, List<ParametroQuery> parametros) {
-        try (var connection = ConexaoBanco.pegarConexao()) {
+        try (var connection = ConexaoBanco.pegarConexaoBase()) {
             try (var preparedStatement = connection.prepareStatement(query)) {
 
                 for (var parametroQuery : parametros) {
@@ -111,7 +110,7 @@ public abstract class RepositorioAbstract<E> {
     }
 
     protected void deletar(String query, List<ParametroQuery> parametros) {
-        try (var connection = ConexaoBanco.pegarConexao()) {
+        try (var connection = ConexaoBanco.pegarConexaoBase()) {
             try (var preparedStatement = connection.prepareStatement(query)) {
 
                 for (var parametroQuery : parametros) {
