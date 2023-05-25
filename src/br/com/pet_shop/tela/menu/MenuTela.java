@@ -2,6 +2,7 @@ package br.com.pet_shop.tela.menu;
 
 import br.com.pet_shop.repositorio.*;
 import br.com.pet_shop.servicos.*;
+import br.com.pet_shop.servicos.interfaces.ServicoInterface;
 import br.com.pet_shop.tela.dados.LerTela;
 
 public final class MenuTela {
@@ -11,13 +12,19 @@ public final class MenuTela {
 
     public static void menuPrincipal() {
         int opcao;
-        var menuPrincipal = "1 - Cliente" +
-            "\n2 - Funcionário" +
-            "\n3 - Espécie" +
-            "\n4 - Animal" +
-            "\n5 - Consulta" +
-            "\n6 - Sair" +
-            "\nOpção: ";
+        var menuPrincipal = "1 - Cliente"
+            .concat("\n")
+            .concat("2 - Funcionário")
+            .concat("\n")
+            .concat("3 - Espécie")
+            .concat("\n")
+            .concat("4 - Animal")
+            .concat("\n")
+            .concat("5 - Consulta")
+            .concat("\n")
+            .concat("6 - Sair")
+            .concat("\n")
+            .concat("Opção:");
 
         do {
             opcao = LerTela.lerInteger(
@@ -50,13 +57,7 @@ public final class MenuTela {
             new ClienteRepositorio()
         );
 
-        menuCrud(
-            "Cliente",
-            clienteServico::criar,
-            clienteServico::atualizar,
-            clienteServico::buscarPorId,
-            clienteServico::deletarPorId
-        );
+        menuCrud("Cliente", clienteServico);
     }
 
     private static void menuFuncionario() {
@@ -64,13 +65,7 @@ public final class MenuTela {
             new FuncionarioRepositorio()
         );
 
-        menuCrud(
-            "Funcionário",
-            funcionarioServico::criar,
-            funcionarioServico::atualizar,
-            funcionarioServico::buscarPorId,
-            funcionarioServico::deletarPorId
-        );
+        menuCrud("Funcionário", funcionarioServico);
     }
 
     private static void menuEspecie() {
@@ -78,13 +73,7 @@ public final class MenuTela {
             new EspecieRepositorio()
         );
 
-        menuCrud(
-            "Espécie",
-            especieServico::criar,
-            especieServico::atualizar,
-            especieServico::buscarPorId,
-            especieServico::deletarPorId
-        );
+        menuCrud("Espécie", especieServico);
     }
 
     private static void menuAnimal() {
@@ -92,13 +81,7 @@ public final class MenuTela {
             new AnimalRepositorio()
         );
 
-        menuCrud(
-            "Animal",
-            animalServico::criar,
-            animalServico::atualizar,
-            animalServico::buscarPorId,
-            animalServico::deletarPorId
-        );
+        menuCrud("Animal", animalServico);
     }
 
     private static void menuConsulta() {
@@ -106,18 +89,24 @@ public final class MenuTela {
             new ConsultaRepositorio()
         );
 
-        menuCrud(
-            "Consulta",
-            consultaServico::criar,
-            consultaServico::atualizar,
-            consultaServico::buscarPorId,
-            consultaServico::deletarPorId
-        );
+        menuCrud("Consulta", consultaServico);
     }
 
-    private static void menuCrud(String titulo, Runnable opcaoCadastrar, Runnable opcaoAtualizar, Runnable opcaoBuscar,
-                                 Runnable opcaoDeletar) {
-        var mensagem = "1 - Cadastrar\n2 - Atualizar\n3 - Buscar\n4 - Deletar\n5 - Sair\nOpção";
+    private static void menuCrud(String titulo, ServicoInterface servicoInterface) {
+        var mensagem = "1 - Cadastrar"
+            .concat("\n")
+            .concat("2 - Atualizar")
+            .concat("\n")
+            .concat("3 - Buscar por Id")
+            .concat("\n")
+            .concat("4 - Buscar tudo")
+            .concat("\n")
+            .concat("5 - Deletar")
+            .concat("\n")
+            .concat("6 - Sair")
+            .concat("\n")
+            .concat("Opção:");
+
         int opcao;
 
         do {
@@ -125,20 +114,23 @@ public final class MenuTela {
 
             switch (opcao) {
                 case 1:
-                    opcaoCadastrar.run();
+                    servicoInterface.criar();
                     break;
                 case 2:
-                    opcaoAtualizar.run();
+                    servicoInterface.atualizar();
                     break;
                 case 3:
-                    opcaoBuscar.run();
+                    servicoInterface.buscarPorId();
                     break;
                 case 4:
-                    opcaoDeletar.run();
+                    servicoInterface.buscarTudo();
+                    break;
+                case 5:
+                    servicoInterface.deletarPorId();
                     break;
                 default:
                     break;
             }
-        } while (opcao != 5);
+        } while (opcao != 6);
     }
 }

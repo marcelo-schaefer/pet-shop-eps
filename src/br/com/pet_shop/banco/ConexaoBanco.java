@@ -30,14 +30,11 @@ public class ConexaoBanco {
     public static void criarBanco() {
         var queryCompleta = pegarScriptDeCriacao();
 
-        System.out.println(queryCompleta);
-
         try (var connection = pegarConexaoServidor()) {
             var queries = queryCompleta.split("#");
 
             for (var i = 0; i < queries.length; i++) {
                 var query = queries[i];
-                System.out.println(queryCompleta);
 
                 try (var preparedStatement = connection.prepareStatement(query)) {
                     preparedStatement.executeUpdate();
@@ -57,7 +54,7 @@ public class ConexaoBanco {
                 var nomeServidor = "localhost";
                 var url = "jdbc:mysql://".concat(nomeServidor);
 
-                if (host != null && host.isEmpty()) {
+                if (host != null) {
                     url = url.concat("/").concat(host);
                 }
 
@@ -82,7 +79,7 @@ public class ConexaoBanco {
     private static String pegarScriptDeCriacao() {
         try {
             byte[] encoded = Files.readAllBytes(
-                Paths.get("C:\\Users\\Aluno\\Desktop\\pet-shop-eps-main\\src\\sql\\criar_banco.sql")
+                Paths.get("C:\\Users\\Aluno\\Desktop\\pet-shop-eps\\src\\sql\\criar_banco.sql")
             );
 
             return StandardCharsets

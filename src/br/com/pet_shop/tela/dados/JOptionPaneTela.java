@@ -39,7 +39,7 @@ public final class JOptionPaneTela {
             null,
             menssagem,
             titulo,
-            JOptionPane.OK_OPTION
+            JOptionPane.NO_OPTION
         );
     }
 }

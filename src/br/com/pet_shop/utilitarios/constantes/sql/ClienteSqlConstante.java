@@ -18,9 +18,9 @@ public final class ClienteSqlConstante {
 
     public static final String BUSCAR_POR_ID = "select " +
         "* " +
-        "from pet_shop.cliente cliente" +
+        "from pet_shop.cliente cliente " +
         "where " +
-        "cliente.id = ?";
+        "cliente.id = ?;";
 
     public static final String BUSCAR_ULTIMO = "select " +
         "* " +

@@ -1,6 +1,5 @@
 package br.com.pet_shop.servicos;
 
-import br.com.pet_shop.entidades.Animal;
 import br.com.pet_shop.excecoes.EntidadeNaoEncontrada;
 import br.com.pet_shop.repositorio.AnimalRepositorio;
 import br.com.pet_shop.servicos.interfaces.AnimalServicoInterface;
@@ -15,14 +14,14 @@ public class AnimalServico implements AnimalServicoInterface {
         this.animalRepositorio = animalRepositorio;
     }
 
-    public Animal criar() {
+    public void criar() {
         var animal = AnimalTela.criar();
         animalRepositorio.criar(animal);
 
-        return animalRepositorio.criar(animal);
+        animalRepositorio.criar(animal);
     }
 
-    public Animal atualizar() {
+    public void atualizar() {
         var animal = AnimalTela.atualizar();
         var animalId = animal.getId();
 
@@ -38,14 +37,19 @@ public class AnimalServico implements AnimalServicoInterface {
         }
         animalRepositorio.atualizar(animal);
 
-        return animalRepositorio.buscarPorId(animalId).get();
+        animalRepositorio.buscarPorId(animalId).get();
     }
 
-    public Animal buscarPorId() {
+    @Override
+    public void buscarTudo() {
+
+    }
+
+    public void buscarPorId() {
         var animal = AnimalTela.buscar();
         var animalId = animal.getId();
 
-        return animalRepositorio.buscarPorId(animalId).orElseThrow(
+        animalRepositorio.buscarPorId(animalId).orElseThrow(
             () -> new EntidadeNaoEncontrada(
                 String.format(
                     AnimalMensagem.NAO_ENCONTRADO,
@@ -55,11 +59,15 @@ public class AnimalServico implements AnimalServicoInterface {
         );
     }
 
-    public Boolean deletarPorId() {
+    public void deletarPorId() {
         var animal = AnimalTela.deletar();
 
         animalRepositorio.deletarPorId(animal.getId());
 
-        return Boolean.TRUE;
+    }
+
+    @Override
+    public void exibir(Object entidade) {
+
     }
 }

@@ -42,23 +42,23 @@ public class ClienteRepositorio extends RepositorioAbstract<Cliente> {
     public Cliente atualizar(Cliente entidade) {
         var parametros = List.of(
             new ParametroQuery(
-                TipoParametroEnum.INTEGER,
-                entidade.getId(),
+                TipoParametroEnum.STRING,
+                entidade.getNome(),
                 1
             ),
             new ParametroQuery(
                 TipoParametroEnum.STRING,
-                entidade.getNome(),
-                2
-            ),
-            new ParametroQuery(
-                TipoParametroEnum.STRING,
                 entidade.getCpf(),
-                3
+                2
             ),
             new ParametroQuery(
                 TipoParametroEnum.DATE,
                 entidade.getDataNascimento(),
+                3
+            ),
+            new ParametroQuery(
+                TipoParametroEnum.INTEGER,
+                entidade.getId(),
                 4
             )
         );

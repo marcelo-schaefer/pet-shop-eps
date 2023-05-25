@@ -2,11 +2,15 @@ package br.com.pet_shop.servicos.interfaces;
 
 public interface ServicoInterface<T> {
 
-    T criar();
+    void criar();
 
-    T atualizar();
+    void atualizar();
 
-    T buscarPorId();
+    void buscarTudo();
 
-    Boolean deletarPorId();
+    void buscarPorId();
+
+    void deletarPorId();
+
+    void exibir(T entidade);
 }

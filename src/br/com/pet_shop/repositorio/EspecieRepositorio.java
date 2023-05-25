@@ -32,13 +32,13 @@ public class EspecieRepositorio extends RepositorioAbstract<Especie> {
     public Especie atualizar(Especie entidade) {
         var parametros = List.of(
             new ParametroQuery(
-                TipoParametroEnum.INTEGER,
-                entidade.getId(),
+                TipoParametroEnum.STRING,
+                entidade.getNome(),
                 1
             ),
             new ParametroQuery(
-                TipoParametroEnum.STRING,
-                entidade.getNome(),
+                TipoParametroEnum.INTEGER,
+                entidade.getId(),
                 2
             )
         );

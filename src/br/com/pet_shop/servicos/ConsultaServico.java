@@ -1,6 +1,5 @@
 package br.com.pet_shop.servicos;
 
-import br.com.pet_shop.entidades.Consulta;
 import br.com.pet_shop.excecoes.EntidadeNaoEncontrada;
 import br.com.pet_shop.repositorio.ConsultaRepositorio;
 import br.com.pet_shop.servicos.interfaces.ConsultaServicoInterface;
@@ -15,14 +14,14 @@ public class ConsultaServico implements ConsultaServicoInterface {
         this.consultaRepositorio = consultaRepositorio;
     }
 
-    public Consulta criar() {
+    public void criar() {
         var consulta = ConsultaTela.criar();
         consultaRepositorio.criar(consulta);
 
-        return consultaRepositorio.criar(consulta);
+        consultaRepositorio.criar(consulta);
     }
 
-    public Consulta atualizar() {
+    public void atualizar() {
         var consulta = ConsultaTela.atualizar();
         var consultaId = consulta.getId();
 
@@ -38,14 +37,19 @@ public class ConsultaServico implements ConsultaServicoInterface {
         }
         consultaRepositorio.atualizar(consulta);
 
-        return consultaRepositorio.buscarPorId(consultaId).get();
+        consultaRepositorio.buscarPorId(consultaId).get();
     }
 
-    public Consulta buscarPorId() {
+    @Override
+    public void buscarTudo() {
+
+    }
+
+    public void buscarPorId() {
         var consulta = ConsultaTela.buscar();
         var consultaId = consulta.getId();
 
-        return consultaRepositorio.buscarPorId(consultaId).orElseThrow(
+        consultaRepositorio.buscarPorId(consultaId).orElseThrow(
             () -> new EntidadeNaoEncontrada(
                 String.format(
                     ConsultaMensagem.NAO_ENCONTRADO,
@@ -55,11 +59,14 @@ public class ConsultaServico implements ConsultaServicoInterface {
         );
     }
 
-    public Boolean deletarPorId() {
+    public void deletarPorId() {
         var consulta = ConsultaTela.deletar();
 
         consultaRepositorio.deletarPorId(consulta.getId());
+    }
 
-        return Boolean.TRUE;
+    @Override
+    public void exibir(Object entidade) {
+
     }
 }
