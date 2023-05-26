@@ -82,7 +82,8 @@ public abstract class RepositorioAbstract<E> {
             }
         } catch (Exception exception) {
             throw new ManipulacaoBancoExcecao(
-                "Erro ao executar consulta no banco de dados."
+                "Erro ao executar consulta no banco de dados.",
+                exception
             );
         }
     }
@@ -100,7 +101,8 @@ public abstract class RepositorioAbstract<E> {
             }
         } catch (Exception exception) {
             throw new ManipulacaoBancoExcecao(
-                "Erro ao executar persistência no banco de dados."
+                "Erro ao executar persistência no banco de dados.",
+                exception
             );
         }
     }

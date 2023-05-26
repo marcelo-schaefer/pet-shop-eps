@@ -1,15 +1,10 @@
 package br.com.pet_shop.servicos;
 
-import br.com.pet_shop.entidades.Cliente;
 import br.com.pet_shop.entidades.Funcionario;
-import br.com.pet_shop.excecoes.EntidadeNaoEncontrada;
 import br.com.pet_shop.repositorio.FuncionarioRepositorio;
 import br.com.pet_shop.servicos.interfaces.FuncionarioServicoInterface;
 import br.com.pet_shop.tela.dados.JOptionPaneTela;
 import br.com.pet_shop.tela.dados.LerTela;
-import br.com.pet_shop.tela.entidades.AnimalTela;
-import br.com.pet_shop.tela.entidades.FuncionarioTela;
-import br.com.pet_shop.utilitarios.constantes.mensagens.AnimalMensagem;
 
 public class FuncionarioServico implements FuncionarioServicoInterface {
 
@@ -89,28 +84,39 @@ public class FuncionarioServico implements FuncionarioServicoInterface {
 
     @Override
     public void buscarTudo() {
+        var funcionarios = funcionarioRepositorio.buscarTodos();
 
+        funcionarios.forEach(this::exibir);
     }
 
     public void buscarPorId() {
-        var animal = AnimalTela.buscar();
-        var animalId = animal.getId();
+        var id = LerTela.lerInteger(BUSCAR_FUNCIONARIO_TITULO, "Id:");
 
-        funcionarioRepositorio.buscarPorId(animalId).orElseThrow(
-            () -> new EntidadeNaoEncontrada(
+        var funcionarioOptional = funcionarioRepositorio.buscarPorId(id);
+
+        if (funcionarioOptional.isPresent()) {
+            var funcionario = funcionarioOptional.get();
+            exibir(funcionario);
+        } else {
+            JOptionPaneTela.optionMensagemInfo(
+                BUSCAR_FUNCIONARIO_TITULO,
                 String.format(
-                    AnimalMensagem.NAO_ENCONTRADO,
-                    animalId
+                    NAO_ENCONTRADO,
+                    id
                 )
-            )
-        );
+            );
+        }
     }
 
     public void deletarPorId() {
-        var animal = AnimalTela.deletar();
+        var id = LerTela.lerInteger(DELETAR_FUNCIONARIO_TITULO, "Id:");
 
-        funcionarioRepositorio.deletarPorId(animal.getId());
+        funcionarioRepositorio.deletarPorId(id);
 
+        JOptionPaneTela.optionMensagemInfo(
+            DELETAR_FUNCIONARIO_TITULO,
+            "Espécie deletada com sucesso!"
+        );
     }
 
     @Override

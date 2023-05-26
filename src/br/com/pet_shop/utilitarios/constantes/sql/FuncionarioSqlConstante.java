@@ -19,7 +19,7 @@ public final class FuncionarioSqlConstante {
 
     public static final String BUSCAR_POR_ID = "select " +
         "* " +
-        "from pet_shop.funcionario funcionario" +
+        "from pet_shop.funcionario funcionario " +
         "where " +
         "funcionario.id = ?";
 

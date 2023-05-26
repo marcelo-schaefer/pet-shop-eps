@@ -39,7 +39,7 @@ public class ConsultaRepositorio extends RepositorioAbstract<Consulta> {
                 4
             ),
             new ParametroQuery(
-                TipoParametroEnum.STRING,
+                TipoParametroEnum.INTEGER,
                 entidade.getAnimal().getId(),
                 5
             )
@@ -52,33 +52,33 @@ public class ConsultaRepositorio extends RepositorioAbstract<Consulta> {
     public Consulta atualizar(Consulta entidade) {
         var parametros = List.of(
             new ParametroQuery(
-                TipoParametroEnum.INTEGER,
-                entidade.getId(),
+                TipoParametroEnum.STRING,
+                entidade.getNome(),
                 1
             ),
             new ParametroQuery(
                 TipoParametroEnum.STRING,
-                entidade.getNome(),
-                2
-            ),
-            new ParametroQuery(
-                TipoParametroEnum.STRING,
                 entidade.getObservacao(),
-                3
+                2
             ),
             new ParametroQuery(
                 TipoParametroEnum.DATE,
                 entidade.getHorario(),
-                4
+                3
             ),
             new ParametroQuery(
                 TipoParametroEnum.DOUBLE,
                 entidade.getValor(),
+                4
+            ),
+            new ParametroQuery(
+                TipoParametroEnum.INTEGER,
+                entidade.getAnimal().getId(),
                 5
             ),
             new ParametroQuery(
-                TipoParametroEnum.STRING,
-                entidade.getAnimal().getId(),
+                TipoParametroEnum.INTEGER,
+                entidade.getId(),
                 6
             )
         );

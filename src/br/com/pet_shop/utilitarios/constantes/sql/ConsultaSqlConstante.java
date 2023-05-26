@@ -12,6 +12,7 @@ public final class ConsultaSqlConstante {
         + "nome = ?, "
         + "observacao = ?, "
         + "horario = ?, "
+        + "valor = ?, "
         + "animal_id = ? "
         + "where "
         + "id = ?;";

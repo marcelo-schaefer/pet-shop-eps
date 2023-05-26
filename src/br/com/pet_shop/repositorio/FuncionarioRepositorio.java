@@ -2,7 +2,7 @@ package br.com.pet_shop.repositorio;
 
 import br.com.pet_shop.entidades.Funcionario;
 import br.com.pet_shop.enums.TipoParametroEnum;
-import br.com.pet_shop.utilitarios.constantes.sql.ClienteSqlConstante;
+import br.com.pet_shop.utilitarios.constantes.sql.FuncionarioSqlConstante;
 import br.com.pet_shop.utilitarios.constantes.sql.FuncionarioSqlConstante;
 import br.com.pet_shop.utilitarios.conversores.FuncionarioConversor;
 import br.com.pet_shop.utilitarios.dto.ParametroQuery;
@@ -41,40 +41,40 @@ public class FuncionarioRepositorio extends RepositorioAbstract<Funcionario> {
             )
         );
 
-        return persistir(ClienteSqlConstante.CRIAR, parametros);
+        return persistir(FuncionarioSqlConstante.CRIAR, parametros);
     }
 
     @Override
     public Funcionario atualizar(Funcionario entidade) {
         var parametros = List.of(
             new ParametroQuery(
-                TipoParametroEnum.INTEGER,
-                entidade.getId(),
+                TipoParametroEnum.STRING,
+                entidade.getNome(),
                 1
             ),
             new ParametroQuery(
                 TipoParametroEnum.STRING,
-                entidade.getNome(),
-                2
-            ),
-            new ParametroQuery(
-                TipoParametroEnum.STRING,
                 entidade.getCpf(),
-                3
+                2
             ),
             new ParametroQuery(
                 TipoParametroEnum.DATE,
                 entidade.getDataNascimento(),
-                4
+                3
             ),
             new ParametroQuery(
                 TipoParametroEnum.STRING,
                 entidade.getCargo(),
+                4
+            ),
+            new ParametroQuery(
+                TipoParametroEnum.INTEGER,
+                entidade.getId(),
                 5
             )
         );
 
-        return persistir(ClienteSqlConstante.CRIAR, parametros);
+        return persistir(FuncionarioSqlConstante.ATUALIZAR, parametros);
     }
 
     @Override
@@ -87,7 +87,7 @@ public class FuncionarioRepositorio extends RepositorioAbstract<Funcionario> {
             )
         );
 
-        return consultar(ClienteSqlConstante.BUSCAR_POR_ID, parametros);
+        return consultar(FuncionarioSqlConstante.BUSCAR_POR_ID, parametros);
     }
 
     @Override
@@ -110,7 +110,7 @@ public class FuncionarioRepositorio extends RepositorioAbstract<Funcionario> {
             )
         );
 
-        deletar(ClienteSqlConstante.DELETAR_POR_ID, parametros);
+        deletar(FuncionarioSqlConstante.DELETAR_POR_ID, parametros);
     }
 
     @Override

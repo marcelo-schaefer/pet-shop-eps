@@ -21,7 +21,7 @@ public final class JOptionPaneTela {
             null,
             menssagem,
             titulo,
-            JOptionPane.QUESTION_MESSAGE
+            JOptionPane.YES_NO_OPTION
         );
     }
 

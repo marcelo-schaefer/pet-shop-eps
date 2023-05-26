@@ -11,7 +11,8 @@ create table if not exists pet_shop.animal (
     detalhe varchar(500),
     data_nascimento date not null,
     sexo varchar(12) not null,
-    ativo tinyint not null, especie_id int not null,
+    ativo tinyint not null,
+    especie_id int not null,
     foreign key (especie_id)
         references especie(id)
 );

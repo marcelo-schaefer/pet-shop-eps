@@ -58,38 +58,38 @@ public class AnimalRepositorio extends RepositorioAbstract<Animal> {
     public Animal atualizar(Animal entidade) {
         var parametros = List.of(
             new ParametroQuery(
-                TipoParametroEnum.INTEGER,
-                entidade.getId(),
+                TipoParametroEnum.STRING,
+                entidade.getNome(),
                 1
             ),
             new ParametroQuery(
                 TipoParametroEnum.STRING,
-                entidade.getNome(),
-                2
-            ),
-            new ParametroQuery(
-                TipoParametroEnum.STRING,
                 entidade.getDetalhe(),
-                3
+                2
             ),
             new ParametroQuery(
                 TipoParametroEnum.DATE,
                 entidade.getDataNascimento(),
-                4
+                3
             ),
             new ParametroQuery(
                 TipoParametroEnum.ENUM,
                 entidade.getSexo(),
-                5
+                4
             ),
             new ParametroQuery(
                 TipoParametroEnum.BOOLEAN,
                 entidade.getAtivo(),
-                6
+                5
             ),
             new ParametroQuery(
                 TipoParametroEnum.INTEGER,
                 entidade.getEspecie().getId(),
+                6
+            ),
+            new ParametroQuery(
+                TipoParametroEnum.INTEGER,
+                entidade.getId(),
                 7
             )
         );

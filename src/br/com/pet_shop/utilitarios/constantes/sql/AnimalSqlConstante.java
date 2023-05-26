@@ -3,7 +3,7 @@ package br.com.pet_shop.utilitarios.constantes.sql;
 public final class AnimalSqlConstante {
 
     public static final String CRIAR = "insert into pet_shop.animal "
-        + "(nome, detalhe, data_nascimento, sexo, ativo, cliente_id) "
+        + "(nome, detalhe, data_nascimento, sexo, ativo, especie_id) "
         + "values "
         + "(?, ?, ?, ?, ?, ?);";
 
@@ -14,7 +14,7 @@ public final class AnimalSqlConstante {
         + "data_nascimento = ?, "
         + "sexo = ?, "
         + "ativo = ?, "
-        + "cliente_id = ? "
+        + "especie_id = ? "
         + "where "
         + "id = ?;";
 
@@ -29,7 +29,7 @@ public final class AnimalSqlConstante {
     public static final String BUSCAR_POR_ID = "select " +
         "* " +
         "from " +
-        "pet_shop.animal animal" +
+        "pet_shop.animal animal " +
         "where " +
         "animal.id = ?;";
 
