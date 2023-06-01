@@ -12,5 +12,7 @@ public enum TipoParametroEnum {
 
     DATE,
 
+    LOCAL_TIME,
+
     ENUM;
 }

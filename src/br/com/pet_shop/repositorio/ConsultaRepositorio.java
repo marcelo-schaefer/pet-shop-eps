@@ -29,7 +29,7 @@ public class ConsultaRepositorio extends RepositorioAbstract<Consulta> {
                 2
             ),
             new ParametroQuery(
-                TipoParametroEnum.DATE,
+                TipoParametroEnum.LOCAL_TIME,
                 entidade.getHorario(),
                 3
             ),

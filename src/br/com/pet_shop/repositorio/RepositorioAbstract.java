@@ -7,6 +7,8 @@ import br.com.pet_shop.utilitarios.conversores.interfaces.ConversorEntidadeInter
 import br.com.pet_shop.utilitarios.dto.ParametroQuery;
 
 import java.sql.PreparedStatement;
+import java.sql.Time;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -163,6 +165,13 @@ public abstract class RepositorioAbstract<E> {
                 preparedStatement.setDate(
                     posicao,
                     ConversorTipos.dateParaDateSql(date)
+                );
+                break;
+            case LOCAL_TIME:
+                var localTime = (LocalTime) parametroQuery.getValor();
+                preparedStatement.setTime(
+                    posicao,
+                    Time.valueOf(localTime)
                 );
                 break;
             default:

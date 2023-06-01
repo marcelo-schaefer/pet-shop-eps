@@ -1,6 +1,8 @@
 package br.com.pet_shop.entidades;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.LocalTime;
 
 public class Consulta {
 
@@ -10,7 +12,7 @@ public class Consulta {
 
     private String observacao;
 
-    private Date horario;
+    private LocalTime horario;
 
     private Double valor;
 
@@ -23,7 +25,7 @@ public class Consulta {
         this.id = id;
     }
 
-    public Consulta(String nome, String observacao, Date horario, Double valor, Animal animal) {
+    public Consulta(String nome, String observacao, LocalTime horario, Double valor, Animal animal) {
         this.nome = nome;
         this.observacao = observacao;
         this.horario = horario;
@@ -31,7 +33,7 @@ public class Consulta {
         this.animal = animal;
     }
 
-    public Consulta(Integer id, String nome, String observacao, Date horario, Double valor, Animal animal) {
+    public Consulta(Integer id, String nome, String observacao, LocalTime horario, Double valor, Animal animal) {
         this.id = id;
         this.nome = nome;
         this.observacao = observacao;
@@ -64,11 +66,11 @@ public class Consulta {
         this.observacao = observacao;
     }
 
-    public Date getHorario() {
+    public LocalTime getHorario() {
         return horario;
     }
 
-    public void setHorario(Date horario) {
+    public void setHorario(LocalTime horario) {
         this.horario = horario;
     }
 

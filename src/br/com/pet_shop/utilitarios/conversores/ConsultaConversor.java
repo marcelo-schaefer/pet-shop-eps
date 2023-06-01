@@ -16,7 +16,7 @@ public class ConsultaConversor implements ConversorEntidadeInterface<Consulta> {
                 resultSet.getInt("id"),
                 resultSet.getString("nome"),
                 resultSet.getString("observacao"),
-                ConversorTipos.dateParaDateSql(resultSet.getDate("horario")),
+                resultSet.getTime("horario").toLocalTime(),
                 resultSet.getDouble("valor"),
                 new Animal(
                     resultSet.getInt("animal_id")

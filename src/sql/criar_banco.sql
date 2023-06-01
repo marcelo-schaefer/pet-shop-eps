@@ -36,7 +36,7 @@ create table if not exists pet_shop.consulta (
     id int primary key not null auto_increment,
     nome varchar(255) not null,
     observacao varchar(500) not null,
-    horario dateTIME not null,
+    horario time not null,
     valor double not null,
     animal_id int not null,
     foreign key (animal_id)

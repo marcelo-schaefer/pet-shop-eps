@@ -1,6 +1,9 @@
 package br.com.pet_shop.tela.dados;
 
+import br.com.pet_shop.utilitarios.conversores.ConversorTipos;
+
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
 import java.util.Date;
 
 public final class LerTela {
@@ -72,7 +75,24 @@ public final class LerTela {
                 return simpleDateFormat.parse(dateString);
             } catch (Exception exception) {
             }
-        }
-        while (true);
+        } while (true);
+    }
+
+    public static LocalTime lerLocalTime(String titulo, String mensagem) {
+        var simpleDateFormat = new SimpleDateFormat("hh:mm");
+        mensagem = "Informe o horário no seguinte formato hh:mm"
+            .concat("\n")
+            .concat(mensagem)
+        ;
+
+        do {
+            try {
+                var dateString = lerString(titulo, mensagem);
+                var date = simpleDateFormat.parse(dateString);
+
+                return ConversorTipos.dateParaLocalTime(date);
+            } catch (Exception exception) {
+            }
+        } while (true);
     }
 }

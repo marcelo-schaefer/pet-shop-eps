@@ -20,7 +20,7 @@ public final class ConsultaTela {
     public static Consulta criar() {
         var nome = LerTela.lerString(CADASTRAR_CONSULTA_TITULO, "Nome:");
         var observacao = LerTela.lerString(CADASTRAR_CONSULTA_TITULO, "Observação:");
-        var horario = LerTela.lerDate(CADASTRAR_CONSULTA_TITULO, "Horário:");
+        var horario = LerTela.lerLocalTime(CADASTRAR_CONSULTA_TITULO, "Horário:");
         var animalId = LerTela.lerInteger(CADASTRAR_CONSULTA_TITULO, "Identificador do Animal:");
         var valor = LerTela.lerDouble(CADASTRAR_CONSULTA_TITULO, "Valor:");
 
@@ -37,7 +37,7 @@ public final class ConsultaTela {
         var id = LerTela.lerInteger(ATUALIZAR_CONSULTA_TITULO, "Id:");
         var nome = LerTela.lerString(ATUALIZAR_CONSULTA_TITULO, "Nome:");
         var observacao = LerTela.lerString(ATUALIZAR_CONSULTA_TITULO, "Observação:");
-        var horario = LerTela.lerDate(ATUALIZAR_CONSULTA_TITULO, "Horário:");
+        var horario = LerTela.lerLocalTime(ATUALIZAR_CONSULTA_TITULO, "Horário:");
         var animalId = LerTela.lerInteger(ATUALIZAR_CONSULTA_TITULO, "Identificador do Animal:");
         var valor = LerTela.lerDouble(ATUALIZAR_CONSULTA_TITULO, "Valor:");
 
