@@ -2,6 +2,7 @@ package br.com.pet_shop.tela.entidades;
 
 import br.com.pet_shop.entidades.Animal;
 import br.com.pet_shop.entidades.Consulta;
+import br.com.pet_shop.entidades.Funcionario;
 import br.com.pet_shop.tela.dados.LerTela;
 
 public final class ConsultaTela {
@@ -21,15 +22,17 @@ public final class ConsultaTela {
         var nome = LerTela.lerString(CADASTRAR_CONSULTA_TITULO, "Nome:");
         var observacao = LerTela.lerString(CADASTRAR_CONSULTA_TITULO, "Observação:");
         var horario = LerTela.lerLocalTime(CADASTRAR_CONSULTA_TITULO, "Horário:");
-        var animalId = LerTela.lerInteger(CADASTRAR_CONSULTA_TITULO, "Identificador do Animal:");
         var valor = LerTela.lerDouble(CADASTRAR_CONSULTA_TITULO, "Valor:");
+        var animalId = LerTela.lerInteger(CADASTRAR_CONSULTA_TITULO, "Identificador do Animal:");
+        var funcionarioId = LerTela.lerInteger(CADASTRAR_CONSULTA_TITULO, "Identificador do Funcionário:");
 
         return new Consulta(
             nome,
             observacao,
             horario,
             valor,
-            new Animal(animalId)
+            new Animal(animalId),
+            new Funcionario(funcionarioId)
         );
     }
 
@@ -38,8 +41,9 @@ public final class ConsultaTela {
         var nome = LerTela.lerString(ATUALIZAR_CONSULTA_TITULO, "Nome:");
         var observacao = LerTela.lerString(ATUALIZAR_CONSULTA_TITULO, "Observação:");
         var horario = LerTela.lerLocalTime(ATUALIZAR_CONSULTA_TITULO, "Horário:");
-        var animalId = LerTela.lerInteger(ATUALIZAR_CONSULTA_TITULO, "Identificador do Animal:");
         var valor = LerTela.lerDouble(ATUALIZAR_CONSULTA_TITULO, "Valor:");
+        var animalId = LerTela.lerInteger(ATUALIZAR_CONSULTA_TITULO, "Identificador do Animal:");
+        var funcionarioId = LerTela.lerInteger(ATUALIZAR_CONSULTA_TITULO, "Identificador do Funcionário:");
 
         return new Consulta(
             id,
@@ -47,7 +51,8 @@ public final class ConsultaTela {
             observacao,
             horario,
             valor,
-            new Animal(animalId)
+            new Animal(animalId),
+            new Funcionario(funcionarioId)
         );
     }
 

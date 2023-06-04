@@ -20,14 +20,10 @@ public class EspecieServico implements EspecieServicoInterface {
 
     private static final String DELETAR_ESPECIE_TITULO = "Deletar Especie";
 
-    private final EspecieRepositorio especieRepositorio;
-
-    public EspecieServico(EspecieRepositorio especieRepositorio) {
-        this.especieRepositorio = especieRepositorio;
-    }
+    private final EspecieRepositorio especieRepositorio = new EspecieRepositorio();
 
     public void criar() {
-        var nome = LerTela.lerString(CADASTRAR_ESPECIE_TITULO, "Nome:");
+        var nome = LerTela.lerString(ATUALIZAR_ESPECIE_TITULO, "Nome:");
 
         var especie = new Especie(nome);
         especieRepositorio.criar(especie);
@@ -39,7 +35,7 @@ public class EspecieServico implements EspecieServicoInterface {
     }
 
     public void atualizar() {
-        var id = LerTela.lerInteger(ATUALIZAR_ESPECIE_TITULO, "Id:");
+        var id = pegarId(ATUALIZAR_ESPECIE_TITULO);
 
         var existeEspecie = especieRepositorio.existePorID(id);
 
@@ -71,7 +67,7 @@ public class EspecieServico implements EspecieServicoInterface {
     }
 
     public void buscarPorId() {
-        var id = LerTela.lerInteger(BUSCAR_ESPECIE_TITULO, "Id:");
+        var id = pegarId(BUSCAR_ESPECIE_TITULO);
 
         var especieOptional = especieRepositorio.buscarPorId(id);
 
@@ -90,7 +86,7 @@ public class EspecieServico implements EspecieServicoInterface {
     }
 
     public void deletarPorId() {
-        var id = LerTela.lerInteger(DELETAR_ESPECIE_TITULO, "Id:");
+        var id = pegarId(DELETAR_ESPECIE_TITULO);
 
         especieRepositorio.deletarPorId(id);
 
@@ -113,5 +109,9 @@ public class EspecieServico implements EspecieServicoInterface {
                 entidade.getNome()
             )
         );
+    }
+
+    public Integer pegarId(String titulo) {
+        return LerTela.lerInteger(titulo, "Id:");
     }
 }

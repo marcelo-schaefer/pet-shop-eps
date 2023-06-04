@@ -26,7 +26,7 @@ public class AnimalConversor implements ConversorEntidadeInterface<Animal> {
             );
         } catch (Exception exception) {
             throw new ConverterResultSetExcecao(
-                "Erro ao converter Espécie.",
+                "Erro ao converter Animal.",
                 exception
             );
         }

@@ -1,4 +1,4 @@
-package br.com.pet_shop.utilitarios.constantes.sql;
+package br.com.pet_shop.banco.sql;
 
 public final class EspecieSqlConstante {
 

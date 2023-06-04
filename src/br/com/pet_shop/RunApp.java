@@ -6,6 +6,8 @@ import br.com.pet_shop.tela.menu.MenuTela;
 
 public class RunApp {
 
+    public static final String CAMINHO_ARQUIVO_CRIACAO_BASE = "C:\\Users\\lucas\\intellij-projects\\pet-shop-eps\\src\\sql\\criar_banco.sql";
+
     public static void main(String[] args) {
         try {
             ConexaoBanco.criarBanco();

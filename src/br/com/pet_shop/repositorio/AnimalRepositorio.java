@@ -2,9 +2,8 @@ package br.com.pet_shop.repositorio;
 
 import br.com.pet_shop.entidades.Animal;
 import br.com.pet_shop.enums.TipoParametroEnum;
-import br.com.pet_shop.utilitarios.constantes.sql.AnimalSqlConstante;
+import br.com.pet_shop.banco.sql.AnimalSqlConstante;
 import br.com.pet_shop.utilitarios.conversores.AnimalConversor;
-import br.com.pet_shop.utilitarios.conversores.interfaces.ConversorEntidadeInterface;
 import br.com.pet_shop.utilitarios.dto.ParametroQuery;
 
 import java.util.List;

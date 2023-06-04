@@ -3,6 +3,7 @@ package br.com.pet_shop.servicos;
 import br.com.pet_shop.entidades.Animal;
 import br.com.pet_shop.entidades.Especie;
 import br.com.pet_shop.repositorio.AnimalRepositorio;
+import br.com.pet_shop.repositorio.EspecieRepositorio;
 import br.com.pet_shop.servicos.interfaces.AnimalServicoInterface;
 import br.com.pet_shop.tela.dados.JOptionPaneTela;
 import br.com.pet_shop.tela.dados.LerEnumTela;
@@ -22,19 +23,14 @@ public class AnimalServico implements AnimalServicoInterface {
 
     private static final String DELETAR_ANIMAL_TITULO = "Deletar Animal";
 
-
-    private final AnimalRepositorio animalRepositorio;
-
-    public AnimalServico(AnimalRepositorio animalRepositorio) {
-        this.animalRepositorio = animalRepositorio;
-    }
+    private final AnimalRepositorio animalRepositorio = new AnimalRepositorio();
 
     public void criar() {
         var nome = LerTela.lerString(CADASTRAR_ANIMAL_TITULO, "Nome:");
         var detalhe = LerTela.lerString(CADASTRAR_ANIMAL_TITULO, "Detalhe:");
         var dataNascimento = LerTela.lerDate(CADASTRAR_ANIMAL_TITULO, "Data de Nascimento:");
         var sexoEnum = LerEnumTela.lerSexoEnum(CADASTRAR_ANIMAL_TITULO);
-        var especieId = LerTela.lerInteger(CADASTRAR_ANIMAL_TITULO, "Identificador da especie:");
+        var especie = pegarEspecie(CADASTRAR_ANIMAL_TITULO);
 
         var animal = new Animal(
             nome,
@@ -42,7 +38,7 @@ public class AnimalServico implements AnimalServicoInterface {
             dataNascimento,
             sexoEnum,
             Boolean.TRUE,
-            new Especie(especieId)
+            especie
         );
 
         animalRepositorio.criar(animal);
@@ -54,7 +50,7 @@ public class AnimalServico implements AnimalServicoInterface {
     }
 
     public void atualizar() {
-        var id = LerTela.lerInteger(ATUALIZAR_ANIMAL_TITULO, "Id:");
+        var id = pegarId(ATUALIZAR_ANIMAL_TITULO);
 
         var animalExiste = animalRepositorio.existePorID(id);
 
@@ -72,7 +68,7 @@ public class AnimalServico implements AnimalServicoInterface {
             var dataNascimento = LerTela.lerDate(ATUALIZAR_ANIMAL_TITULO, "Data de Nascimento:");
             var sexoEnum = LerEnumTela.lerSexoEnum(ATUALIZAR_ANIMAL_TITULO);
             var ativo = LerTela.lerBoolean(ATUALIZAR_ANIMAL_TITULO, "Ativo?");
-            var especieId = LerTela.lerInteger(ATUALIZAR_ANIMAL_TITULO, "Identificador da especie:");
+            var especie = pegarEspecie(ATUALIZAR_ANIMAL_TITULO);
 
             var animal = new Animal(
                 id,
@@ -81,7 +77,7 @@ public class AnimalServico implements AnimalServicoInterface {
                 dataNascimento,
                 sexoEnum,
                 ativo,
-                new Especie(especieId)
+                especie
             );
 
             animalRepositorio.atualizar(animal);
@@ -101,7 +97,7 @@ public class AnimalServico implements AnimalServicoInterface {
     }
 
     public void buscarPorId() {
-        var id = LerTela.lerInteger(BUSCAR_ANIMAL_TITULO, "Id:");
+        var id = pegarId(BUSCAR_ANIMAL_TITULO);
 
         var animalOptional = animalRepositorio.buscarPorId(id);
 
@@ -121,7 +117,7 @@ public class AnimalServico implements AnimalServicoInterface {
     }
 
     public void deletarPorId() {
-        var id = LerTela.lerInteger(DELETAR_ANIMAL_TITULO, "Id:");
+        var id = pegarId(DELETAR_ANIMAL_TITULO);
 
         animalRepositorio.deletarPorId(id);
 
@@ -160,5 +156,30 @@ public class AnimalServico implements AnimalServicoInterface {
                 entidade.getEspecie().getId()
             )
         );
+    }
+
+    private Especie pegarEspecie(String titulo) {
+        do {
+            var especieId = LerTela.lerInteger(titulo, "Identificador da Espécie:");
+            var especieRepositorio = new EspecieRepositorio();
+
+            var existe = especieRepositorio.existePorID(especieId);
+
+            if (existe.equals(Boolean.TRUE)) {
+                return new Especie(especieId);
+            } else {
+                JOptionPaneTela.optionMensagemInfo(
+                    titulo,
+                    String.format(
+                        "Não existe uma Espécie cadastrada com o id \"%s\"",
+                        especieId
+                    )
+                );
+            }
+        } while (true);
+    }
+
+    public Integer pegarId(String titulo) {
+        return LerTela.lerInteger(titulo, "Id:");
     }
 }

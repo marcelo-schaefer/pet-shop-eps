@@ -39,6 +39,9 @@ create table if not exists pet_shop.consulta (
     horario time not null,
     valor double not null,
     animal_id int not null,
+    funcionario_id int not null,
     foreign key (animal_id)
-        references animal(id)
+        references animal(id),
+    foreign key (funcionario_id)
+        references funcionario(id)
 );

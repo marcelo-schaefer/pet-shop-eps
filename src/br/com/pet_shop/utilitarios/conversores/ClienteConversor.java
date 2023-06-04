@@ -19,7 +19,7 @@ public class ClienteConversor implements ConversorEntidadeInterface<Cliente> {
             );
         } catch (Exception exception) {
             throw new ConverterResultSetExcecao(
-                "Erro ao converter Espécie.",
+                "Erro ao converter Cliente.",
                 exception
             );
         }

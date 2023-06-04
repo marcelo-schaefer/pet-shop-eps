@@ -1,6 +1,5 @@
 package br.com.pet_shop.tela.menu;
 
-import br.com.pet_shop.repositorio.*;
 import br.com.pet_shop.servicos.*;
 import br.com.pet_shop.servicos.interfaces.ServicoInterface;
 import br.com.pet_shop.tela.dados.LerTela;
@@ -53,46 +52,26 @@ public final class MenuTela {
     }
 
     private static void menuCliente() {
-        var clienteServico = new ClienteServico(
-            new ClienteRepositorio()
-        );
-
-        menuCrud("Cliente", clienteServico);
+        menuCrud("Cliente", new ClienteServico());
     }
 
     private static void menuFuncionario() {
-        var funcionarioServico = new FuncionarioServico(
-            new FuncionarioRepositorio()
-        );
-
-        menuCrud("Funcionário", funcionarioServico);
+        menuCrud("Funcionário", new FuncionarioServico());
     }
 
     private static void menuEspecie() {
-        var especieServico = new EspecieServico(
-            new EspecieRepositorio()
-        );
-
-        menuCrud("Espécie", especieServico);
+        menuCrud("Espécie", new EspecieServico());
     }
 
     private static void menuAnimal() {
-        var animalServico = new AnimalServico(
-            new AnimalRepositorio()
-        );
-
-        menuCrud("Animal", animalServico);
+        menuCrud("Animal", new AnimalServico());
     }
 
     private static void menuConsulta() {
-        var consultaServico = new ConsultaServico(
-            new ConsultaRepositorio()
-        );
-
-        menuCrud("Consulta", consultaServico);
+        menuCrud("Consulta", new ConsultaServico());
     }
 
-    private static void menuCrud(String titulo, ServicoInterface servicoInterface) {
+    private static <T> void menuCrud(String titulo, ServicoInterface<T> servicoInterface) {
         var mensagem = "1 - Cadastrar"
             .concat("\n")
             .concat("2 - Atualizar")

@@ -4,11 +4,11 @@ import br.com.pet_shop.enums.TipoParametroEnum;
 
 public class ParametroQuery {
 
-    private TipoParametroEnum tipo;
+    private final TipoParametroEnum tipo;
 
-    private Object valor;
+    private final Object valor;
 
-    private Integer posicao;
+    private final Integer posicao;
 
     public ParametroQuery(TipoParametroEnum tipo, Object valor, Integer posicao) {
         this.tipo = tipo;

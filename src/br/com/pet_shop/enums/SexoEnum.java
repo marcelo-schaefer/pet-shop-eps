@@ -8,15 +8,11 @@ public enum SexoEnum {
 
     MASCULINO,
 
-    HEMAFRODITA;
+    HERMAFRODITA;
 
-    private static final Map<Integer, SexoEnum> SEXO_POSICAO_MAP = Map.of(
+    public static final Map<Integer, SexoEnum> SEXO_POSICAO_MAP = Map.of(
         1, SexoEnum.FEMININO,
         2, SexoEnum.MASCULINO,
-        3, SexoEnum.HEMAFRODITA
+        3, SexoEnum.HERMAFRODITA
     );
-
-    public static SexoEnum pegarPorOpcao(Integer posicao) {
-        return SEXO_POSICAO_MAP.get(posicao);
-    }
 }

@@ -20,11 +20,7 @@ public class FuncionarioServico implements FuncionarioServicoInterface {
 
     private static final String DELETAR_FUNCIONARIO_TITULO = "Deletar Funcionário";
 
-    private final FuncionarioRepositorio funcionarioRepositorio;
-
-    public FuncionarioServico(FuncionarioRepositorio funcionarioRepositorio) {
-        this.funcionarioRepositorio = funcionarioRepositorio;
-    }
+    private final FuncionarioRepositorio funcionarioRepositorio = new FuncionarioRepositorio();
 
     public void criar() {
         var nome = LerTela.lerString(CADASTRAR_FUNCIONARIO_TITULO, "Nome:");
@@ -48,7 +44,7 @@ public class FuncionarioServico implements FuncionarioServicoInterface {
     }
 
     public void atualizar() {
-        var id = LerTela.lerInteger(ATUALIZAR_FUNCIONARIO_TITULO, "Id:");
+        var id = pegarId(ATUALIZAR_FUNCIONARIO_TITULO);
 
         var existeFuncionario = funcionarioRepositorio.existePorID(id);
 
@@ -90,7 +86,7 @@ public class FuncionarioServico implements FuncionarioServicoInterface {
     }
 
     public void buscarPorId() {
-        var id = LerTela.lerInteger(BUSCAR_FUNCIONARIO_TITULO, "Id:");
+        var id = pegarId(BUSCAR_FUNCIONARIO_TITULO);
 
         var funcionarioOptional = funcionarioRepositorio.buscarPorId(id);
 
@@ -109,7 +105,7 @@ public class FuncionarioServico implements FuncionarioServicoInterface {
     }
 
     public void deletarPorId() {
-        var id = LerTela.lerInteger(DELETAR_FUNCIONARIO_TITULO, "Id:");
+        var id = pegarId(DELETAR_FUNCIONARIO_TITULO);
 
         funcionarioRepositorio.deletarPorId(id);
 
@@ -142,5 +138,9 @@ public class FuncionarioServico implements FuncionarioServicoInterface {
                 entidade.getCargo()
             )
         );
+    }
+
+    private static Integer pegarId(String titulo) {
+        return LerTela.lerInteger(titulo, "Id:");
     }
 }

@@ -1,11 +1,11 @@
-package br.com.pet_shop.utilitarios.constantes.sql;
+package br.com.pet_shop.banco.sql;
 
 public final class ConsultaSqlConstante {
 
     public static final String CRIAR = "insert into pet_shop.consulta "
-        + "(nome, observacao, horario, valor, animal_id) "
+        + "(nome, observacao, horario, valor, animal_id, funcionario_id) "
         + "values "
-        + "(?, ?, ?, ?, ?);";
+        + "(?, ?, ?, ?, ?, ?);";
 
     public static final String ATUALIZAR = "update pet_shop.consulta "
         + "set "
@@ -14,6 +14,7 @@ public final class ConsultaSqlConstante {
         + "horario = ?, "
         + "valor = ?, "
         + "animal_id = ? "
+        + "funcionario_id = ? "
         + "where "
         + "id = ?;";
 

@@ -2,7 +2,7 @@ package br.com.pet_shop.repositorio;
 
 import br.com.pet_shop.entidades.Cliente;
 import br.com.pet_shop.enums.TipoParametroEnum;
-import br.com.pet_shop.utilitarios.constantes.sql.ClienteSqlConstante;
+import br.com.pet_shop.banco.sql.ClienteSqlConstante;
 import br.com.pet_shop.utilitarios.conversores.ClienteConversor;
 import br.com.pet_shop.utilitarios.dto.ParametroQuery;
 

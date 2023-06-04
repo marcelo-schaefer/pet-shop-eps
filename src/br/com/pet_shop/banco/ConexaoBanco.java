@@ -1,13 +1,12 @@
 package br.com.pet_shop.banco;
 
+import br.com.pet_shop.RunApp;
 import br.com.pet_shop.excecoes.ConexaoBancoExcecao;
 import br.com.pet_shop.excecoes.ManipulacaoBancoExcecao;
 
 import javax.swing.*;
-import java.nio.ByteBuffer;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -33,9 +32,7 @@ public class ConexaoBanco {
         try (var connection = pegarConexaoServidor()) {
             var queries = queryCompleta.split("#");
 
-            for (var i = 0; i < queries.length; i++) {
-                var query = queries[i];
-
+            for (var query : queries) {
                 try (var preparedStatement = connection.prepareStatement(query)) {
                     preparedStatement.executeUpdate();
                 }
@@ -78,16 +75,26 @@ public class ConexaoBanco {
 
     private static String pegarScriptDeCriacao() {
         try {
-            byte[] encoded = Files.readAllBytes(
-                Paths.get("C:\\Users\\Aluno\\Desktop\\pet-shop-eps\\src\\sql\\criar_banco.sql")
-            );
+            var fileReader = new FileReader(RunApp.CAMINHO_ARQUIVO_CRIACAO_BASE);
+            var buffRead = new BufferedReader(fileReader);
 
-            return StandardCharsets
-                .UTF_8
-                .decode(ByteBuffer.wrap(encoded))
-                .toString();
+            var conteudo = new StringBuilder();
+
+            while (true) {
+                var linha = buffRead.readLine();
+
+                if (linha != null) {
+                    conteudo.append(linha);
+                } else {
+                    break;
+                }
+            }
+
+            buffRead.close();
+
+            return conteudo.toString();
         } catch (Exception exception) {
-            throw new RuntimeException(
+            throw new ConexaoBancoExcecao(
                 "Erro ao criar base",
                 exception
             );

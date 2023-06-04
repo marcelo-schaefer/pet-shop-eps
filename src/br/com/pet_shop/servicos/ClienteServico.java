@@ -20,11 +20,7 @@ public class ClienteServico implements ClienteServicoInterface {
 
     private static final String DELETAR_CLIENTE_TITULO = "Deletar Cliente";
 
-    private final ClienteRepositorio clienteRepositorio;
-
-    public ClienteServico(ClienteRepositorio clienteRepositorio) {
-        this.clienteRepositorio = clienteRepositorio;
-    }
+    private final ClienteRepositorio clienteRepositorio = new ClienteRepositorio();
 
     public void criar() {
         var nome = LerTela.lerString(CADASTRAR_CLIENTE_TITULO, "Nome:");
@@ -46,7 +42,7 @@ public class ClienteServico implements ClienteServicoInterface {
     }
 
     public void atualizar() {
-        var id = LerTela.lerInteger(ATUALIZAR_CLIENTE_TITULO, "Id:");
+        var id = pegarId(ATUALIZAR_CLIENTE_TITULO);
 
         var existeCliente = clienteRepositorio.existePorID(id);
 
@@ -86,7 +82,7 @@ public class ClienteServico implements ClienteServicoInterface {
     }
 
     public void buscarPorId() {
-        var id = LerTela.lerInteger(BUSCAR_CLIENTE_TITULO, "Id:");
+        var id = pegarId(BUSCAR_CLIENTE_TITULO);
 
         var clienteOptional = clienteRepositorio.buscarPorId(id);
 
@@ -105,7 +101,7 @@ public class ClienteServico implements ClienteServicoInterface {
     }
 
     public void deletarPorId() {
-        var id = LerTela.lerInteger(BUSCAR_CLIENTE_TITULO, "Id:");
+        var id = pegarId(DELETAR_CLIENTE_TITULO);
 
         clienteRepositorio.deletarPorId(id);
 
@@ -135,5 +131,9 @@ public class ClienteServico implements ClienteServicoInterface {
                 entidade.getDataNascimento()
             )
         );
+    }
+
+    private static Integer pegarId(String titulo) {
+        return LerTela.lerInteger(titulo, "Id:");
     }
 }

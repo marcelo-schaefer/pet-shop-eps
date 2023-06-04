@@ -14,7 +14,7 @@ public final class LerEnumTela {
             .concat("\n")
             .concat("2 - Masculino")
             .concat("\n")
-            .concat("3 - Hemafrodita");
+            .concat("3 - Hermafrodita");
 
         var opcao = lerOpcao(
             SexoEnum.values().length,
@@ -22,7 +22,7 @@ public final class LerEnumTela {
             mensagem
         );
 
-        return SexoEnum.pegarPorOpcao(opcao);
+        return SexoEnum.SEXO_POSICAO_MAP.get(opcao);
     }
 
     private static Integer lerOpcao(Integer ate, String titulo, String mensagem) {

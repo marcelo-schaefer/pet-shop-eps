@@ -2,7 +2,7 @@ package br.com.pet_shop.repositorio;
 
 import br.com.pet_shop.entidades.Consulta;
 import br.com.pet_shop.enums.TipoParametroEnum;
-import br.com.pet_shop.utilitarios.constantes.sql.ConsultaSqlConstante;
+import br.com.pet_shop.banco.sql.ConsultaSqlConstante;
 import br.com.pet_shop.utilitarios.conversores.ConsultaConversor;
 import br.com.pet_shop.utilitarios.dto.ParametroQuery;
 
@@ -42,6 +42,11 @@ public class ConsultaRepositorio extends RepositorioAbstract<Consulta> {
                 TipoParametroEnum.INTEGER,
                 entidade.getAnimal().getId(),
                 5
+            ),
+            new ParametroQuery(
+                TipoParametroEnum.INTEGER,
+                entidade.getFuncionario().getId(),
+                6
             )
         );
 
@@ -78,8 +83,13 @@ public class ConsultaRepositorio extends RepositorioAbstract<Consulta> {
             ),
             new ParametroQuery(
                 TipoParametroEnum.INTEGER,
-                entidade.getId(),
+                entidade.getFuncionario().getId(),
                 6
+            ),
+            new ParametroQuery(
+                TipoParametroEnum.INTEGER,
+                entidade.getId(),
+                7
             )
         );
 
