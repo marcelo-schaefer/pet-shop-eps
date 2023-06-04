@@ -47,6 +47,11 @@ public class AnimalRepositorio extends RepositorioAbstract<Animal> {
                 TipoParametroEnum.INTEGER,
                 entidade.getEspecie().getId(),
                 6
+            ),
+            new ParametroQuery(
+                TipoParametroEnum.INTEGER,
+                entidade.getCliente().getId(),
+                7
             )
         );
 
@@ -88,8 +93,13 @@ public class AnimalRepositorio extends RepositorioAbstract<Animal> {
             ),
             new ParametroQuery(
                 TipoParametroEnum.INTEGER,
-                entidade.getId(),
+                entidade.getCliente().getId(),
                 7
+            ),
+            new ParametroQuery(
+                TipoParametroEnum.INTEGER,
+                entidade.getId(),
+                8
             )
         );
 
@@ -116,7 +126,7 @@ public class AnimalRepositorio extends RepositorioAbstract<Animal> {
 
     @Override
     public List<Animal> buscarTodos() {
-        return consultarList(AnimalSqlConstante.BUSCAR_ULTIMO);
+        return consultarList(AnimalSqlConstante.BUSCAR_TUDO);
     }
 
     @Override

@@ -1,8 +1,10 @@
 package br.com.pet_shop.servicos;
 
 import br.com.pet_shop.entidades.Animal;
+import br.com.pet_shop.entidades.Cliente;
 import br.com.pet_shop.entidades.Especie;
 import br.com.pet_shop.repositorio.AnimalRepositorio;
+import br.com.pet_shop.repositorio.ClienteRepositorio;
 import br.com.pet_shop.repositorio.EspecieRepositorio;
 import br.com.pet_shop.servicos.interfaces.AnimalServicoInterface;
 import br.com.pet_shop.tela.dados.JOptionPaneTela;
@@ -31,6 +33,7 @@ public class AnimalServico implements AnimalServicoInterface {
         var dataNascimento = LerTela.lerDate(CADASTRAR_ANIMAL_TITULO, "Data de Nascimento:");
         var sexoEnum = LerEnumTela.lerSexoEnum(CADASTRAR_ANIMAL_TITULO);
         var especie = pegarEspecie(CADASTRAR_ANIMAL_TITULO);
+        var cliente = pegarCliente(CADASTRAR_ANIMAL_TITULO);
 
         var animal = new Animal(
             nome,
@@ -38,7 +41,8 @@ public class AnimalServico implements AnimalServicoInterface {
             dataNascimento,
             sexoEnum,
             Boolean.TRUE,
-            especie
+            especie,
+            cliente
         );
 
         animalRepositorio.criar(animal);
@@ -69,6 +73,7 @@ public class AnimalServico implements AnimalServicoInterface {
             var sexoEnum = LerEnumTela.lerSexoEnum(ATUALIZAR_ANIMAL_TITULO);
             var ativo = LerTela.lerBoolean(ATUALIZAR_ANIMAL_TITULO, "Ativo?");
             var especie = pegarEspecie(ATUALIZAR_ANIMAL_TITULO);
+            var cliente = pegarCliente(CADASTRAR_ANIMAL_TITULO);
 
             var animal = new Animal(
                 id,
@@ -77,7 +82,8 @@ public class AnimalServico implements AnimalServicoInterface {
                 dataNascimento,
                 sexoEnum,
                 ativo,
-                especie
+                especie,
+                cliente
             );
 
             animalRepositorio.atualizar(animal);
@@ -141,7 +147,9 @@ public class AnimalServico implements AnimalServicoInterface {
             .concat("\n")
             .concat("Ativo: %b")
             .concat("\n")
-            .concat("Espécie: %d");
+            .concat("Espécie: %d")
+            .concat("\n")
+            .concat("Cliente: %d");
 
         JOptionPaneTela.optionMensagemInfo(
             DADOS_ESPECIE_TITULO,
@@ -153,7 +161,8 @@ public class AnimalServico implements AnimalServicoInterface {
                 entidade.getDataNascimento(),
                 entidade.getSexo(),
                 entidade.getAtivo(),
-                entidade.getEspecie().getId()
+                entidade.getEspecie().getId(),
+                entidade.getCliente().getId()
             )
         );
     }
@@ -173,6 +182,27 @@ public class AnimalServico implements AnimalServicoInterface {
                     String.format(
                         "Não existe uma Espécie cadastrada com o id \"%s\"",
                         especieId
+                    )
+                );
+            }
+        } while (true);
+    }
+
+    private Cliente pegarCliente(String titulo) {
+        do {
+            var clienteId = LerTela.lerInteger(titulo, "Identificador do Cliente:");
+            var clienteRepositorio = new ClienteRepositorio();
+
+            var existe = clienteRepositorio.existePorID(clienteId);
+
+            if (existe.equals(Boolean.TRUE)) {
+                return new Cliente(clienteId);
+            } else {
+                JOptionPaneTela.optionMensagemInfo(
+                    titulo,
+                    String.format(
+                        "Não existe um Cliente cadastrado com o id \"%s\"",
+                        clienteId
                     )
                 );
             }

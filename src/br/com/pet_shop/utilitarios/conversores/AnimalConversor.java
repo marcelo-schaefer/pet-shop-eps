@@ -1,6 +1,7 @@
 package br.com.pet_shop.utilitarios.conversores;
 
 import br.com.pet_shop.entidades.Animal;
+import br.com.pet_shop.entidades.Cliente;
 import br.com.pet_shop.entidades.Especie;
 import br.com.pet_shop.enums.SexoEnum;
 import br.com.pet_shop.excecoes.ConverterResultSetExcecao;
@@ -22,6 +23,9 @@ public class AnimalConversor implements ConversorEntidadeInterface<Animal> {
                 resultSet.getBoolean("ativo"),
                 new Especie(
                     resultSet.getInt("especie_id")
+                ),
+                new Cliente(
+                    resultSet.getInt("cliente_id")
                 )
             );
         } catch (Exception exception) {

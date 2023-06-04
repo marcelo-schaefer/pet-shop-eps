@@ -3,9 +3,9 @@ package br.com.pet_shop.banco.sql;
 public final class AnimalSqlConstante {
 
     public static final String CRIAR = "insert into pet_shop.animal "
-        + "(nome, detalhe, data_nascimento, sexo, ativo, especie_id) "
+        + "(nome, detalhe, data_nascimento, sexo, ativo, especie_id, cliente_id) "
         + "values "
-        + "(?, ?, ?, ?, ?, ?);";
+        + "(?, ?, ?, ?, ?, ?, ?);";
 
     public static final String ATUALIZAR = "update pet_shop.animal "
         + "set "
@@ -15,6 +15,7 @@ public final class AnimalSqlConstante {
         + "sexo = ?, "
         + "ativo = ?, "
         + "especie_id = ? "
+        + "cliente_id = ? "
         + "where "
         + "id = ?;";
 

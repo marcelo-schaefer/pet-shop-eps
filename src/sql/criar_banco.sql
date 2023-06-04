@@ -13,8 +13,11 @@ create table if not exists pet_shop.animal (
     sexo varchar(12) not null,
     ativo tinyint not null,
     especie_id int not null,
+    cliente_id int not null,
     foreign key (especie_id)
-        references especie(id)
+        references especie(id),
+    foreign key (cliente_id)
+        references cliente(id)
 );
 #
 create table if not exists pet_shop.cliente (

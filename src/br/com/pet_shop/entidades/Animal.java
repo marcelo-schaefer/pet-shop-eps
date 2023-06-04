@@ -6,100 +6,114 @@ import br.com.pet_shop.enums.SexoEnum;
 import java.util.Date;
 
 public class Animal {
-	
-	private Integer id;
-	
-	private String nome;
 
-	private String detalhe;
+    private Integer id;
 
-	private Date dataNascimento;
-	
-	private SexoEnum sexo;
-	
-	private Boolean ativo;
+    private String nome;
 
-	private Especie especie;
+    private String detalhe;
 
-	public Animal() {
-	}
-	
-	public Animal(Integer id) {
-		this.id = id;
-	}
+    private Date dataNascimento;
 
-	public Animal(String nome, String detalhe, Date dataNascimento, SexoEnum sexo, Boolean ativo, Especie especie) {
-		this.nome = nome;
-		this.detalhe = detalhe;
-		this.dataNascimento = dataNascimento;
-		this.sexo = sexo;
-		this.ativo = ativo;
-		this.especie = especie;
-	}
+    private SexoEnum sexo;
 
-	public Animal(Integer id, String nome, String detalhe, Date dataNascimento, SexoEnum sexo, Boolean ativo, Especie especie) {
-		this.id = id;
-		this.nome = nome;
-		this.detalhe = detalhe;
-		this.dataNascimento = dataNascimento;
-		this.sexo = sexo;
-		this.ativo = ativo;
-		this.especie = especie;
-	}
+    private Boolean ativo;
 
-	public Integer getId() {
-		return id;
-	}
+    private Especie especie;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    private Cliente cliente;
 
-	public String getNome() {
-		return nome;
-	}
+    public Animal() {
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public Animal(Integer id) {
+        this.id = id;
+    }
 
-	public String getDetalhe() {
-		return detalhe;
-	}
+    public Animal(String nome, String detalhe, Date dataNascimento, SexoEnum sexo, Boolean ativo, Especie especie,
+                  Cliente cliente) {
+        this.nome = nome;
+        this.detalhe = detalhe;
+        this.dataNascimento = dataNascimento;
+        this.sexo = sexo;
+        this.ativo = ativo;
+        this.especie = especie;
+        this.cliente = cliente;
+    }
 
-	public void setDetalhe(String detalhe) {
-		this.detalhe = detalhe;
-	}
+    public Animal(Integer id, String nome, String detalhe, Date dataNascimento, SexoEnum sexo, Boolean ativo, Especie especie,
+                  Cliente cliente) {
+        this.id = id;
+        this.nome = nome;
+        this.detalhe = detalhe;
+        this.dataNascimento = dataNascimento;
+        this.sexo = sexo;
+        this.ativo = ativo;
+        this.especie = especie;
+        this.cliente = cliente;
+    }
 
-	public Date getDataNascimento() {
-		return dataNascimento;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public void setDataNascimento(Date dataNascimento) {
-		this.dataNascimento = dataNascimento;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public SexoEnum getSexo() {
-		return sexo;
-	}
+    public String getNome() {
+        return nome;
+    }
 
-	public void setSexo(SexoEnum sexo) {
-		this.sexo = sexo;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public Boolean getAtivo() {
-		return ativo;
-	}
+    public String getDetalhe() {
+        return detalhe;
+    }
 
-	public void setAtivo(Boolean ativo) {
-		this.ativo = ativo;
-	}
+    public void setDetalhe(String detalhe) {
+        this.detalhe = detalhe;
+    }
 
-	public Especie getEspecie() {
-		return especie;
-	}
+    public Date getDataNascimento() {
+        return dataNascimento;
+    }
 
-	public void setEspecie(Especie especie) {
-		this.especie = especie;
-	}
+    public void setDataNascimento(Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public SexoEnum getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(SexoEnum sexo) {
+        this.sexo = sexo;
+    }
+
+    public Boolean getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(Boolean ativo) {
+        this.ativo = ativo;
+    }
+
+    public Especie getEspecie() {
+        return especie;
+    }
+
+    public void setEspecie(Especie especie) {
+        this.especie = especie;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 }
