@@ -5,6 +5,7 @@ import br.com.pet_shop.entidades.Cliente;
 import br.com.pet_shop.entidades.Especie;
 import br.com.pet_shop.repositorio.AnimalRepositorio;
 import br.com.pet_shop.repositorio.ClienteRepositorio;
+import br.com.pet_shop.repositorio.ConsultaRepositorio;
 import br.com.pet_shop.repositorio.EspecieRepositorio;
 import br.com.pet_shop.servicos.interfaces.AnimalServicoInterface;
 import br.com.pet_shop.tela.dados.JOptionPaneTela;
@@ -125,12 +126,21 @@ public class AnimalServico implements AnimalServicoInterface {
     public void deletarPorId() {
         var id = pegarId(DELETAR_ANIMAL_TITULO);
 
-        animalRepositorio.deletarPorId(id);
+        var existeVinculo = existeVinculoComConsulta(id);
 
-        JOptionPaneTela.optionMensagemInfo(
-            DELETAR_ANIMAL_TITULO,
-            "Animal deletado com sucesso!"
-        );
+        if (existeVinculo.equals(Boolean.FALSE)) {
+            animalRepositorio.deletarPorId(id);
+
+            JOptionPaneTela.optionMensagemInfo(
+                DELETAR_ANIMAL_TITULO,
+                "Animal deletado com sucesso!"
+            );
+        } else {
+            JOptionPaneTela.optionMensagemAlerta(
+                DELETAR_ANIMAL_TITULO,
+                "Animal não pode ser deletado pois existem consultas vinculadas."
+            );
+        }
     }
 
     @Override
@@ -211,5 +221,11 @@ public class AnimalServico implements AnimalServicoInterface {
 
     public Integer pegarId(String titulo) {
         return LerTela.lerInteger(titulo, "Id:");
+    }
+
+    private Boolean existeVinculoComConsulta(Integer id) {
+        var consultaRepositorio = new ConsultaRepositorio();
+
+        return consultaRepositorio.existePorAnimalId(id);
     }
 }

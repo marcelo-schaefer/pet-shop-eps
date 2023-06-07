@@ -1,6 +1,7 @@
 package br.com.pet_shop.servicos;
 
 import br.com.pet_shop.entidades.Cliente;
+import br.com.pet_shop.repositorio.AnimalRepositorio;
 import br.com.pet_shop.repositorio.ClienteRepositorio;
 import br.com.pet_shop.servicos.interfaces.ClienteServicoInterface;
 import br.com.pet_shop.tela.dados.JOptionPaneTela;
@@ -103,12 +104,21 @@ public class ClienteServico implements ClienteServicoInterface {
     public void deletarPorId() {
         var id = pegarId(DELETAR_CLIENTE_TITULO);
 
-        clienteRepositorio.deletarPorId(id);
+        var existeVinculo = existeVinculoComAnimal(id);
 
-        JOptionPaneTela.optionMensagemInfo(
-            DELETAR_CLIENTE_TITULO,
-            "Cliente deletada com sucesso!"
-        );
+        if (existeVinculo.equals(Boolean.FALSE)) {
+            clienteRepositorio.deletarPorId(id);
+
+            JOptionPaneTela.optionMensagemInfo(
+                DELETAR_CLIENTE_TITULO,
+                "Cliente deletada com sucesso!"
+            );
+        } else {
+            JOptionPaneTela.optionMensagemAlerta(
+                DELETAR_CLIENTE_TITULO,
+                "Cliente não pode ser deletado pois existem animais vinculados."
+            );
+        }
     }
 
     @Override
@@ -135,5 +145,11 @@ public class ClienteServico implements ClienteServicoInterface {
 
     private static Integer pegarId(String titulo) {
         return LerTela.lerInteger(titulo, "Id:");
+    }
+
+    private Boolean existeVinculoComAnimal(Integer id) {
+        var animalRepositorio = new AnimalRepositorio();
+
+        return animalRepositorio.existePorClienteId(id);
     }
 }

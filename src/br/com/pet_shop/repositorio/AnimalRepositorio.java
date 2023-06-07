@@ -119,6 +119,30 @@ public class AnimalRepositorio extends RepositorioAbstract<Animal> {
         return consultar(AnimalSqlConstante.BUSCAR_POR_ID, parametros);
     }
 
+    public Boolean existePorEspecieId(Integer especieId) {
+        var parametros = List.of(
+            new ParametroQuery(
+                TipoParametroEnum.INTEGER,
+                especieId,
+                1
+            )
+        );
+
+        return consultar(AnimalSqlConstante.BUSCAR_POR_ESPECIE_ID, parametros).isPresent();
+    }
+
+    public Boolean existePorClienteId(Integer clienteId) {
+        var parametros = List.of(
+            new ParametroQuery(
+                TipoParametroEnum.INTEGER,
+                clienteId,
+                1
+            )
+        );
+
+        return consultar(AnimalSqlConstante.BUSCAR_POR_CLIENTE_ID, parametros).isPresent();
+    }
+
     @Override
     public Optional<Animal> buscarUltimo() {
         return consultar(AnimalSqlConstante.BUSCAR_ULTIMO);

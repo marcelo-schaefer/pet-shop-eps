@@ -47,6 +47,7 @@ public final class MenuTela {
                 case 5:
                     menuConsulta();
                     break;
+                default:
             }
         } while (opcao != 6);
     }

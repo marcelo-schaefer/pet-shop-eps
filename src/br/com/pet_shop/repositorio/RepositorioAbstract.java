@@ -7,6 +7,7 @@ import br.com.pet_shop.utilitarios.conversores.interfaces.ConversorEntidadeInter
 import br.com.pet_shop.utilitarios.dto.ParametroQuery;
 
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.sql.Time;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public abstract class RepositorioAbstract<E> {
 
     private final ConversorEntidadeInterface<E> conversorEntidadeInterface;
 
-    public RepositorioAbstract(ConversorEntidadeInterface<E> conversorEntidadeInterface) {
+    protected RepositorioAbstract(ConversorEntidadeInterface<E> conversorEntidadeInterface) {
         this.conversorEntidadeInterface = conversorEntidadeInterface;
     }
 
@@ -99,7 +100,7 @@ public abstract class RepositorioAbstract<E> {
                 }
 
                 preparedStatement.execute();
-                return buscarUltimo().get();
+                return buscarUltimo().orElse(null);
             }
         } catch (Exception exception) {
             throw new ManipulacaoBancoExcecao(
@@ -132,7 +133,7 @@ public abstract class RepositorioAbstract<E> {
     }
 
     private void construirStatement(PreparedStatement preparedStatement,
-                                    ParametroQuery parametroQuery) throws Exception {
+                                    ParametroQuery parametroQuery) throws SQLException {
         var posicao = parametroQuery.getPosicao();
 
         switch (parametroQuery.getTipo()) {

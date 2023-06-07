@@ -1,5 +1,6 @@
 package br.com.pet_shop.repositorio;
 
+import br.com.pet_shop.banco.sql.ClienteSqlConstante;
 import br.com.pet_shop.entidades.Consulta;
 import br.com.pet_shop.enums.TipoParametroEnum;
 import br.com.pet_shop.banco.sql.ConsultaSqlConstante;
@@ -117,6 +118,30 @@ public class ConsultaRepositorio extends RepositorioAbstract<Consulta> {
     @Override
     public List<Consulta> buscarTodos() {
         return consultarList(ConsultaSqlConstante.BUSCAR_TUDO);
+    }
+
+    public Boolean existePorAnimalId(Integer animalId) {
+        var parametros = List.of(
+            new ParametroQuery(
+                TipoParametroEnum.INTEGER,
+                animalId,
+                1
+            )
+        );
+
+        return consultar(ConsultaSqlConstante.BUSCAR_POR_ANIMAL_ID, parametros).isPresent();
+    }
+
+    public Boolean existePorFuncionarioId(Integer funcionarioId) {
+        var parametros = List.of(
+            new ParametroQuery(
+                TipoParametroEnum.INTEGER,
+                funcionarioId,
+                1
+            )
+        );
+
+        return consultar(ConsultaSqlConstante.BUSCAR_POR_ANIMAL_ID, parametros).isPresent();
     }
 
     @Override

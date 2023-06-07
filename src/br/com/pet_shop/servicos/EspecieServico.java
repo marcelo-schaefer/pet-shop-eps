@@ -1,6 +1,7 @@
 package br.com.pet_shop.servicos;
 
 import br.com.pet_shop.entidades.Especie;
+import br.com.pet_shop.repositorio.AnimalRepositorio;
 import br.com.pet_shop.repositorio.EspecieRepositorio;
 import br.com.pet_shop.servicos.interfaces.EspecieServicoInterface;
 import br.com.pet_shop.tela.dados.JOptionPaneTela;
@@ -88,12 +89,21 @@ public class EspecieServico implements EspecieServicoInterface {
     public void deletarPorId() {
         var id = pegarId(DELETAR_ESPECIE_TITULO);
 
-        especieRepositorio.deletarPorId(id);
+        var existeVinculo = existeVinculoComAnimal(id);
 
-        JOptionPaneTela.optionMensagemInfo(
-            DELETAR_ESPECIE_TITULO,
-            "Espécie deletada com sucesso!"
-        );
+        if (existeVinculo.equals(Boolean.FALSE)) {
+            especieRepositorio.deletarPorId(id);
+
+            JOptionPaneTela.optionMensagemInfo(
+                DELETAR_ESPECIE_TITULO,
+                "Espécie deletada com sucesso!"
+            );
+        } else {
+            JOptionPaneTela.optionMensagemAlerta(
+                DELETAR_ESPECIE_TITULO,
+                "A espécie não ser deletada pois existem animais vinculados."
+            );
+        }
     }
 
     public void exibir(Especie entidade) {
@@ -113,5 +123,11 @@ public class EspecieServico implements EspecieServicoInterface {
 
     public Integer pegarId(String titulo) {
         return LerTela.lerInteger(titulo, "Id:");
+    }
+
+    private Boolean existeVinculoComAnimal(Integer id) {
+        var animalRepositorio = new AnimalRepositorio();
+
+        return animalRepositorio.existePorEspecieId(id);
     }
 }

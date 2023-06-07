@@ -27,6 +27,20 @@ public final class ConsultaSqlConstante {
         + "where "
         + "consulta.id = ?";
 
+    public static final String BUSCAR_POR_ANIMAL_ID = "select "
+        + "* "
+        + "from "
+        + "pet_shop.consulta consulta "
+        + "where "
+        + "consulta.animal_id = ?";
+
+    public static final String BUSCAR_POR_FUNCIONARIO_ID = "select "
+        + "* "
+        + "from "
+        + "pet_shop.consulta consulta "
+        + "where "
+        + "consulta.funcionario_id = ?";
+
     public static final String BUSCAR_ULTIMO = "select " +
         "* " +
         "from " +

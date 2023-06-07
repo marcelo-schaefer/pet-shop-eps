@@ -124,7 +124,7 @@ public class ConsultaServico implements ConsultaServicoInterface {
 
         JOptionPaneTela.optionMensagemInfo(
             DELETAR_CONSULTA_TITULO,
-            "Espécie deletada com sucesso!"
+            "Consulta deletada com sucesso!"
         );
     }
 

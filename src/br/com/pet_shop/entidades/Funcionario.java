@@ -1,8 +1,6 @@
 package br.com.pet_shop.entidades;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class Funcionario extends Pessoa {
 

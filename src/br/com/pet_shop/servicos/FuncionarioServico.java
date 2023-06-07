@@ -1,6 +1,7 @@
 package br.com.pet_shop.servicos;
 
 import br.com.pet_shop.entidades.Funcionario;
+import br.com.pet_shop.repositorio.ConsultaRepositorio;
 import br.com.pet_shop.repositorio.FuncionarioRepositorio;
 import br.com.pet_shop.servicos.interfaces.FuncionarioServicoInterface;
 import br.com.pet_shop.tela.dados.JOptionPaneTela;
@@ -107,12 +108,21 @@ public class FuncionarioServico implements FuncionarioServicoInterface {
     public void deletarPorId() {
         var id = pegarId(DELETAR_FUNCIONARIO_TITULO);
 
-        funcionarioRepositorio.deletarPorId(id);
+        var existeVinculo = existeVinculoComConsulta(id);
 
-        JOptionPaneTela.optionMensagemInfo(
-            DELETAR_FUNCIONARIO_TITULO,
-            "Espécie deletada com sucesso!"
-        );
+        if (existeVinculo.equals(Boolean.FALSE)) {
+            funcionarioRepositorio.deletarPorId(id);
+
+            JOptionPaneTela.optionMensagemInfo(
+                DELETAR_FUNCIONARIO_TITULO,
+                "Funcionário deletado com sucesso!"
+            );
+        } else {
+            JOptionPaneTela.optionMensagemAlerta(
+                DELETAR_FUNCIONARIO_TITULO,
+                "Funcionário não pode ser deletado pois existem consultas vinculadas."
+            );
+        }
     }
 
     @Override
@@ -142,5 +152,11 @@ public class FuncionarioServico implements FuncionarioServicoInterface {
 
     private static Integer pegarId(String titulo) {
         return LerTela.lerInteger(titulo, "Id:");
+    }
+
+    private Boolean existeVinculoComConsulta(Integer id) {
+        var consultaRepositorio = new ConsultaRepositorio();
+
+        return consultaRepositorio.existePorFuncionarioId(id);
     }
 }
