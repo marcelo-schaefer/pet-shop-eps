@@ -17,8 +17,6 @@ public class Animal {
 
     private SexoEnum sexo;
 
-    private Boolean ativo;
-
     private Especie especie;
 
     private Cliente cliente;
@@ -30,25 +28,23 @@ public class Animal {
         this.id = id;
     }
 
-    public Animal(String nome, String detalhe, Date dataNascimento, SexoEnum sexo, Boolean ativo, Especie especie,
+    public Animal(String nome, String detalhe, Date dataNascimento, SexoEnum sexo, Especie especie,
                   Cliente cliente) {
         this.nome = nome;
         this.detalhe = detalhe;
         this.dataNascimento = dataNascimento;
         this.sexo = sexo;
-        this.ativo = ativo;
         this.especie = especie;
         this.cliente = cliente;
     }
 
-    public Animal(Integer id, String nome, String detalhe, Date dataNascimento, SexoEnum sexo, Boolean ativo, Especie especie,
+    public Animal(Integer id, String nome, String detalhe, Date dataNascimento, SexoEnum sexo, Especie especie,
                   Cliente cliente) {
         this.id = id;
         this.nome = nome;
         this.detalhe = detalhe;
         this.dataNascimento = dataNascimento;
         this.sexo = sexo;
-        this.ativo = ativo;
         this.especie = especie;
         this.cliente = cliente;
     }
@@ -93,13 +89,6 @@ public class Animal {
         this.sexo = sexo;
     }
 
-    public Boolean getAtivo() {
-        return ativo;
-    }
-
-    public void setAtivo(Boolean ativo) {
-        this.ativo = ativo;
-    }
 
     public Especie getEspecie() {
         return especie;

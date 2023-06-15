@@ -41,7 +41,6 @@ public class AnimalServico implements AnimalServicoInterface {
             detalhe,
             dataNascimento,
             sexoEnum,
-            Boolean.TRUE,
             especie,
             cliente
         );
@@ -72,7 +71,6 @@ public class AnimalServico implements AnimalServicoInterface {
             var detalhe = LerTela.lerString(ATUALIZAR_ANIMAL_TITULO, "Detalhe:");
             var dataNascimento = LerTela.lerDate(ATUALIZAR_ANIMAL_TITULO, "Data de Nascimento:");
             var sexoEnum = LerEnumTela.lerSexoEnum(ATUALIZAR_ANIMAL_TITULO);
-            var ativo = LerTela.lerBoolean(ATUALIZAR_ANIMAL_TITULO, "Ativo?");
             var especie = pegarEspecie(ATUALIZAR_ANIMAL_TITULO);
             var cliente = pegarCliente(CADASTRAR_ANIMAL_TITULO);
 
@@ -82,7 +80,6 @@ public class AnimalServico implements AnimalServicoInterface {
                 detalhe,
                 dataNascimento,
                 sexoEnum,
-                ativo,
                 especie,
                 cliente
             );
@@ -155,8 +152,6 @@ public class AnimalServico implements AnimalServicoInterface {
             .concat("\n")
             .concat("Sexo: %s")
             .concat("\n")
-            .concat("Ativo: %b")
-            .concat("\n")
             .concat("Espécie: %d")
             .concat("\n")
             .concat("Cliente: %d");
@@ -170,7 +165,6 @@ public class AnimalServico implements AnimalServicoInterface {
                 entidade.getDetalhe(),
                 entidade.getDataNascimento(),
                 entidade.getSexo(),
-                entidade.getAtivo(),
                 entidade.getEspecie().getId(),
                 entidade.getCliente().getId()
             )

@@ -20,7 +20,6 @@ public class AnimalConversor implements ConversorEntidadeInterface<Animal> {
                 resultSet.getString("detalhe"),
                 ConversorTipos.dateParaDateSql(resultSet.getDate("data_nascimento")),
                 SexoEnum.valueOf(resultSet.getString("sexo")),
-                resultSet.getBoolean("ativo"),
                 new Especie(
                     resultSet.getInt("especie_id")
                 ),

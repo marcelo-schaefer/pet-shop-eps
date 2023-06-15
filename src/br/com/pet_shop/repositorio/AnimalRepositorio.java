@@ -39,19 +39,14 @@ public class AnimalRepositorio extends RepositorioAbstract<Animal> {
                 4
             ),
             new ParametroQuery(
-                TipoParametroEnum.BOOLEAN,
-                entidade.getAtivo(),
+                TipoParametroEnum.INTEGER,
+                entidade.getEspecie().getId(),
                 5
             ),
             new ParametroQuery(
                 TipoParametroEnum.INTEGER,
-                entidade.getEspecie().getId(),
-                6
-            ),
-            new ParametroQuery(
-                TipoParametroEnum.INTEGER,
                 entidade.getCliente().getId(),
-                7
+                6
             )
         );
 
@@ -82,24 +77,19 @@ public class AnimalRepositorio extends RepositorioAbstract<Animal> {
                 4
             ),
             new ParametroQuery(
-                TipoParametroEnum.BOOLEAN,
-                entidade.getAtivo(),
+                TipoParametroEnum.INTEGER,
+                entidade.getEspecie().getId(),
                 5
             ),
             new ParametroQuery(
                 TipoParametroEnum.INTEGER,
-                entidade.getEspecie().getId(),
+                entidade.getCliente().getId(),
                 6
             ),
             new ParametroQuery(
                 TipoParametroEnum.INTEGER,
-                entidade.getCliente().getId(),
-                7
-            ),
-            new ParametroQuery(
-                TipoParametroEnum.INTEGER,
                 entidade.getId(),
-                8
+                7
             )
         );
 

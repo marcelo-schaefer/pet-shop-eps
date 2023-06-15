@@ -33,6 +33,8 @@ public class ConexaoBanco {
             var queries = queryCompleta.split("#");
 
             for (var query : queries) {
+                System.out.println(query);
+
                 try (var preparedStatement = connection.prepareStatement(query)) {
                     preparedStatement.executeUpdate();
                 }
